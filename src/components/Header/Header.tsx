@@ -26,32 +26,33 @@ export const Header = () => {
 
   return (
     <header className='header'>
-      <div className='header__container_media'>
+      <div className='header__media_container'>
         <p className='header__media header__media_active'>Медиа</p>
         <p className='header__media'>Эквайринг</p>
       </div>
-      <div>
-        <div>
-          <span>7</span>
-          <p>Сотрудники</p>
+      <div className='header__empoyes_container'>
+        <div className='header__line_black'>
+          <span className='header__empoyes_count'>7</span>
+          <p className='header__empoyes'>Сотрудники</p>
         </div>
-        <div>
-          <span>7</span>
-          <p>Сотрудники</p>
+        <div className='header__line_green'>
+          <span className='header__empoyes_count'>7</span>
+          <p className='header__empoyes'>Key-people</p>
         </div>
-        <div>
-          <span>7</span>
-          <p>Сотрудники</p>
+        <div className='header__line_red'>
+          <span className='header__empoyes_count'>7</span>
+          <p className='header__empoyes'>Bus-factor</p>
         </div>
       </div>
 
-      <div>
-        <div>
-          <Icon id='calendar' /> <p className='header'>{date}</p>
+      <div className='header__profile'>
+        <div className='header__calendar_container'>
+          <Icon id='calendar-black' />
+          <h2 className='header__date'>{date}</h2>
         </div>
-        <div>
-          <p>Петрова Елена</p>
-          <img src={Avatar}></img>
+        <div className='header__avatar_container'>
+          <h2 className='header__name'>Петрова Елена</h2>
+          <img src={Avatar} className='header__avatar'></img>
         </div>
         <Icon id='exit' />
       </div>

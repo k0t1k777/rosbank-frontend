@@ -1,22 +1,81 @@
 .header {
   @include flex-row-center;
+  justify-content: space-between;
   background: $light-grey;
   height: 80px;
   padding: 15px 20px;
-
-  &__container_media {
-    display: flex;
-    gap: 21px;
-    padding: 11px 12px;
-  }
 
   &__media {
     @include mp-null;
     @include use-font(16px, 24px);
     padding: 0 0 2px 0;
     border-bottom: 2px solid $grey;
+    &_container {
+      display: flex;
+      gap: 21px;
+      padding: 11px 12px;
+    }
     &_active {
       border-bottom: 2px solid $red;
     }
+  }
+
+  &__empoyes {
+    @include mp-null;
+    @include use-font(12px, 22px, 400);
+    &_count {
+      @include mp-null;
+      @include use-font(14px, 24px);
+    }
+    &_container {
+      display: flex;
+    }
+  }
+
+  &__line_black {
+    width: 80px;
+    border-bottom: 2px solid $dark;
+  }
+  &__line_green {
+    width: 80px;
+    border-bottom: 2px solid $green;
+  }
+  &__line_red {
+    width: 80px;
+    border-bottom: 2px solid $red;
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__calendar_container {
+    display: flex;
+    border: 1px solid $grey;
+    gap: 12px;
+    border-radius: 12px;
+    padding: 12px 16px;
+  }
+
+  &__date {
+    @include mp-null;
+    @include use-font(16px, 24px);
+  }
+
+  &__avatar_container {
+    display: flex;
+  }
+
+  &__name {
+    @include mp-null;
+    @include use-font(16px, 24px);
+    padding: 13px 21px;
+  }
+
+  &__avatar {
+    width: 50px;
+    height: 50px;
   }
 }
