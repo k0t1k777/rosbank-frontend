@@ -1,0 +1,56 @@
+.sidebar {
+  width: 237px;
+  position: relative;
+
+  &__title {
+    @include use-font(32px, 48px, 500);
+    @include mp-null;
+    color: $light-grey;
+    padding: 16px 46px 0 46px;
+    &_container {
+      background: $dark;
+      height: 101px;
+      border-radius: 0 12px 12px 0;
+    }
+  }
+
+  &__active_container {
+    height: 48px;
+    background: $dark;
+  }
+
+  &__down_container {
+    background: $dark;
+    height: 100%;
+    border-radius: 0 12px 12px 0;
+  }
+
+  &__list {
+    @include mp-null-list;
+    @include flex-column-container;
+    gap: 25px;
+    position: absolute;
+    top: 101px;
+    right: 0;
+    width: 194px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 10px;
+    padding: 12px 16px;
+    &:first-child {
+      background: $light-grey;
+      border-radius: 12px 0 0 12px;
+    }
+    &:first-of-type p {
+      color: $dark;
+    }
+  }
+
+  &__text {
+    @include use-font(16px, 24px);
+    @include mp-null;
+    color: $white;
+  }
+}

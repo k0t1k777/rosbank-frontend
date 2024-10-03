@@ -1,0 +1,64 @@
+@mixin mp-null {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin mp-null-list {
+  @include mp-null;
+  list-style-type: none;
+}
+
+@mixin link-null {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+// FONTS
+// значения по умолчанию не менять!
+@mixin use-font(
+  $font-size: 12px,
+  $line-height: 24px,
+  $font-weight: 600,
+  $font-style: normal,
+  $font-family: $font-family
+) {
+  font-size: $font-size;
+  line-height: $line-height;
+  font-weight: $font-weight;
+  font-style: $font-style;
+  font-family: $font-family;
+}
+
+// обрезка слов и добавление '...'
+@mixin cut-word {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// BLOCKS
+@mixin main-container {
+  max-width: $max-width;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@mixin flex-all-center {
+  @include flex-row-center;
+  justify-content: center;
+}
+
+@mixin flex-column-center {
+  @include flex-row-center;
+  flex-direction: column;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-column-container {
+  display: flex;
+  flex-direction: column;
+}

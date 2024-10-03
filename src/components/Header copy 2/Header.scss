@@ -1,0 +1,5 @@
+.header {
+  @include main-container;
+  height: 80px;
+  background: &gr;
+}

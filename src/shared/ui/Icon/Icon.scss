@@ -1,0 +1,12 @@
+.svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+
+  &__up-sircle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 100%;
+  }
+}

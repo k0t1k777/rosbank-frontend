@@ -1,0 +1,51 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal {
+  position: absolute;
+  top: -100px;
+  left: -19px;
+  margin: 56px 48px 20px;
+  width: 250px;
+  z-index: 5;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.title {
+  @include mp-null;
+  @include use-font;
+  margin: 50px auto 10px;
+  text-align: center;
+}
+
+.container {
+  @include flex-column-container;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.input {
+  width: 100%;
+}
+
+.button {
+  @include use-font;
+  color: $main-white;
+  border-radius: $border-radius-s;
+  border: none;
+  outline: none;
+  padding: 0 16px;
+  width: 100%;
+  height: 40px;
+  box-shadow: $items-shadow;
+  background: $button;
+}
