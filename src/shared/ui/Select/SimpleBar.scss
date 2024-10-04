@@ -125,8 +125,9 @@
 .simplebar-scrollbar:before {
   position: absolute;
   content: '';
-  background: #7b7b7b;
-  border-radius: 10px;
+  background: $grey;
+  border-radius: 2px;
+  border: 0.50px solid $dark;
   left: 2px;
   right: 2px;
   opacity: 0;
@@ -139,7 +140,7 @@
 }
 .simplebar-track.simplebar-vertical {
   top: 0;
-  width: 11px;
+  width: 13px;
   right: 7px;
   .simplebar-scrollbar:before {
     width: 9px;

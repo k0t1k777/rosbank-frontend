@@ -9,4 +9,19 @@
     right: 0;
     border-radius: 100%;
   }
+
+  &__select {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 12px;
+    right: 16px;
+    &_display_none {
+      display: none;
+    }
+    &--open {
+      transform: rotate(180deg);
+      transition: transform 0.3s ease;
+    }
+  }
 }

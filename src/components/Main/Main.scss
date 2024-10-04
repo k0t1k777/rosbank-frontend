@@ -1,16 +1,16 @@
-// @keyframes fadeIn {
-//   0% {
-//     opacity: 0;
-//     transform: translateY(-40px);
-//   }
-//   100% {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-// }
-
 .main {
-  padding: 32px calc((100vw - 1110px) / 2);
-  @include main-container;
-  
+  @include flex-column-container;
+  padding: 8px 20px 20px;
+  gap: 4px;
+
+  &__containers_up {
+    display: flex;
+    gap: 17px;
+  }
+
+  &__containers_down {
+    display: flex;
+    gap: 4px;
+  }
 }
+

@@ -1,0 +1,19 @@
+.table {
+  border-radius: 5px;
+  width: 692px;
+  height: 395px;
+  background: $white;
+
+  &__container {
+    border-collapse: separate;
+    border-spacing: 0 4px;
+  }
+  
+  &__row {
+   display: flex;
+  }
+  
+  &__td {
+    padding: 4px 16px;
+  }
+}

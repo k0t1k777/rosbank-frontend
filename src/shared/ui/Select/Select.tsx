@@ -1,21 +1,28 @@
 import { useRef, useState } from 'react';
 import SimpleBar from 'simplebar-react';
 import cn from 'classnames/bind';
-import useOutsideClick from 'src/hooks/useOutsideClick';
-import 'src/ui/Select/SimpleBar.scss';
-import styles from 'src/ui/Select/Select.module.scss';
-import { CloseOutlined, DownOutlined } from '@ant-design/icons';
+import 'src/shared/ui/Select/SimpleBar.scss';
+import styles from 'src/shared/ui/Select/Select.module.scss';
+import useOutsideClick from 'src/shared/hooks/useOutsideClick';
+import { Icon } from '../Icon/Icon';
 
 const cx = cn.bind(styles);
 
 export interface ISelect {
-  text: string;
+  label: string;
   value: string;
   setValue: (value: string) => void;
   options: string[];
+  className?: string;
 }
 
-export default function Select({ text, value, setValue, options }: ISelect) {
+export default function Select({
+  label,
+  value,
+  setValue,
+  options,
+  className,
+}: ISelect) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const ref = useRef(null);
 
@@ -30,29 +37,31 @@ export default function Select({ text, value, setValue, options }: ISelect) {
     setValue('');
   }
 
-  const newTeamRout = location.pathname === '/new-team'
-
   return (
     <div
       ref={isOpen ? ref : null}
       className={cx('select', {
         'select--open': isOpen,
-        'select--mini': newTeamRout,
       })}
       aria-hidden='true'
     >
       {!value && (
-        <span
-          onClick={toggleOpen}
-          className={cx('select__title')}
-        >
-          {text}
+        <span onClick={toggleOpen} className={cx('select__title')}>
+          {label}
         </span>
       )}
       <span className={cx('select__title')} onClick={toggleOpen}>
         {value}
       </span>
-      <DownOutlined className={cx('select__arrow')} onClick={toggleOpen} />
+      <div onClick={toggleOpen}>
+        <Icon
+          id='arrow'
+          className={cx('svg__select', className, {
+            'svg__select--open': isOpen,
+          })}
+        />
+      </div>
+
       {isOpen && options && (
         <ul
           className={cx('select__optionContainer', {
@@ -77,7 +86,9 @@ export default function Select({ text, value, setValue, options }: ISelect) {
         </ul>
       )}
       {value && (
-        <CloseOutlined className={styles.reset} onClick={handleReset} />
+        <div onClick={handleReset}>
+          <Icon id='arrow' className={styles.reset} />
+        </div>
       )}
     </div>
   );
