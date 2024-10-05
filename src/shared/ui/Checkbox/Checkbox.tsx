@@ -6,7 +6,7 @@ const Checkbox = ({
   checkboxLabel,
   checkboxName,
   checkboxClass,
-  handleCheckboxChange,
+  checkboxChange,
 }: CheckboxProps) => {
   return (
     <div className='checkbox-container'>
@@ -15,7 +15,7 @@ const Checkbox = ({
         type='checkbox'
         name={checkboxName}
         checked={isChecked}
-        onChange={handleCheckboxChange}
+        onChange={checkboxChange}
       />
       <label
         htmlFor={checkboxName}

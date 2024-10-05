@@ -17,5 +17,14 @@ export interface CheckboxProps {
   checkboxError?: string;
   isChecked?: boolean;
   checkboxClass?: string;
-  handleCheckboxChange?: (evt: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
+  checkboxChange?: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface ToggleSwitchProps {
+  isChecked: boolean;
+  onToggle: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  label?: string;
+  className?: string;
+  labelLeft: string;
+  labelRight: string;
 }

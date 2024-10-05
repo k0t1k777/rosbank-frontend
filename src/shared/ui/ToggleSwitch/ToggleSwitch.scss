@@ -1,0 +1,49 @@
+.toggle-switch {
+  @include flex-row-center;
+  margin-top: 10px;
+  gap: 10px;
+  cursor: pointer;
+  background: transparent;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  border: 1px solid $grey;
+  border-radius: 12px;
+
+  &-input {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &-label {
+    @include use-font;
+    flex: 1;
+    text-align: center;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 12px;
+    min-width: 100px;
+
+    &.active {
+      color: $white;
+      background: $red;
+    }
+  }
+
+  &-input:checked + .toggle-switch-label {
+    background-color: transparent;
+    color: $dark;
+
+    &:first-child {
+      color: $white;
+      transition: background-color 0.3s ease;
+    }
+
+    &:last-child {
+      transition: background-color 0.3s ease;
+    }
+  }
+}
