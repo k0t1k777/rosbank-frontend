@@ -24,4 +24,28 @@
       transition: transform 0.3s ease;
     }
   }
+
+  &__sircle-red {
+    position: absolute;
+    top: 12px;
+    right: 34px;
+  }
+
+  &__sircle-green {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+  }
+
+  &__table-book {
+    position: absolute;
+    top: 7px;
+    right: 35.5px;
+  }
+
+  &__triangle {
+    position: absolute;
+    top: 11px;
+    left: -8px;
+  }
 }

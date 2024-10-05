@@ -4,16 +4,38 @@
   height: 395px;
   background: $white;
 
-  &__container {
-    border-collapse: separate;
-    border-spacing: 0 4px;
-  }
-  
   &__row {
-   display: flex;
+    display: flex;
+    gap: 4px;
+    height: 32px;
+    margin: 0 0 4px 0;
   }
-  
+
   &__td {
+    @include use-font;
+    display: flex;
     padding: 4px 16px;
+    width: 202px;
+    position: relative;
+    &_type_s {
+      width: 62px;
+    }
+    &_type_m {
+      width: 96px;
+      position: relative;
+    }
+    &_type_l {
+      width: 106px;
+    }
+    &_type_border {
+      @include flex-column-center;
+      border: 1px solid $green;
+      border-radius: 12px;
+    }
+  }
+
+  &__info {
+    width: 216px;
+    height: 92px;
   }
 }

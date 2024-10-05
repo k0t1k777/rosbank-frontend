@@ -1,0 +1,27 @@
+.info-tooltip {
+  width: 216px;
+  height: 92px;
+  display: flex;
+  transition: opacity 0.9s linear;
+  position: absolute;
+  top: -8px;
+  right: -194px;
+  background: $white;
+  &__container {
+    border: 1px solid $yellow;
+    border-radius: 12px;
+    padding: 8px 12px;
+    width: 208px;
+    height: 92px;
+  }
+  &__title {
+    @include mp-null;
+    @include use-font;
+    margin: 0 0 4px 0;
+  }
+  &__text {
+    @include mp-null;
+    @include use-font(10px, 16px, 400);
+    display: block;
+  }
+}

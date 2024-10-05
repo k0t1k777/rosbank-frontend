@@ -18,73 +18,57 @@ export const PROFESSION_DATA = [
 
 export const TABLE_DATA = [
   {
-      speciality: "Frontend Developer",
-      grade: "A",
-      employer: "Company A",
-      skill: "JavaScript, React",
-      edu: "Bachelor's in Computer Science"
+    speciality: 'Frontend Developer',
+    grade: 'A',
+    employer: 'Company A',
+    skill: '88',
   },
   {
-      speciality: "Backend Developer",
-      grade: "B",
-      employer: "Company B",
-      skill: "Node.js, Express",
-      edu: "Master's in Software Engineering"
+    speciality: 'Backend Developer',
+    grade: 'B',
+    employer: 'Company B',
+    skill: '77',
   },
   {
-      speciality: "Fullstack Developer",
-      grade: "A",
-      employer: "Company C",
-      skill: "JavaScript, Node.js, React",
-      edu: "Bachelor's in Information Technology"
+    speciality: 'Fullstack Developer',
+    grade: 'A',
+    employer: 'Company C',
+    skill: '67',
   },
   {
-      speciality: "UI/UX Designer",
-      grade: "C",
-      employer: "Company D",
-      skill: "Figma, Sketch",
-      edu: "Bachelor's in Design"
+    speciality: 'UI/UX Designer',
+    grade: 'C',
+    employer: 'Company D',
+    skill: '87',
   },
   {
-      speciality: "Data Scientist",
-      grade: "A",
-      employer: "Company E",
-      skill: "Python, R, SQL",
-      edu: "Master's in Data Science"
+    speciality: 'Data Scientist',
+    grade: 'A',
+    employer: 'Company E',
+    skill: '68',
   },
   {
-      speciality: "DevOps Engineer",
-      grade: "B",
-      employer: "Company F",
-      skill: "Docker, Kubernetes",
-      edu: "Bachelor's in Computer Science"
+    speciality: 'DevOps Engineer',
+    grade: 'B',
+    employer: 'Company F',
+    skill: '87',
   },
   {
-      speciality: "Mobile Developer",
-      grade: "A",
-      employer: "Company G",
-      skill: "React Native, Swift",
-      edu: "Bachelor's in Mobile Development"
+    speciality: 'Mobile Developer',
+    grade: 'A',
+    employer: 'Company G',
+    skill: '89',
   },
   {
-      speciality: "System Administrator",
-      grade: "C",
-      employer: "Company H",
-      skill: "Linux, Networking",
-      edu: "Bachelor's in IT"
+    speciality: 'System Administrator',
+    grade: 'C',
+    employer: 'Company H',
+    skill: '77',
   },
   {
-      speciality: "Game Developer",
-      grade: "B",
-      employer: "Company I",
-      skill: "Unity, C#",
-      edu: "Bachelor's in Game Development"
+    speciality: 'Game Developer',
+    grade: 'B',
+    employer: 'Company I',
+    skill: '76',
   },
-  {
-      speciality: "Cloud Engineer",
-      grade: "A",
-      employer: "Company J",
-      skill: "AWS, Azure",
-      edu: "Master's in Cloud Computing"
-  }
 ];

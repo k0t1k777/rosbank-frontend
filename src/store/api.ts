@@ -1,5 +1,35 @@
 // http://127.0.0.1:8000/api/v1/workers/list
 
+export const BASE_URL = 'http://127.0.0.1:8000/api/v1';
+
+const headers = {
+  Accept: 'application/json',
+  'Content-Type': 'application/json',
+};
+
+export const addNewContent = (content: object) => {
+  return fetch(`${BASE_URL}/api/v1/content/`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(content),
+  }).then(getResponseData);
+};
+
+const getResponseData = (res: Response) => {
+  if (!res.ok) {
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
+  return res.json();
+};
+
+export const getEmployers = () => {
+  return fetch(`${BASE_URL}/workers/list/`, {
+    method: 'GET',
+    headers,
+  }).then(getResponseData);
+};
+
+
 // При подключении сервера закомитить код сверху и раскомитить этот код:
 
 // export const BASE_URL = 'https://gazprom.hopto.org';
