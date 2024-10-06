@@ -3,6 +3,7 @@
   width: 692px;
   height: 395px;
   background: $white;
+  overflow: scroll;
 
   &__row {
     display: flex;

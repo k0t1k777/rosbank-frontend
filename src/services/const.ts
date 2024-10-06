@@ -71,4 +71,10 @@ export const TABLE_DATA = [
     employer: 'Company I',
     skill: '76',
   },
+  {
+    speciality: 'DevOps Engineer',
+    grade: 'B',
+    employer: 'Company F',
+    skill: '87',
+  },
 ];

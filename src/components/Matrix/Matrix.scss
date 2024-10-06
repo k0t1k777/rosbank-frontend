@@ -3,4 +3,77 @@
   width: 587px;
   height: 517px;
   background: $white;
+
+  &__title {
+    @include use-font(16px, 24px);
+    @include mp-null;
+    margin: 8px 0 0;
+  }
+
+  &__container {
+    width: 557px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &__down_container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__down_text {
+    @include use-font;
+    @include mp-null;
+    color: #000;
+  }
+
+  &__cell {
+    @include flex-row-center;
+    justify-content: center;
+    position: relative;
+    width: 167px;
+    height: 140px;
+    &_text {
+      @include use-font(10px, 16px);
+      @include mp-null;
+      text-align: center;
+      width: 88px;
+      color: $blackTextOpacity;
+    }
+  }
+
+  &__label {
+    @include use-font;
+    @include mp-null;
+    position: absolute;
+    transform: rotate(-90deg);
+    left: -8px;
+    bottom: 33px;
+    transform-origin: left center;
+  }
+
+  &__row {
+    display: flex;
+  }
+
+  &__high-label {
+    width: 7px;
+    background-color: $green;
+    color: $green;
+    position: relative;
+  }
+  &__middle-label {
+    width: 7px;
+    background-color: $grey;
+    color: $dark;
+    position: relative;
+  }
+  &__low-label {
+    width: 7px;
+    background-color: $yellow;
+    color: $yellow;
+    position: relative;
+  }
 }
