@@ -16,6 +16,18 @@ export const PROFESSION_DATA = [
   'приёмщик',
 ];
 
+export const MATRIX_DATA = {
+  mentor: 'Назначить в роли менторов',
+  iniciative: 'Участвовать в инициативах',
+  careare: 'Достигать карьерные цели',
+  task: 'Правильно распределять задачи',
+  education: 'Создавать возможности для обучения и развития',
+  project: 'Вовлекать в стратегические проекты',
+  editTask: 'Изменить роли/задачи',
+  learning: 'Разработать программу поддержки и обучения',
+  engagement: 'Повышение вовлеченности',
+};
+
 export const TABLE_DATA = [
   {
     speciality: 'Frontend Developer',
@@ -53,12 +65,12 @@ export const TABLE_DATA = [
     employer: 'Company F',
     skill: '87',
   },
-  {
-    speciality: 'Mobile Developer',
-    grade: 'A',
-    employer: 'Company G',
-    skill: '89',
-  },
+  // {
+  //   speciality: 'Mobile Developer',
+  //   grade: 'A',
+  //   employer: 'Company G',
+  //   skill: '89',
+  // },
   {
     speciality: 'System Administrator',
     grade: 'C',

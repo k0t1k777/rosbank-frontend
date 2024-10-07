@@ -1,5 +1,18 @@
 <svg style="display: none">
 
+<svg id='triangle-grey' width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 8L8 16L8 0L0 8Z" fill="#42434B"/>
+</svg>
+
+
+<svg id='triangle-green' width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 0L0 8H16L8 0Z" fill="#59AC99"/>
+</svg>
+
+<svg id='triangle-yellow' width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 8L8 16L8 0L0 8Z" fill="#FCAB20" />
+</svg>
+
 <svg id='help' width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2021_9568)">
 <path d="M9.99948 0.833252C5.75448 0.833252 0.882812 1.87492 0.882812 9.99992C0.882812 16.4249 3.60865 19.1666 9.99948 19.1666C14.2445 19.1666 19.1161 18.1249 19.1161 9.99992C19.1161 3.57492 16.3903 0.833252 9.99948 0.833252ZM9.99948 18.3333C4.11531 18.3333 1.71615 15.9191 1.71615 9.99992C1.71615 4.08075 4.11531 1.66659 9.99948 1.66659C15.8836 1.66659 18.2828 4.08075 18.2828 9.99992C18.2828 15.9191 15.8828 18.3333 9.99948 18.3333Z" fill="#42434B"/>
@@ -21,11 +34,6 @@
 
 <svg id='fact' width="29" height="4" viewBox="0 0 29 4" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2 2H27" stroke="#E10D34" stroke-width="4" stroke-linecap="round" stroke-dasharray="6 5"/>
-</svg>
-
-
-<svg id='triangle' width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 8L8 16L8 0L0 8Z" fill="#FCAB20" />
 </svg>
 
 <svg id='table-book' width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">

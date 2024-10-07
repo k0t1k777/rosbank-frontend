@@ -1,15 +1,19 @@
-.info-table {
+.info-matrix {
   width: 216px;
   height: 92px;
   display: flex;
-  transition: opacity 0.3s linear;
+  transition: opacity 0.9s linear;
   position: absolute;
-  top: -5px;
-  right: -195px;
+  top: 36px;
+  right: -180px;
   z-index: 10;
   background: $white;
+  // &_type_midle {
+  //   top: -3px;
+  //   right: -226px;
+  // }
   &__container {
-    border: 1px solid $yellow;
+    border: 1px solid $green;
     border-radius: 12px;
     padding: 8px 12px;
     width: 208px;

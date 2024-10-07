@@ -1,15 +1,15 @@
-.info-table {
+.info-matrix-middle {
   width: 216px;
   height: 92px;
   display: flex;
-  transition: opacity 0.3s linear;
+  transition: opacity 0.9s linear;
   position: absolute;
-  top: -5px;
-  right: -195px;
+  top: -3px;
+  right: -224px;  
   z-index: 10;
   background: $white;
   &__container {
-    border: 1px solid $yellow;
+    border: 1px solid $dark;
     border-radius: 12px;
     padding: 8px 12px;
     width: 208px;

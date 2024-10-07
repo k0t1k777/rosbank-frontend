@@ -47,6 +47,16 @@
     position: absolute;
     top: 11px;
     left: -8px;
+    &-green {
+      position: absolute;
+      top: -8px;
+      left: 13px;
+    }
+    &-grey {
+      position: absolute;
+      top: 9px;
+      left: -8px;
+    }
   }
 
   &__border {
