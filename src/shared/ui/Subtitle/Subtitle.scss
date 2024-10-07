@@ -1,0 +1,5 @@
+.subtitle {
+  @include use-font(16px, 24px);
+  @include mp-null;
+  margin: 8px 0 5px 16px;
+}

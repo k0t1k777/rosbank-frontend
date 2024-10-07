@@ -1,4 +1,5 @@
 {
+  "homepage": "https://github.com/hackathon-Rosbank/rosbank-frontend",
   "name": "rosbank-frontend",
   "private": true,
   "version": "0.0.0",
@@ -7,7 +8,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist",
+    "start": "vite preview"
   },
   "dependencies": {
     "@types/classnames": "^2.3.1",

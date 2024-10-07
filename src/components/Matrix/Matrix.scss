@@ -4,23 +4,13 @@
   height: 517px;
   background: $white;
 
-  &__title {
-    @include use-font(16px, 24px);
-    @include mp-null;
-    margin: 8px 0 0;
-  }
-
   &__container {
+    padding: 0 0 52px 62px;
     width: 557px;
     height: 480px;
     display: flex;
     flex-direction: column;
     position: relative;
-  }
-
-  &__down_container {
-    display: flex;
-    justify-content: space-between;
   }
 
   &__down_text {
@@ -36,15 +26,23 @@
     width: 167px;
     height: 140px;
     &_text {
-      @include use-font(10px, 16px);
+      @include use-font(10px, 16px, 400);
       @include mp-null;
       text-align: center;
       width: 88px;
       color: $blackTextOpacity;
     }
+    &_list {
+      padding: 0;
+      max-width: 110px;
+    }
+    &_item {
+      @include use-font;
+      @include mp-null;
+    }
   }
 
-  &__label {
+  &__label_vertiacal {
     @include use-font;
     @include mp-null;
     position: absolute;
@@ -54,26 +52,75 @@
     transform-origin: left center;
   }
 
-  &__row {
-    display: flex;
+  &__label_horizontal {
+    @include use-font;
+    @include mp-null;
+    position: absolute;
+    bottom: -24px;
+    left: 54px;
   }
 
-  &__high-label {
+  &__label_engagement {
+    @include use-font(12px, 22px, 400);
+    @include mp-null;
+    position: absolute;
+    left: -75px;
+    top: 50px;
+    transform: rotate(-90deg);
+  }
+
+  &__row {
+    display: flex;
+    &_skills {
+      @include use-font(12px, 22px, 400);
+      @include mp-null;
+      text-align: center;
+      padding: 32px 0 0 0;
+    }
+  }
+
+  &__high_label-vertical {
     width: 7px;
     background-color: $green;
     color: $green;
     position: relative;
   }
-  &__middle-label {
+  &__middle_label-vertical {
     width: 7px;
     background-color: $grey;
     color: $dark;
     position: relative;
   }
-  &__low-label {
+  &__row_label-vertical {
     width: 7px;
     background-color: $yellow;
     color: $yellow;
     position: relative;
+  }
+
+  &__row_label-horizontal {
+    width: 7px;
+    background-color: $yellow;
+    color: $yellow;
+    position: relative;
+    height: 7px;
+    width: 173px;
+  }
+
+  &__middle-label-horizontal {
+    background-color: $grey;
+    color: $dark;
+    position: relative;
+    height: 7px;
+    width: 168px;
+  }
+
+  &__high-label-horizontal {
+    width: 7px;
+    background-color: $green;
+    color: $green;
+    position: relative;
+    height: 7px;
+    width: 168px;
   }
 }

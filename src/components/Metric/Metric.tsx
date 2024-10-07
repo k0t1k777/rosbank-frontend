@@ -1,4 +1,5 @@
 import 'src/components/Metric/Metric.scss';
+import Subtitile from 'src/shared/ui/Subtitle/Subtitle';
 import { useState } from 'react';
 
 const years = [2022, 2023, 2024];
@@ -43,7 +44,7 @@ export const Metric = () => {
 
   return (
     <section className='metric'>
-      <h2>Основные метрики команды</h2>
+      <Subtitile text='Основные метрики команды'/>
       <div className='period-selector'>
         <div className='selector' onClick={toggleDropdown}>
           <span>
