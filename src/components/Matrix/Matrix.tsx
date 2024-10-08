@@ -3,6 +3,7 @@ import 'src/components/Matrix/Matrix.scss';
 import { MATRIX_DATA } from 'src/services/const';
 import { Icon } from 'src/shared/ui/Icon/Icon';
 import InfoTooltipMatrix from 'src/shared/ui/InfoTooltipMatrixHigh/InfoTooltipMatrixHigh';
+import InfoTooltipMatrixLow from 'src/shared/ui/InfoTooltipMatrixLow/InfoTooltipMatrixLow';
 import InfoTooltipMatrixMiddle from 'src/shared/ui/InfoTooltipMatrixMiddle/InfoTooltipMatrixMiddle';
 import Subtitile from 'src/shared/ui/Subtitle/Subtitle';
 
@@ -132,7 +133,7 @@ export const Matrix = () => {
               <Icon id='help' className='svg__help' />
             </div>
             {tooltipIndex === 6 && (
-              <InfoTooltipMatrix text={MATRIX_DATA.editTask} />
+              <InfoTooltipMatrixLow text={MATRIX_DATA.editTask} />
             )}
           </div>
           <div className='matrix__cell'>
@@ -144,7 +145,7 @@ export const Matrix = () => {
               <Icon id='help' className='svg__help' />
             </div>
             {tooltipIndex === 7 && (
-              <InfoTooltipMatrix text={MATRIX_DATA.learning} />
+              <InfoTooltipMatrixLow text={MATRIX_DATA.learning} />
             )}
           </div>
           <div className='matrix__cell'>
@@ -156,7 +157,7 @@ export const Matrix = () => {
               <Icon id='help' className='svg__help' />
             </div>
             {tooltipIndex === 8 && (
-              <InfoTooltipMatrix text={MATRIX_DATA.engagement} />
+              <InfoTooltipMatrixLow text={MATRIX_DATA.engagement} />
             )}
           </div>
         </div>

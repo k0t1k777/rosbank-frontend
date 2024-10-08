@@ -1,19 +1,15 @@
-.info-matrix {
+.info-matrix-low {
   width: 216px;
   height: 92px;
   display: flex;
   transition: opacity 0.9s linear;
   position: absolute;
-  top: 36px;
-  right: -180px;
+  top: -98px;
+  right: -177px;
   z-index: 10;
   background: $white;
-  // &_type_midle {
-  //   top: -3px;
-  //   right: -226px;
-  // }
   &__container {
-    border: 1px solid $green;
+    border: 1px solid $yellow;
     border-radius: 12px;
     padding: 8px 12px;
     width: 208px;

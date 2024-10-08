@@ -4,7 +4,6 @@
 <path d="M0 8L8 16L8 0L0 8Z" fill="#42434B"/>
 </svg>
 
-
 <svg id='triangle-green' width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M8 0L0 8H16L8 0Z" fill="#59AC99"/>
 </svg>
@@ -12,6 +11,11 @@
 <svg id='triangle-yellow' width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M0 8L8 16L8 0L0 8Z" fill="#FCAB20" />
 </svg>
+
+<svg id='triangle-yellow-low' width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 8L16 0L0 0L8 8Z" fill="#FCAB20"/>
+</svg>
+
 
 <svg id='help' width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2021_9568)">

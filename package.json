@@ -13,9 +13,15 @@
     "start": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.2",
+    "@mui/x-date-pickers": "^7.19.0",
     "@types/classnames": "^2.3.1",
     "chart.js": "^4.4.4",
     "classnames": "^2.5.1",
+    "date-fns": "^4.1.0",
+    "dayjs": "^1.11.13",
     "framer-motion": "^11.11.0",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",

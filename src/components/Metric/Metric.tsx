@@ -1,90 +1,38 @@
 import 'src/components/Metric/Metric.scss';
 import Subtitile from 'src/shared/ui/Subtitle/Subtitle';
-import { useState } from 'react';
+// import { useState } from 'react';
+// import Select from 'src/shared/ui/Select/Select';
+// import { PROFESSION_DATA } from 'src/services/const';
+import DateCalendarViews from 'src/shared/ui/Picker/DateCalendarViews';
 
-const years = [2022, 2023, 2024];
-const months = [
-  'Январь',
-  'Февраль',
-  'Март',
-  'Апрель',
-  'Май',
-  'Июнь',
-  'Июль',
-  'Август',
-  'Сентябрь',
-  'Октябрь',
-  'Ноябрь',
-  'Декабрь',
-];
+
 export const Metric = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedYear, setSelectedYear] = useState<number | null>(null);
-  const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
+// const [picker, setPicker] = useState(true)
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleYearSelect = (year: number) => {
-    setSelectedYear(year);
-    setIsOpen(true);
-  };
-
-  const handleMonthSelect = (month: string) => {
-    setSelectedMonths((prev) =>
-      prev.includes(month) ? prev.filter((m) => m !== month) : [...prev, month]
-    );
-  };
-
-  const handleSave = () => {
-    console.log('Сохранено:', selectedYear, selectedMonths);
-    setIsOpen(false);
-  };
+//   const [speciality, setSpeciality] = useState('');
+//   const handleSelectChange = (value: string, type: 'speciality') => {
+//     if (type === 'speciality') {
+//       setSpeciality(value);
+//     }
+//   };
 
   return (
     <section className='metric'>
-      <Subtitile text='Основные метрики команды'/>
-      <div className='period-selector'>
-        <div className='selector' onClick={toggleDropdown}>
-          <span>
-            {selectedYear
-              ? `${selectedYear} ${selectedMonths.join(', ')}`
-              : 'Выбери период'}
-          </span>
-          <span className='arrow'>▼</span>
+      <Subtitile text='Основные метрики команды' />
+      <div className='metric__header-container'>
+        {/* <div className='metric__header_picker'>Календарь
+          {picker && 
+          // <DateCalendarViews />
+           }
         </div>
-        {isOpen && (
-          <div className='dropdown'>
-            <div className='year-selection'>
-              {years.map((year) => (
-                <div
-                  key={year}
-                  className={`year ${selectedYear === year ? 'selected' : ''}`}
-                  onClick={() => handleYearSelect(year)}
-                >
-                  {year}
-                </div>
-              ))}
-            </div>
-            <div className='month-selection'>
-              {months.map((month) => (
-                <div
-                  key={month}
-                  className={`month ${
-                    selectedMonths.includes(month) ? 'selected' : ''
-                  }`}
-                  onClick={() => handleMonthSelect(month)}
-                >
-                  {month}
-                </div>
-              ))}
-            </div>
-            <button className='save-button' onClick={handleSave}>
-              Сохранить
-            </button>
-          </div>
-        )}
+        <Select
+          label='Специальность'
+          value={speciality}
+          options={PROFESSION_DATA}
+          setValue={(value) => handleSelectChange(value, 'speciality')}
+        /> */}
+                  <DateCalendarViews />
+
       </div>
     </section>
   );
