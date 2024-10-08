@@ -16,6 +16,13 @@ export const PROFESSION_DATA = [
   'приёмщик',
 ];
 
+export const METRIC_DATA = [
+  'Сотрудники',
+  'Выполнение ИПР',
+  'Оценка навыков',
+  'Вовлеченность',
+];
+
 export const MATRIX_DATA = {
   mentor: 'Назначить в роли менторов',
   iniciative: 'Участвовать в инициативах',

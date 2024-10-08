@@ -1,0 +1,60 @@
+.calendar {
+  @include flex-row-center;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid $grey;
+  border-radius: 0 0 12px 12px;
+  &__years {
+    display: flex;
+    padding: 10px 25px;
+    gap: 4px;
+    cursor: pointer;
+    &_item {
+      @include mp-null;
+      @include use-font(12px, 18px, 400);
+      transition: background .7s;
+      padding: 1.5px 10px;
+      border: 1px solid $grey;
+      border-radius: 6px;
+      &--selected {
+        background: $red;
+        color: $white;
+      }
+    }
+  }
+
+  &__months {
+    @include flex-all-center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px 13px;
+    border-bottom: 1px solid $grey;
+    &_item {
+      @include mp-null;
+      @include use-font(12px, 18px, 400);
+      transition: background .7s;
+      width: 44px;
+      padding: 0.5px 11.5px 2.5px;
+      border-radius: 6px;
+      border: 1px solid $grey;
+      cursor: pointer;
+      &--selected {
+        background: $red;
+        color: $white;
+      }
+    }
+  }
+
+  &__button {
+    @include mp-null;
+    @include use-font;
+    cursor: pointer;
+    color: $red;
+    padding: 5.5px 0;
+  }
+}
