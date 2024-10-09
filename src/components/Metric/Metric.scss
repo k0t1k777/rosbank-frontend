@@ -36,6 +36,7 @@
 
   &__chart {
     width: 492px;
-    height: 292px;
+    height: 100%;
+    max-height: 292px;
   }
 }

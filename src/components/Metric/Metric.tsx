@@ -6,102 +6,230 @@ import { METRIC_DATA } from 'src/services/const';
 import { Calendar } from 'src/shared/ui/Calendar/Calendar';
 import { Icon } from 'src/shared/ui/Icon/Icon';
 import cn from 'classnames/bind';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
 const cx = cn.bind({});
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export const Metric = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [speciality, setSpeciality] = useState('Сотрудники');
   const handleSelectChange = (value: string) => {
-      setSpeciality(value);
+    setSpeciality(value);
   };
 
-// Пример данных для графиков
-const employeeData = {
-  labels: ['Иван', 'Мария', 'Петр'],
-  datasets: [
-    {
-      label: 'Проект 1',
-      data: [80, 70, 90],
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Проект 2',
-      data: [75, 85, 80],
-      backgroundColor: 'rgba(54, 162, 235, 0.5)',
-    },
-    {
-      label: 'Проект 3',
-      data: [90, 88, 85],
-      backgroundColor: 'rgba(75, 192, 192, 0.5)',
-    },
-  ],
-};
+  const employeeData = {
+    labels: ['0', '2', '4', '6', '8'],
+    datasets: [
+      {
+        label: 'Человек 1',
+        data: [3, 2, 3, 3, 4],
+        backgroundColor: 'white',
+        borderColor: 'rgba(0, 255, 0, 1)',
+        borderWidth: 5,
+        border: 1,
+        fill: false,
+        pointRadius: 0,
+        tension: 0.4,
+      },
+      {
+        label: 'Человек 2',
+        data: [3, 4, 5, 4, 4],
+        backgroundColor: 'white',
+        borderColor: 'rgba(255, 0, 0, 1)',
+        borderWidth: 5,
+        fill: false,
+        pointRadius: 0,
+        tension: 0.4,
+      },
+      {
+        label: 'Человек 3',
+        data: [7, 7, 7, 7, 7],
+        backgroundColor: 'white',
+        borderColor: 'rgba(0, 191, 255, 1)',
+        borderWidth: 5,
+        fill: false,
+        pointRadius: 0,
+        tension: 0.4,
+      },
+    ],
+  };
 
-const skillsData = {
-  labels: ['JavaScript', 'Python', 'Java', 'C++', 'Ruby'],
-  datasets: [
-    {
-      label: 'Уровень навыка',
-      data: [70, 85, 60, 90, 75],
-      backgroundColor: 'rgba(255, 206, 86, 0.5)',
-    },
-  ],
-};
+  const skillsData = {
+    labels: ['0', '2', '4', '6', '8'],
+    datasets: [
+      {
+        label: 'JS',
+        data: [3, 2, 3, 3, 4],
+        backgroundColor: 'white',
+        borderColor: 'rgba(0, 255, 0, 1)',
+        borderWidth: 5,
+        border: 1,
+        fill: false,
+        pointRadius: 0,
+        tension: 0.4,
+      },
+      {
+        label: 'Python',
+        data: [3, 4, 5, 4, 4],
+        backgroundColor: 'white',
+        borderColor: 'rgba(255, 0, 0, 1)',
+        borderWidth: 5,
+        fill: false,
+        pointRadius: 0,
+        tension: 0.4,
+      },
+      {
+        label: 'Java',
+        data: [1, 2, 2, 1, 2],
+        backgroundColor: 'white',
+        borderColor: 'rgba(0, 191, 255, 1)',
+        borderWidth: 5,
+        fill: false,
+        pointRadius: 0,
+        tension: 0.4,
+      },
+      {
+        label: 'C++',
+        data: [3, 4, 1, 4, 7],
+        backgroundColor: 'white',
+        borderColor: 'black',
+        borderWidth: 5,
+        fill: false,
+        pointRadius: 0,
+        tension: 0.4,
+      },
+      {
+        label: 'Ruby',
+        data: [1, 4, 6, 2, 3],
+        backgroundColor: 'white',
+        borderColor: 'yellow',
+        borderWidth: 5,
+        fill: false,
+        pointRadius: 0,
+        tension: 0.4,
+      },
+    ],
+  };
 
-const iprData = {
-  labels: ['Задача 1', 'Задача 2', 'Задача 3'],
-  datasets: [
-    {
-      label: 'Статус выполнения',
-      data: [100, 80, 60],
-      backgroundColor: 'rgba(153, 102, 255, 0.5)',
-    },
-  ],
-};
+  const iprData = {
+    labels: ['0', '2', '4', '6', '8'],
+    datasets: [
+      {
+        label: 'IPR',
+        data: [7, 7, 7, 7, 7],
+        backgroundColor: 'white',
+        borderColor: 'rgba(0, 191, 255, 1)',
+        borderWidth: 5,
+        fill: false,
+        pointRadius: 0,
+        tension: 0.4,
+      },
+    ],
+  };
 
-const engagementData = {
-  labels: ['Иван', 'Мария', 'Петр'],
-  datasets: [
-    {
-      label: 'Вовлеченность',
-      data: [85, 90, 80],
-      backgroundColor: 'rgba(255, 159, 64, 0.5)',
-    },
-  ],
-};
+  const engagementData = {
+    labels: ['0', '2', '4', '6', '8'],
+    datasets: [
+      {
+        label: 'Вовлеченность',
+        data: [3, 2, 3, 3, 4],
+        backgroundColor: 'white',
+        borderColor: 'rgba(0, 255, 0, 1)',
+        borderWidth: 5,
+        border: 1,
+        fill: false,
+        pointRadius: 0,
+        tension: 0.4,
+      },
+    ],
+  };
 
-const options = {
-  layout: {
-    padding: {
-      left: 20,
-      right: 20,
-      top: 20,
-      bottom: 20,
+  const options = {
+    layout: {
+      padding: {
+        left: 30,
+        right: 0,
+        top: 30,
+        bottom: 30,
+      },
     },
-  },
-  responsive: true,
-  maintainAspectRatio: false,
-};
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'bottom' as const,
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: false,
+          text: 'Языки программирования',
+        },
+        min: 0,
+        max: 10,
+      },
+      y: {
+        title: {
+          display: false,
+          text: 'Уровень навыка',
+        },
+        min: 0,
+        max: 10,
+      },
+    },
+  };
 
-const renderChart = () => {
-  switch (speciality) {
-    case 'Сотрудники':
-      return <Bar data={employeeData} options={options} width={492} height={292}/>;
-    case 'Оценка навыков':
-      return <Bar data={skillsData} options={options} width={492} height={292}/>;
-    case 'Выполнение ИПР':
-      return <Bar data={iprData} options={options} width={492} height={292}/>;
-    case 'Вовлеченность':
-      return <Bar data={engagementData} options={options} width={492} height={292}/>;
-    default:
-      return null;
-  }
-};
+  const renderChart = () => {
+    switch (speciality) {
+      case 'Сотрудники':
+        return (
+          <Line
+            data={employeeData}
+            options={options}
+            width={492}
+            height={292}
+          />
+        );
+      case 'Оценка навыков':
+        return (
+          <Line data={skillsData} options={options} width={492} height={292} />
+        );
+      case 'Выполнение ИПР':
+        return (
+          <Line data={iprData} options={options} width={492} height={292} />
+        );
+      case 'Вовлеченность':
+        return (
+          <Line
+            data={engagementData}
+            options={options}
+            width={492}
+            height={292}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <section className='metric'>
@@ -112,8 +240,8 @@ const renderChart = () => {
           onClick={() => setIsOpen(true)}
         >
           <p className='metric__picker_title'>Выбери период</p>
-          <Icon id='calendar' />
-          {isOpen && <Calendar setIsOpen={setIsOpen}/>}
+          <Icon id='arrow' />
+          {isOpen && <Calendar setIsOpen={setIsOpen} />}
         </div>
         <div className='metric__celect_container'>
           <Select
@@ -124,9 +252,7 @@ const renderChart = () => {
           />
         </div>
       </div>
-      <div className='metric__chart'>
-        {renderChart()}
-      </div>
+      <div className='metric__chart'>{renderChart()}</div>
     </section>
   );
 };
