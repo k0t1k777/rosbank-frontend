@@ -150,7 +150,7 @@ export const Web = () => {
           />
         </div>
       </div>
-      <div style={{ width: '434px', height: '288px' }}>
+      <div className='web__radar'>
         <Radar data={data} options={options} />
       </div>
       <div className='web__border'>

@@ -31,13 +31,10 @@ export const Calendar = ({ setIsOpen }: CalendarProps) => {
 
   const handleMonthSelect = (month: string) => {
     const monthIndex = months.indexOf(month);
-
     if (!firstSelectedMonth) {
-      // Если первый месяц еще не выбран
       setFirstSelectedMonth(month);
       setSelectedMonths([month]);
     } else {
-      // Если первый месяц уже выбран
       const firstIndex = months.indexOf(firstSelectedMonth);
       const selectedMonthsRange =
         monthIndex >= firstIndex
@@ -45,7 +42,7 @@ export const Calendar = ({ setIsOpen }: CalendarProps) => {
           : months.slice(monthIndex, firstIndex + 1);
 
       setSelectedMonths(selectedMonthsRange);
-      setFirstSelectedMonth(null); // Сбрасываем выбор первого месяца
+      setFirstSelectedMonth(null);
     }
   };
 

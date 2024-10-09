@@ -27,8 +27,8 @@ export const Header = () => {
   return (
     <header className='header'>
       <div className='header__media_container'>
-        <p className='header__media header__media_active'>Медиа</p>
-        <p className='header__media'>Эквайринг</p>
+        <p className='header__media'>Медиа</p>
+        <Icon id='arrow'/>
       </div>
       <div className='header__empoyes_container'>
         <div className='header__line_black'>
@@ -54,7 +54,6 @@ export const Header = () => {
           <h2 className='header__name'>Петрова Елена</h2>
           <img src={Avatar} className='header__avatar'></img>
         </div>
-        <Icon id='exit' />
       </div>
     </header>
   );

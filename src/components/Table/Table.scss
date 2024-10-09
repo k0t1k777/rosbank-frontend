@@ -31,8 +31,9 @@
     }
     &_type_border {
       @include flex-column-center;
-      border: 1px solid $green;
-      border-radius: 12px;
+      border-radius: 6px;
+      background: rgba(89, 172, 153, 0.3);
+      ;
     }
   }
 
