@@ -72,12 +72,6 @@ export const TABLE_DATA = [
     employer: 'Company F',
     skill: '87',
   },
-  // {
-  //   speciality: 'Mobile Developer',
-  //   grade: 'A',
-  //   employer: 'Company G',
-  //   skill: '89',
-  // },
   {
     speciality: 'System Administrator',
     grade: 'C',
