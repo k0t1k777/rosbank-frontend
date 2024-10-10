@@ -22,7 +22,7 @@
     @include use-font(12px, 22px, 400);
     &_count {
       @include mp-null;
-      @include use-font(14px, 24px);
+      @include use-font(16px, 24px);
     }
     &_container {
       display: flex;

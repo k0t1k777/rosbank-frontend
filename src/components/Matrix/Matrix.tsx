@@ -30,23 +30,24 @@ export const Matrix = () => {
           </div>
           <div className='matrix__cell'>
             {LIST_ITEM.length > 0 ? (
-              <ul className='matrix__cell_list'>
-                {LIST_ITEM.map((item, index) => (
-                  <li key={index} className='matrix__cell_item'>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <>
+                <ul className='matrix__cell_list'>
+                  {LIST_ITEM.map((item, index) => (
+                    <li key={index} className='matrix__cell_item'>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div
+                  onMouseEnter={() => handleMouseEnter(0)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Icon id='help' className='svg__help' />
+                </div>
+              </>
             ) : (
               <p className='matrix__cell_text'>{MATRIX_DATA.mentor}</p>
             )}
-            <div
-              onMouseEnter={() => handleMouseEnter(0)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <Icon id='help' className='svg__help' />
-            </div>
-
             {tooltipIndex === 0 && (
               <InfoTooltipMatrix text={MATRIX_DATA.mentor} />
             )}
@@ -91,8 +92,11 @@ export const Matrix = () => {
               <Icon id='help' className='svg__help' />
             </div>
             {tooltipIndex === 3 && (
-              <InfoTooltipMatrixMiddle text={MATRIX_DATA.task} className='_type_midle'/>
-           )}
+              <InfoTooltipMatrixMiddle
+                text={MATRIX_DATA.task}
+                className='_type_midle'
+              />
+            )}
           </div>
           <div className='matrix__cell'>
             <p className='matrix__cell_text'>{MATRIX_DATA.education}</p>
