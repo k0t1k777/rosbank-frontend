@@ -24,14 +24,14 @@ export const Table = () => {
           {TABLE_DATA.map((item, index) => (
             <tr className='table__row' key={index}>
               <td className='table__td'>{item.speciality}</td>
-              <td className='table__td table__td_type_l '>{item.grade}</td>
-              <td className='table__td'>
+              <td className='table__td table__td_type_l'>{item.grade}</td>
+              <td className='table__td table__td_type_xl'>
                 {item.employer}
                 <Icon id='sircle-red' className='svg__sircle-red' />
                 <Icon id='sircle-green' className='svg__sircle-green' />
               </td>
-              <td className='table__td table__td_type_s table__td_type_border'>
-                {item.skill}
+              <td className='table__td table__td_type_s'>
+                <div  className='table__td_type_border'>{item.skill}</div>
               </td>
               <td
                 className='table__td table__td_type_m'

@@ -1,13 +1,13 @@
 .matrix {
   border-radius: 5px;
   width: 587px;
-  height: 517px;
+  height: 100%;
   background: $white;
 
   &__container {
     padding: 0 0 52px 62px;
-    width: 557px;
-    height: 480px;
+    width: 533px;
+    height: 414px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -24,7 +24,7 @@
     justify-content: center;
     position: relative;
     width: 167px;
-    height: 140px;
+    height: 117px;
     &_text {
       @include use-font(10px, 16px, 400);
       @include mp-null;

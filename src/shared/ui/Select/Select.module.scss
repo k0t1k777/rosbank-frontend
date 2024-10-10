@@ -6,12 +6,16 @@
   width: inherit;
   background-color: $white;
   cursor: pointer;
-  padding: 12px 16px 8px;
-  border: 1px solid $grey;
+  padding: 8px 10px 8px;
   border-radius: 12px;
   position: relative;
+  height: 44px;
   &--open {
     border-radius: 12px 12px 0 0;
+    border: 1px solid $grey;
+  }
+  &--border {
+    border: 1px solid $grey;
   }
 
   &__title {
@@ -28,7 +32,7 @@
     width: inherit;
     border: 1px solid $grey;
     border-radius: 0 0 12px 12px;
-    top: 48px;
+    top: 42px;
     left: -1px;
     right: 0;
     z-index: 1;
@@ -63,7 +67,11 @@
 
 .reset {
   position: absolute;
-  top: 12px;
-  right: 5px;
+  top: 16px;
+  right: 31px;
   cursor: pointer;
+}
+
+.dissable {
+  display: none;
 }

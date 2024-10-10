@@ -5,16 +5,9 @@ import 'src/shared/ui/Select/SimpleBar.scss';
 import styles from 'src/shared/ui/Select/Select.module.scss';
 import useOutsideClick from 'src/shared/hooks/useOutsideClick';
 import { Icon } from '../Icon/Icon';
+import { SelectProps } from 'src/services/types';
 
 const cx = cn.bind(styles);
-
-export interface ISelect {
-  label: string;
-  value: string;
-  setValue: (value: string) => void;
-  options: string[];
-  className?: string;
-}
 
 export default function Select({
   label,
@@ -22,7 +15,9 @@ export default function Select({
   setValue,
   options,
   className,
-}: ISelect) {
+  dissable,
+  border,
+}: SelectProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const ref = useRef(null);
 
@@ -42,6 +37,7 @@ export default function Select({
       ref={isOpen ? ref : null}
       className={cx('select', {
         'select--open': isOpen,
+        'select--border': border,
       })}
       aria-hidden='true'
     >
@@ -86,8 +82,8 @@ export default function Select({
         </ul>
       )}
       {value && (
-        <div onClick={handleReset}>
-          <Icon id='arrow' className={styles.reset} />
+        <div onClick={handleReset} className={dissable && styles.dissable}>
+          <Icon id='close' className={styles.reset} />
         </div>
       )}
     </div>

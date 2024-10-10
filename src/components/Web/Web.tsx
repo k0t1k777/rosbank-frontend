@@ -90,7 +90,7 @@ export const Web = () => {
   const options = {
     layout: {
       padding: {
-        top: 20,
+        left: 50,
       },
     },
     aspectRatio: 1.5,
@@ -160,7 +160,7 @@ export const Web = () => {
         </div>
         <div className='web__border_container'>
           <Icon id='plan' className='svg__border' />
-          <p className='web__border_text'>План</p>
+          <p className='web__border_text'>Норма</p>
         </div>
       </div>
     </section>

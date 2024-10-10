@@ -1,23 +1,27 @@
 .table {
   border-radius: 5px;
-  width: 692px;
-  height: 395px;
+  width: 587px;
+  height: 100%;
   background: $white;
   // overflow-x: hidden;
   // overflow-y: auto;
 
+  &__container {
+    margin: 0 0 0 20px;
+  }
+
   &__row {
     display: flex;
     gap: 4px;
-    height: 32px;
-    margin: 0 0 4px 0;
+    height: 40px;
   }
 
   &__td {
     @include use-font;
-    display: flex;
-    padding: 4px 16px;
-    width: 202px;
+    @include cut-word;
+    @include flex-row-center;
+    padding: 4px 8px;
+    width: 133px;
     position: relative;
     &_type_s {
       width: 62px;
@@ -27,13 +31,17 @@
       position: relative;
     }
     &_type_l {
-      width: 106px;
+      width: 75px;
+    }
+    &_type_xl {
+      width: 202px;
     }
     &_type_border {
-      @include flex-column-center;
+      @include flex-all-center;
       border-radius: 6px;
+      width: 48px;
+      height: 32px;
       background: rgba(89, 172, 153, 0.3);
-      ;
     }
   }
 

@@ -3,14 +3,6 @@ export interface IconProps {
   className?: string;
 }
 
-export interface SelectProps {
-  label: string;
-  options: string[];
-  selectedValue?: string;
-  isValid?: boolean;
-  handleSelectChange: (selectedValue: string) => void;
-}
-
 export interface CheckboxProps {
   checkboxLabel: string;
   checkboxName: string;
@@ -27,4 +19,14 @@ export interface ToggleSwitchProps {
   className?: string;
   labelLeft: string;
   labelRight: string;
+}
+
+export interface SelectProps {
+  label: string;
+  value: string;
+  setValue: (value: string) => void;
+  options: string[];
+  className?: string;
+  dissable?: string;
+  border?: string;
 }

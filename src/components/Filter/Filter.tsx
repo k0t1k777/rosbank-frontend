@@ -26,7 +26,7 @@ export const Filter = () => {
 
   return (
     <ul className='filter'>
-      <li className='filter__item' style={{ width: '202px' }}>
+      <li className='filter__item' style={{ width: '133px' }}>
         <Select
           label='Специальность'
           value={speciality}
@@ -34,7 +34,7 @@ export const Filter = () => {
           setValue={(value) => handleSelectChange(value, 'speciality')}
         />
       </li>
-      <li className='filter__item' style={{ width: '106px' }}>
+      <li className='filter__item' style={{ width: '75px' }}>
         <Select
           label='Грейд'
           value={greid}
@@ -50,7 +50,7 @@ export const Filter = () => {
           setValue={(value) => handleSelectChange(value, 'employer')}
         />
       </li>
-      <li className='filter__item' style={{ width: '62px' }}>
+      <li className='filter__item' style={{ width: '58px' }}>
         <p className='filter__skill'>Skill</p>
       </li>
       <li className='filter__item' style={{ width: '96px' }}>

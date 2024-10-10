@@ -1,7 +1,7 @@
 .web {
   border-radius: 5px;
-  width: 454px;
-  height: 395px;
+  width: 572px;
+  height: 100%;
   background: $white;
   padding: 8px;
   position: relative;
@@ -26,7 +26,7 @@
 
   &__border {
     display: flex;
-    flex-direction: column;
+    gap: 20px;
     align-items: flex-start;
     width: 95px;
     height: 52px;
@@ -47,7 +47,10 @@
   }
 
   &__radar {
-    width: 434px;
+    width: 526px;
     height: 288px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
   }
 }

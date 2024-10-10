@@ -1,7 +1,7 @@
 .metric {
   border-radius: 5px;
   width: 572px;
-  height: 517px;
+  height: 100%;
   background: $white;
 
   &__header-container {
@@ -30,7 +30,7 @@
   }
 
   &__celect_container {
-    width: 200px;
+    width: 140px;
     height: 44px;
   }
 

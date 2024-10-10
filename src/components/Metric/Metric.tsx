@@ -249,6 +249,8 @@ export const Metric = () => {
             value={speciality}
             options={METRIC_DATA}
             setValue={(value) => handleSelectChange(value)}
+            dissable='dissable'
+            border='border'
           />
         </div>
       </div>

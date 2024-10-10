@@ -1,7 +1,7 @@
 #root {
   display: flex;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
 
   color: $dark;
   background-color: $light-grey;
@@ -17,7 +17,6 @@ body {
   display: flex;
   min-width: 375px;
   max-width: 1440px;
-  min-height: 100vh;
 }
 
 * {
