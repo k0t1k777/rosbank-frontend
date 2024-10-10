@@ -1,50 +1,33 @@
 .sidebar {
   min-width: 237px;
-  position: relative;
+  height: 1060px;
+
+  &__container {
+    background: $dark;
+    border-radius: 0 12px 12px 0;
+    height: 100%;
+  }
 
   &__title {
     @include use-font(32px, 48px, 500);
     @include mp-null;
     color: $light-grey;
-    padding: 16px 46px 0 46px;
-    &_container {
-      background: $dark;
-      height: 101px;
-      border-radius: 0 12px 12px 0;
-    }
-  }
-
-  &__active_container {
-    height: 100%;
-    background: $dark;
-  }
-
-  &__down_container {
-    background: $dark;
-    height: 100%;
-    border-radius: 0 12px 12px 0;
+    padding: 34px 46px 12.5px 46px;
   }
 
   &__list {
     @include mp-null-list;
     @include flex-column-container;
     gap: 25px;
-    position: absolute;
-    top: 101px;
-    right: 0;
-    width: 194px;
+    width: 100%;
   }
 
   &__item {
     display: flex;
     gap: 10px;
-    padding: 12px 16px;
+    padding: 12px 16px 12px 46px;
     &:first-child {
-      background: $light-grey;
-      border-radius: 12px 0 0 12px;
-    }
-    &:first-of-type p {
-      color: $dark;
+      background: rgba(255, 255, 255, 0.12);
     }
   }
 
