@@ -21,28 +21,44 @@ export const Table = () => {
       <Filter />
       <table className='table__container'>
         <tbody>
-          {TABLE_DATA.map((item, index) => (
-            <tr className='table__row' key={index}>
-              <td className='table__td'>{item.speciality}</td>
-              <td className='table__td table__td_type_l'>{item.grade}</td>
-              <td className='table__td table__td_type_xl'>
-                {item.employer}
-                <div
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Icon id='table-book' className='svg__table-book' />
-                </div>
-                {tooltipIndex === index && <InfoTooltipTable />}
-                <Icon id='sircle-red' className='svg__sircle-red' />
-                <Icon id='sircle-green' className='svg__sircle-green' />
-              </td>
-              <td className='table__td table__td_type_s'>
-                <div className='table__td_type_border'>{item.skill}</div>
-              </td>
-              <td className='table__td table__td_type_m'></td>
-            </tr>
-          ))}
+          {TABLE_DATA.map((item, index) => {
+            let backgroundColorClass = '';
+
+            if (item.skill >= 0 && item.skill <= 33) {
+              backgroundColorClass = 'bg-red';
+            } else if (item.skill >= 34 && item.skill <= 66) {
+              backgroundColorClass = 'bg-yellow';
+            } else if (item.skill >= 67 && item.skill <= 100) {
+              backgroundColorClass = 'bg-green';
+            }
+
+            return (
+              <tr className='table__row' key={index}>
+                <td className='table__td'>{item.speciality}</td>
+                <td className='table__td table__td_type_l'>{item.grade}</td>
+                <td className='table__td table__td_type_xl'>
+                  {item.employer}
+                  <div
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <Icon id='table-book' className='svg__table-book' />
+                  </div>
+                  {tooltipIndex === index && <InfoTooltipTable />}
+                  <Icon id='sircle-red' className='svg__sircle-red' />
+                  <Icon id='sircle-green' className='svg__sircle-green' />
+                </td>
+                <td className='table__td table__td_type_s'>
+                  <div
+                    className={`table__td_type_border ${backgroundColorClass}`}
+                  >
+                    {item.skill}
+                  </div>
+                </td>
+                <td className='table__td table__td_type_m'></td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </section>

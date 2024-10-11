@@ -13,7 +13,6 @@
 
   &__row {
     display: flex;
-    gap: 4px;
     height: 40px;
     border-bottom: 0.5px solid rgba(239, 239, 239, 1)
   }
@@ -51,4 +50,16 @@
     width: 216px;
     height: 92px;
   }
+}
+
+.bg-red {
+  background-color: rgba(225, 13, 52, .5);
+}
+
+.bg-yellow {
+  background-color: rgba(89, 172, 153, .5);
+}
+
+.bg-green {
+  background-color: rgba(66, 67, 75, .5);
 }
