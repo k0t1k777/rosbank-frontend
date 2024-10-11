@@ -1,0 +1,26 @@
+.charts__percent {
+  @include flex-column-container;
+  gap: 19px;
+  position: absolute;
+  left: 55px;
+  bottom: 0;
+  width: 350px;
+
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    background: $light-grey;
+    padding: 6px 8px;
+    border-radius: 12px;
+  }
+
+  &_number {
+    @include mp-null;
+    @include use-font(14px, 24px);
+  }
+
+  &__text {
+    @include mp-null;
+    @include use-font(10px, 16px, 400);
+  }
+}

@@ -22,6 +22,7 @@
     @include mp-null;
     @include cut-word;
     @include use-font;
+    user-select: none;
     color: $dark;
   }
 
