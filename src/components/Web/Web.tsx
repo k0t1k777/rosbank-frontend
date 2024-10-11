@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import 'src/components/Web/Web.scss';
 import Checkbox from 'src/shared/ui/Checkbox/Checkbox';
 import { Icon } from 'src/shared/ui/Icon/Icon';
@@ -12,7 +12,10 @@ import {
   Filler,
   Tooltip,
   Legend,
+  ChartData,
 } from 'chart.js';
+import { ChartEvent } from 'node_modules/chart.js/dist/core/core.plugins';
+import { ActiveElement } from 'node_modules/chart.js/dist/plugins/plugin.tooltip';
 
 ChartJS.register(
   RadialLinearScale,
@@ -24,28 +27,63 @@ ChartJS.register(
 );
 
 export const Web = () => {
-  const labels = ['JS', 'React', 'Python'];
+  const [hard, setHard] = useState(true);
+  const [soft, setSoft] = useState(false);
+  const [isCompetencies, setIsCompetencies] = useState<boolean>(true);
   const [highlightedSkill, setHighlightedSkill] = useState<string | null>(null);
-  const chartRef = useRef<ChartJS | null>(null); // Указываем тип для chartRef
 
-  const data = {
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name } = event.target;
+    if (name === 'hard') {
+      setHard(true);
+      setSoft(false);
+    } else if (name === 'soft') {
+      setSoft(true);
+      setHard(false);
+    }
+  };
+
+  const handleToggle = () => {
+    setIsCompetencies((prev) => !prev);
+  };
+
+  const labels = [
+    'Параметр 1',
+    'Параметр 2',
+    'Параметр 3',
+    'Параметр 4',
+    'Параметр 5',
+    'Параметр 6',
+    'Параметр 7',
+    'Параметр 8',
+    'Параметр 9',
+    'Параметр 10',
+    'Параметр 11',
+    'Параметр 12',
+    'Параметр 13',
+    'Параметр 14',
+    'Параметр 15',
+  ];
+
+  const data: ChartData<'radar'> = {
     labels,
     datasets: [
       {
         label: 'Факт',
-        data: [2, 2, 4],
+        data: [2, 2, 4, 1, 1, 2, 4, 1, 3, 2, 4, 1, 3, 2, 1],
         borderColor: '#E10D34',
         pointBackgroundColor: (context) => {
           const index = context.dataIndex;
-          return highlightedSkill === labels[index] ? 'red' : 'blue';
+          return highlightedSkill === labels[index] ? '#E10D34' : 'transparent';
         },
-        borderWidth: 2,
+        borderWidth: 1,
         fill: false,
+        borderDash: [5, 5],
         pointRadius: 5,
       },
       {
         label: 'План',
-        data: [4, 3, 4],
+        data: [2, 3, 4, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1],
         borderColor: '#EFEFEF',
         backgroundColor: '#EFEFEF',
         borderWidth: 1,
@@ -56,12 +94,24 @@ export const Web = () => {
   };
 
   const options = {
+    layout: {
+      padding: {
+        left: 50,
+      },
+    },
+    aspectRatio: 1.5,
     scales: {
       r: {
         min: 0,
         max: 4,
         ticks: {
           stepSize: 1,
+          z: 1,
+        },
+        grid: {
+          lineWidth: 1.1,
+          color: 'rgba(255, 102, 102, 0.3)',
+          z: 1,
         },
       },
     },
@@ -73,27 +123,58 @@ export const Web = () => {
         enabled: false,
       },
     },
-    onClick: (event) => {
-      const chart = chartRef.current;
-      if (chart) {
-        const elements = chart.getElementsAtEventForMode(event.native, 'nearest', { intersect: true }, true);
-        
-        if (elements.length > 0) {
-          const index = elements[0].index;
-          const label = labels[index];
-          setHighlightedSkill(label);
-        }
+    onClick(_: ChartEvent, elements: ActiveElement[]) {
+      if (elements.length) {
+        const index = elements[0].index;
+        setHighlightedSkill(labels[index]);
       }
     },
   };
 
   return (
     <section className='web'>
+      <div className='web__skills_wrapper'>
+        <div className='web__skills_container'>
+          <div className='web__skills_container-item'>
+            <Checkbox
+              checkboxLabel='Hard'
+              checkboxName='hard'
+              isChecked={hard}
+              checkboxChange={handleCheckboxChange}
+            />
+          </div>
+          <div className='web__skills_container-item'>
+            <Checkbox
+              checkboxLabel='Soft'
+              checkboxName='soft'
+              isChecked={soft}
+              checkboxChange={handleCheckboxChange}
+            />
+          </div>
+        </div>
+        <div className='web__skills_container-toggle'>
+          <ToggleSwitch
+            labelLeft='Компетенции'
+            labelRight='Навыки'
+            label='dfdf'
+            isChecked={isCompetencies}
+            onToggle={handleToggle}
+          />
+        </div>
+      </div>
       <div className='web__radar'>
-        <Radar ref={chartRef} data={data} options={options} />
+        <Radar data={data} options={options} />
+      </div>
+      <div className='web__border'>
+        <div className='web__border_container'>
+          <Icon id='fact' className='svg__border' />
+          <p className='web__border_text'>Факт</p>
+        </div>
+        <div className='web__border_container'>
+          <Icon id='plan' className='svg__border' />
+          <p className='web__border_text'>Норма</p>
+        </div>
       </div>
     </section>
   );
 };
-
-
