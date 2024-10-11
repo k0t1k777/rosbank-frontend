@@ -49,6 +49,24 @@ export const TABLE_DATA = [
     skill: '77',
   },
   {
+    speciality: 'Data Scientist',
+    grade: 'A',
+    employer: 'Company E',
+    skill: '68',
+  },
+  {
+    speciality: 'UI/UX Designer',
+    grade: 'C',
+    employer: 'Company D',
+    skill: '87',
+  },
+  {
+    speciality: 'Data Scientist',
+    grade: 'A',
+    employer: 'Company E',
+    skill: '68',
+  },
+  {
     speciality: 'Fullstack Developer',
     grade: 'A',
     employer: 'Company C',

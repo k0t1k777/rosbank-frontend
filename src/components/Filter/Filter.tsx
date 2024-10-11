@@ -42,7 +42,7 @@ export const Filter = () => {
           setValue={(value) => handleSelectChange(value, 'greid')}
         />
       </li>
-      <li className='filter__item' style={{ width: '202px' }}>
+      <li className='filter__item' style={{ width: '200px' }}>
         <Select
           label='Сотрудник'
           value={employer}
@@ -50,10 +50,10 @@ export const Filter = () => {
           setValue={(value) => handleSelectChange(value, 'employer')}
         />
       </li>
-      <li className='filter__item' style={{ width: '58px' }}>
+      <li className='filter__item' style={{ width: '48px' }}>
         <p className='filter__skill'>Skill</p>
       </li>
-      <li className='filter__item' style={{ width: '96px' }}>
+      <li className='filter__item' style={{ width: '62px' }}>
         <Select
           label='Edu'
           value={edu}

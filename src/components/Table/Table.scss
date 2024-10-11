@@ -3,17 +3,19 @@
   width: 587px;
   height: 100%;
   background: $white;
-  // overflow-x: hidden;
-  // overflow-y: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   &__container {
     margin: 0 0 0 20px;
+    padding-bottom: 40px;
   }
 
   &__row {
     display: flex;
     gap: 4px;
     height: 40px;
+    border-bottom: 0.5px solid rgba(239, 239, 239, 1)
   }
 
   &__td {
@@ -23,18 +25,18 @@
     padding: 4px 8px;
     width: 133px;
     position: relative;
+    overflow: visible;
     &_type_s {
-      width: 62px;
+      width: 45px;
     }
     &_type_m {
-      width: 96px;
-      position: relative;
+      width: 62px;
     }
     &_type_l {
       width: 75px;
     }
     &_type_xl {
-      width: 202px;
+      width: 200px;
     }
     &_type_border {
       @include flex-all-center;

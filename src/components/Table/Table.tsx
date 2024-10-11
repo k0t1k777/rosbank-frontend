@@ -27,20 +27,20 @@ export const Table = () => {
               <td className='table__td table__td_type_l'>{item.grade}</td>
               <td className='table__td table__td_type_xl'>
                 {item.employer}
+                <div
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Icon id='table-book' className='svg__table-book' />
+                </div>
+                {tooltipIndex === index && <InfoTooltipTable />}
                 <Icon id='sircle-red' className='svg__sircle-red' />
                 <Icon id='sircle-green' className='svg__sircle-green' />
               </td>
               <td className='table__td table__td_type_s'>
-                <div  className='table__td_type_border'>{item.skill}</div>
+                <div className='table__td_type_border'>{item.skill}</div>
               </td>
-              <td
-                className='table__td table__td_type_m'
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <Icon id='table-book' className='svg__table-book' />
-                {tooltipIndex === index && <InfoTooltipTable />}
-              </td>
+              <td className='table__td table__td_type_m'></td>
             </tr>
           ))}
         </tbody>
