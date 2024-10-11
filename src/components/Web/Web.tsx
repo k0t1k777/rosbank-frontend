@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import 'src/components/Web/Web.scss';
-import Checkbox from 'src/shared/ui/Checkbox/Checkbox';
 import { Icon } from 'src/shared/ui/Icon/Icon';
 import { Radar } from 'react-chartjs-2';
 import { ToggleSwitch } from 'src/shared/ui/ToggleSwitch/ToggleSwitch';
@@ -16,6 +15,7 @@ import {
 } from 'chart.js';
 import { ChartEvent } from 'node_modules/chart.js/dist/core/core.plugins';
 import { ActiveElement } from 'node_modules/chart.js/dist/plugins/plugin.tooltip';
+import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
 
 ChartJS.register(
   RadialLinearScale,
@@ -27,21 +27,9 @@ ChartJS.register(
 );
 
 export const Web = () => {
-  const [hard, setHard] = useState(true);
-  const [soft, setSoft] = useState(false);
+ 
   const [isCompetencies, setIsCompetencies] = useState<boolean>(true);
   const [highlightedSkill, setHighlightedSkill] = useState<string | null>(null);
-
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name } = event.target;
-    if (name === 'hard') {
-      setHard(true);
-      setSoft(false);
-    } else if (name === 'soft') {
-      setSoft(true);
-      setHard(false);
-    }
-  };
 
   const handleToggle = () => {
     setIsCompetencies((prev) => !prev);
@@ -134,25 +122,8 @@ export const Web = () => {
   return (
     <section className='web'>
       <div className='web__skills_wrapper'>
+        <SkillCheckbox />
         <div className='web__skills_container'>
-          <div className='web__skills_container-item'>
-            <Checkbox
-              checkboxLabel='Hard'
-              checkboxName='hard'
-              isChecked={hard}
-              checkboxChange={handleCheckboxChange}
-            />
-          </div>
-          <div className='web__skills_container-item'>
-            <Checkbox
-              checkboxLabel='Soft'
-              checkboxName='soft'
-              isChecked={soft}
-              checkboxChange={handleCheckboxChange}
-            />
-          </div>
-        </div>
-        <div className='web__skills_container-toggle'>
           <ToggleSwitch
             labelLeft='Компетенции'
             labelRight='Навыки'

@@ -8,7 +8,7 @@
 
   &__container {
     margin: 0 0 0 20px;
-    padding-bottom: 40px;
+    padding-bottom: 45px;
   }
 
   &__row {
@@ -42,7 +42,6 @@
       border-radius: 6px;
       width: 48px;
       height: 32px;
-      background: rgba(89, 172, 153, 0.3);
     }
   }
 
@@ -50,16 +49,18 @@
     width: 216px;
     height: 92px;
   }
+
+  &__bg-red {
+    background-color: $red;
+  }
+  
+  &__bg-yellow {
+    background-color: $yellow;
+  }
+  
+  &__bg-green {
+    background-color: $green;
+  }
 }
 
-.bg-red {
-  background-color: rgba(225, 13, 52, .5);
-}
 
-.bg-yellow {
-  background-color: rgba(89, 172, 153, .5);
-}
-
-.bg-green {
-  background-color: rgba(66, 67, 75, .5);
-}

@@ -48,8 +48,9 @@
     position: absolute;
     transform: rotate(-90deg);
     left: -8px;
-    bottom: 33px;
+    bottom: 15px;
     transform-origin: left center;
+    text-transform: uppercase;
   }
 
   &__label_horizontal {
@@ -58,15 +59,17 @@
     position: absolute;
     bottom: -24px;
     left: 54px;
+    text-transform: uppercase;
   }
 
   &__label_engagement {
     @include use-font(12px, 22px, 400);
     @include mp-null;
     position: absolute;
-    left: -75px;
+    left: -87px;
     top: 50px;
     transform: rotate(-90deg);
+    text-transform: uppercase;
   }
 
   &__row {
@@ -76,6 +79,7 @@
       @include mp-null;
       text-align: center;
       padding: 32px 0 0 0;
+      text-transform: uppercase;
     }
   }
 

@@ -1,19 +1,24 @@
 @font-face {
-  font-family: 'Euclid Circular B';
-  font-style: normal;
+  font-family: 'Manrope';
+  font-style: Normal;
   font-weight: 400;
   font-display: swap;
-  src: url('src/shared/fonts/EuclidCircularB-Regular.woff2') format('woff2');
-  src: url('src/shared/fonts/EuclidCircularB-Regular.woff') format('woff');
-  src: url('src/shared/fonts/EuclidCircularB-Regular.ttf') format('truetype');
+  src: url('src/shared/fonts/Manrope-Regular.ttf') format('ttf');
 }
 
 @font-face {
-  font-family: 'Euclid Circular B';
-  font-style: normal;
+  font-family: 'Manrope';
+  font-style: Medium;
   font-weight: 500;
   font-display: swap;
-  src: url('src/shared/fonts/EuclidCircularB-Medium.woff2') format('woff2');
-  src: url('src/shared/fonts/EuclidCircularB-Medium.woff') format('woff');
-  src: url('src/shared/fonts/EuclidCircularB-Medium.ttf') format('truetype');
+  src: url('src/shared/fonts/Manrope-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: Semi Bold;
+  font-weight: 600;
+  font-display: swap;
+  src: url('src/shared/fonts/Manrope-SemiBold.ttf') format('ttf');
+
 }

@@ -1,11 +1,10 @@
 .info-table {
   width: 170px;
-  height: 92px;
   display: flex;
   position: absolute;
   top: -10px;
   right: -120px;
-  z-index: 111;
+  z-index: 11;
   background: $white;
   &__container {
     border: 1px solid $yellow;

@@ -1,0 +1,9 @@
+.skill-checkbox {
+  width: 148px;
+  display: flex;
+  gap: 3px;
+  &__item {
+    position: relative;
+    padding: 14px 10px;
+  }
+}

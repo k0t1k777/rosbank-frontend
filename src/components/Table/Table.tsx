@@ -22,14 +22,14 @@ export const Table = () => {
       <table className='table__container'>
         <tbody>
           {TABLE_DATA.map((item, index) => {
+            
             let backgroundColorClass = '';
-
             if (item.skill >= 0 && item.skill <= 33) {
-              backgroundColorClass = 'bg-red';
+              backgroundColorClass = 'table__bg-red';
             } else if (item.skill >= 34 && item.skill <= 66) {
-              backgroundColorClass = 'bg-yellow';
+              backgroundColorClass = 'table__bg-yellow';
             } else if (item.skill >= 67 && item.skill <= 100) {
-              backgroundColorClass = 'bg-green';
+              backgroundColorClass = 'table__bg-green';
             }
 
             return (

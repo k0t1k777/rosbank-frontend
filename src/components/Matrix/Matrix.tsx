@@ -26,7 +26,7 @@ export const Matrix = () => {
       <div className='matrix__container'>
         <div className='matrix__row'>
           <div className='matrix__high_label-vertical'>
-            <div className='matrix__label_vertiacal'>ВЫСОКАЯ</div>
+            <div className='matrix__label_vertiacal'>высокая</div>
           </div>
           <div className='matrix__cell'>
             {LIST_ITEM.length > 0 ? (
@@ -80,7 +80,7 @@ export const Matrix = () => {
 
         <div className='matrix__row'>
           <div className='matrix__middle_label-vertical'>
-            <div className='matrix__label_vertiacal'>СРЕДНЯЯ</div>
+            <div className='matrix__label_vertiacal'>средняя</div>
             <p className='matrix__label_engagement'>Вовлеченность</p>
           </div>
           <div className='matrix__cell'>
@@ -126,7 +126,7 @@ export const Matrix = () => {
 
         <div className='matrix__row'>
           <div className='matrix__row_label-vertical'>
-            <div className='matrix__label_vertiacal'>НИЗКАЯ</div>
+            <div className='matrix__label_vertiacal'>низкая</div>
           </div>
           <div className='matrix__cell'>
             <p className='matrix__cell_text'>{MATRIX_DATA.editTask}</p>
@@ -167,13 +167,13 @@ export const Matrix = () => {
         </div>
         <div className='matrix__row'>
           <div className='matrix__row_label-horizontal'>
-            <p className='matrix__label_horizontal'>НИЗКАЯ</p>
+            <p className='matrix__label_horizontal'>низкая</p>
           </div>
           <div className='matrix__middle-label-horizontal'>
-            <p className='matrix__label_horizontal'>СРЕДНЯЯ</p>
+            <p className='matrix__label_horizontal'>средняя</p>
           </div>
           <div className='matrix__high-label-horizontal'>
-            <p className='matrix__label_horizontal'>ВЫСОКАЯ</p>
+            <p className='matrix__label_horizontal'>высокая</p>
           </div>
         </div>
         <div className='matrix__row_skills'>Оценка навыков</div>

@@ -12,16 +12,7 @@
   }
 
   &__skills_container {
-    width: 148px;
     display: flex;
-    gap: 3px;
-    &-item {
-      position: relative;
-      padding: 14px 10px;
-    }
-    &-toggle {
-      display: flex;
-    }
   }
 
   &__border {
