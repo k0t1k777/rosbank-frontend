@@ -26,6 +26,7 @@ ChartJS.register(
 export const Web = () => {
   const [hard, setHard] = useState(true);
   const [soft, setSoft] = useState(false);
+  const [isCompetencies, setIsCompetencies] = useState<boolean>(true);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = event.target;
@@ -38,28 +39,14 @@ export const Web = () => {
     }
   };
 
-  const [isCompetencies, setIsCompetencies] = useState<boolean>(true);
-
   const handleToggle = () => {
     setIsCompetencies((prev) => !prev);
   };
 
   const labels = [
-    'Параметр 1',
-    'Параметр 2',
-    'Параметр 3',
-    'Параметр 4',
-    'Параметр 5',
-    'Параметр 6',
-    'Параметр 7',
-    'Параметр 8',
-    'Параметр 9',
-    'Параметр 10',
-    'Параметр 11',
-    'Параметр 12',
-    'Параметр 13',
-    'Параметр 14',
-    'Параметр 15',
+    'JS',
+    'React',
+    'Python',
   ];
 
   const data = {
@@ -67,7 +54,7 @@ export const Web = () => {
     datasets: [
       {
         label: 'Факт',
-        data: [2, 2, 4, 1, 1, 2, 4, 1, 3, 2, 4, 1, 3, 2, 1],
+        data: [2, 2, 4],
         borderColor: '#E10D34',
         pointBackgroundColor: 'red',
         borderWidth: 1,
@@ -77,7 +64,7 @@ export const Web = () => {
       },
       {
         label: 'План',
-        data: [2, 3, 4, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1],
+        data: [4, 3, 4],
         borderColor: '#EFEFEF',
         backgroundColor: '#EFEFEF',
         borderWidth: 1,
