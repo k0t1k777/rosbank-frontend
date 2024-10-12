@@ -39,13 +39,13 @@ export const TABLE_DATA = [
   {
     speciality: 'Frontend Developer',
     grade: 'A',
-    employer: 'Company A',
+    employer: 'Иван Петров',
     skill: 22,
   },
   {
     speciality: 'Backend Developer',
     grade: 'B',
-    employer: 'Company B',
+    employer: 'Кирилл Моргунов',
     skill: 33,
   },
   {

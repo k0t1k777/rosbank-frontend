@@ -37,6 +37,8 @@ export const Table = () => {
                 <td className='table__td table__td_type_l'>{item.grade}</td>
                 <td className='table__td table__td_type_xl'>
                   {item.employer}
+                  <Icon id='sircle-red' className='svg__sircle-red' />
+                  <Icon id='sircle-green' className='svg__sircle-green' />
                   <div
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
@@ -44,8 +46,7 @@ export const Table = () => {
                     <Icon id='table-book' className='svg__table-book' />
                   </div>
                   {tooltipIndex === index && <InfoTooltipTable />}
-                  <Icon id='sircle-red' className='svg__sircle-red' />
-                  <Icon id='sircle-green' className='svg__sircle-green' />
+
                 </td>
                 <td className='table__td table__td_type_s'>
                   <div
