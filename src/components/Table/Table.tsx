@@ -22,7 +22,6 @@ export const Table = () => {
       <table className='table__container'>
         <tbody>
           {TABLE_DATA.map((item, index) => {
-            
             let backgroundColorClass = '';
             if (item.skill >= 0 && item.skill <= 33) {
               backgroundColorClass = 'table__bg-red';
@@ -55,7 +54,6 @@ export const Table = () => {
                     {item.skill}
                   </div>
                 </td>
-                <td className='table__td table__td_type_m'></td>
               </tr>
             );
           })}

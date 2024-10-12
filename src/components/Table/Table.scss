@@ -22,25 +22,22 @@
     @include cut-word;
     @include flex-row-center;
     padding: 4px 8px;
-    width: 133px;
+    width: 150px;
     position: relative;
     overflow: visible;
     &_type_s {
-      width: 45px;
-    }
-    &_type_m {
-      width: 62px;
+      width: 60px;
     }
     &_type_l {
-      width: 75px;
+      width: 80px;
     }
     &_type_xl {
-      width: 200px;
+      width: 240px;
     }
     &_type_border {
       @include flex-all-center;
       border-radius: 6px;
-      width: 48px;
+      width: inherit;
       height: 32px;
     }
   }

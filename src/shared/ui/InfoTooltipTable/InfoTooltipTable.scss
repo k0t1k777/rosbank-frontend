@@ -1,22 +1,20 @@
 .info-table {
-  width: 170px;
+  width: 151px;
   display: flex;
   position: absolute;
   top: -10px;
-  right: -120px;
+  right: 96px;
   z-index: 11;
   background: $white;
   &__container {
-    border: 1px solid $yellow;
+    border: 1px solid $dark;
     border-radius: 12px;
-    padding: 8px 12px;
+    padding: 4px 8px;
     width: 208px;
-    height: 92px;
   }
   &__title {
     @include mp-null;
     @include use-font;
-    margin: 0 0 4px 0;
   }
   &__text {
     @include mp-null;
