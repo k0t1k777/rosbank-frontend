@@ -6,7 +6,7 @@ export const NAV_MENU = [
   { icon: 'ipr', title: 'ИПР' },
 ];
 
-export const PROFESSION_DATA = [
+export const EMPLOYERS_DATA = [
   'товаровед',
   'водитель',
   'пекарь',
@@ -14,6 +14,22 @@ export const PROFESSION_DATA = [
   'продавец',
   'повар',
   'приёмщик',
+];
+
+export const GRAIDE_DATA = [
+  'Junior',
+  'Middle',
+  'Senior',
+];
+
+export const SPECIALITY_DATA = [
+  'Бизнес Аналитик',
+  'Дизайнер',
+  'Менеджер продукта',
+  'Менеджер проекта',
+  'Разработчик/программист',
+  'Системный аналитик',
+  'Тестировщик',
 ];
 
 export const METRIC_DATA = [
@@ -34,78 +50,3 @@ export const MATRIX_DATA = {
   learning: 'Разработать программу поддержки и обучения',
   engagement: 'Повышение вовлеченности',
 };
-
-export const TABLE_DATA = [
-  {
-    speciality: 'Frontend Developer',
-    grade: 'A',
-    employer: 'Иван Петров',
-    skill: 22,
-  },
-  {
-    speciality: 'Backend Developer',
-    grade: 'B',
-    employer: 'Кирилл Моргунов',
-    skill: 33,
-  },
-  {
-    speciality: 'Data Scientist',
-    grade: 'A',
-    employer: 'Company E',
-    skill: 34,
-  },
-  {
-    speciality: 'UI/UX Designer',
-    grade: 'C',
-    employer: 'Company D',
-    skill: 67,
-  },
-  {
-    speciality: 'Data Scientist',
-    grade: 'A',
-    employer: 'Company E',
-    skill: 68,
-  },
-  {
-    speciality: 'Fullstack Developer',
-    grade: 'A',
-    employer: 'Company C',
-    skill: 88,
-  },
-  {
-    speciality: 'UI/UX Designer',
-    grade: 'C',
-    employer: 'Company D',
-    skill: 17,
-  },
-  {
-    speciality: 'Data Scientist',
-    grade: 'A',
-    employer: 'Company E',
-    skill: 34,
-  },
-  {
-    speciality: 'DevOps Engineer',
-    grade: 'B',
-    employer: 'Company F',
-    skill: 67,
-  },
-  {
-    speciality: 'System Administrator',
-    grade: 'C',
-    employer: 'Company H',
-    skill: 56,
-  },
-  {
-    speciality: 'Game Developer',
-    grade: 'B',
-    employer: 'Company I',
-    skill: 44,
-  },
-  {
-    speciality: 'DevOps Engineer',
-    grade: 'B',
-    employer: 'Company F',
-    skill: 77,
-  },
-];

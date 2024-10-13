@@ -1,10 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import 'src/components/Header/Header.scss';
 import { Icon } from 'src/shared/ui/Icon/Icon';
 import Avatar from 'src/shared/assets/Avatar.png';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
+import { fetchAmountEmployees, selectEmployees, setDate } from 'src/store/features/slice/membersSlice';
 
 export const Header = () => {
-  const [date, setDate] = useState('');
+  const { amount, date } = useAppSelector(selectEmployees);
+  const dispatch = useAppDispatch();
+
+  console.log('amount: ', amount);
+
+  useEffect(() => {
+    dispatch(fetchAmountEmployees());
+  }, [dispatch]);
 
   useEffect(() => {
     const formatCurrentDate = () => {
@@ -21,8 +30,8 @@ export const Header = () => {
       return formattedDate;
     };
 
-    setDate(formatCurrentDate());
-  }, []);
+    dispatch(setDate(formatCurrentDate()));
+  }, [dispatch]);
 
   return (
     <header className='header'>
@@ -32,15 +41,15 @@ export const Header = () => {
       </div>
       <div className='header__empoyes_container'>
         <div className='header__line_black'>
-          <span className='header__empoyes_count'>7</span>
+          <span className='header__empoyes_count'>{amount.numberOfEmployee}</span>
           <p className='header__empoyes'>Сотрудники</p>
         </div>
         <div className='header__line_green'>
-          <span className='header__empoyes_count'>7</span>
+          <span className='header__empoyes_count'>{amount.numberOfKeyPeople}</span>
           <p className='header__empoyes'>Key-people</p>
         </div>
         <div className='header__line_red'>
-          <span className='header__empoyes_count'>7</span>
+          <span className='header__empoyes_count'>{amount.numberOfBusFactor}</span>
           <p className='header__empoyes'>Bus-factor</p>
         </div>
       </div>

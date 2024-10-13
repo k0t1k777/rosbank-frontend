@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import 'src/components/Filter/Filter.scss';
-import { PROFESSION_DATA } from 'src/services/const';
+import { EMPLOYERS_DATA, GRAIDE_DATA, SPECIALITY_DATA } from 'src/services/const';
 import Select from 'src/shared/ui/Select/Select';
 
 export const Filter = () => {
@@ -10,7 +10,7 @@ export const Filter = () => {
 
   const handleSelectChange = (
     value: string,
-    type: 'speciality' | 'greid' | 'employer' | 'skill' | 'edu'
+    type: 'speciality' | 'greid' | 'employer' | 'skill'
   ) => {
     if (type === 'speciality') {
       setSpeciality(value);
@@ -27,7 +27,7 @@ export const Filter = () => {
         <Select
           label='Специальность'
           value={speciality}
-          options={PROFESSION_DATA}
+          options={SPECIALITY_DATA}
           setValue={(value) => handleSelectChange(value, 'speciality')}
         />
       </li>
@@ -35,7 +35,7 @@ export const Filter = () => {
         <Select
           label='Грейд'
           value={greid}
-          options={PROFESSION_DATA}
+          options={GRAIDE_DATA}
           setValue={(value) => handleSelectChange(value, 'greid')}
         />
       </li>
@@ -43,7 +43,7 @@ export const Filter = () => {
         <Select
           label='Сотрудник'
           value={employer}
-          options={PROFESSION_DATA}
+          options={EMPLOYERS_DATA}
           setValue={(value) => handleSelectChange(value, 'employer')}
         />
       </li>

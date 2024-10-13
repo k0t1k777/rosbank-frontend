@@ -9,7 +9,7 @@ export default function ChartIpr() {
         label: 'IPR',
         data: [7, 7, 7, 7, 7],
         backgroundColor: 'white',
-        borderColor: 'rgba(0, 191, 255, 1)',
+        borderColor: 'rgba(66, 67, 75, .5)',
         borderWidth: 5,
         fill: false,
         pointRadius: 0,

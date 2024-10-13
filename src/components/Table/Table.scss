@@ -48,15 +48,15 @@
   }
 
   &__bg-red {
-    background-color: $red;
+    background: rgba(225, 13, 52, 0.3);
   }
   
   &__bg-yellow {
-    background-color: $yellow;
+    background: rgba(252, 171, 32, 0.3);
   }
   
   &__bg-green {
-    background-color: $green;
+    background: rgba(89, 172, 153, 0.3);
   }
 }
 

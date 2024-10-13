@@ -1,19 +1,30 @@
 import 'src/components/Table/Table.scss';
 import { Filter } from 'src/components/Filter/Filter';
-import { TABLE_DATA } from 'src/services/const';
 import { Icon } from 'src/shared/ui/Icon/Icon';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import InfoTooltipTable from 'src/shared/ui/InfoTooltipTable/InfoTooltipTable';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
+import {
+  fetchGetEmployees,
+  selectEmployees,
+  setTooltipIndex,
+} from 'src/store/features/slice/membersSlice';
 
 export const Table = () => {
-  const [tooltipIndex, setTooltipIndex] = useState<number | null>(null);
+  const { employees, tooltipIndex } = useAppSelector(selectEmployees);
+  console.log('employees: ', employees);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchGetEmployees());
+  }, [dispatch]);
 
   const handleMouseEnter = (index: number) => {
-    setTooltipIndex(index);
+    dispatch(setTooltipIndex(index));
   };
 
   const handleMouseLeave = () => {
-    setTooltipIndex(null);
+    dispatch(setTooltipIndex(null));
   };
 
   return (
@@ -21,7 +32,7 @@ export const Table = () => {
       <Filter />
       <table className='table__container'>
         <tbody>
-          {TABLE_DATA.map((item, index) => {
+          {employees.map((item, index) => {
             let backgroundColorClass = '';
             if (item.skill >= 0 && item.skill <= 33) {
               backgroundColorClass = 'table__bg-red';
@@ -33,20 +44,29 @@ export const Table = () => {
 
             return (
               <tr className='table__row' key={index}>
-                <td className='table__td'>{item.speciality}</td>
+                <td className='table__td'>{item.position}</td>
                 <td className='table__td table__td_type_l'>{item.grade}</td>
                 <td className='table__td table__td_type_xl'>
-                  {item.employer}
-                  <Icon id='sircle-red' className='svg__sircle-red' />
-                  <Icon id='sircle-green' className='svg__sircle-green' />
+                  {item.worker}
+                  {item.bus_factor && (
+                    <Icon id='sircle-red' className='svg__sircle-red' />
+                  )}
+                  {item.key_people && (
+                    <Icon id='sircle-green' className='svg__sircle-green' />
+                  )}
                   <div
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <Icon id='table-book' className='svg__table-book' />
+                    {item.education.length > 0 && <Icon id='table-book' className='svg__table-book' />}
                   </div>
-                  {tooltipIndex === index && <InfoTooltipTable />}
-
+                  {tooltipIndex === index && (
+                    <InfoTooltipTable
+                      trainingNames={item.education.map(
+                        (education) => education.training_name
+                      )}
+                    />
+                  )}
                 </td>
                 <td className='table__td table__td_type_s'>
                   <div

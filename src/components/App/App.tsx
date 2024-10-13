@@ -3,20 +3,61 @@ import Sidebar from 'src/components/Sidebar/Sidebar';
 import { Main } from 'src/components/Main/Main';
 import { Header } from 'src/components/Header/Header';
 // import { useEffect, useState } from 'react';
-// import * as API from 'src/store/api'
 
 function App() {
-  // const [emp, setEmp] = useState([])
-  // console.log('emp: ', emp);
+//   const [employees, setEmployees] = useState([])
+//   console.log('employees: ', employees);
 
-  // useEffect(() => {
-  //   API.getEmployers()
-  //   .then((data) => {
-  //     setEmp(data)
-  //   })
-  // }, [])
+//   useEffect(() => {
+//     getEmployers()
+//     .then((data) => {
+//       setEmployees(data)
+//     })
+//   }, [])
 
-  // https://rosb-hakaton.ddns.net/api/v1 
+// const BASE_URL = 'https://rosb-hakaton.ddns.net/api/v1/';
+
+
+// const getResponseData = (res: Response) => {
+//   if (!res.ok) {
+//     return Promise.reject(`Ошибка: ${res.status}`);
+//   }
+//   return res.json();
+// };
+
+// const headers = {
+//   Accept: 'application/json',
+//   'Content-Type': 'application/json',
+// };
+
+// const getEmployers = () => {
+//   return fetch(`${BASE_URL}teams/media/skills/`, {
+//     headers,
+//     method: 'POST',
+//     body: JSON.stringify({
+//       skillDomen: 'hard',
+//       employeeIds: '2'
+//     })
+//   }).then(getResponseData);
+// };
+
+// const [ski, setSki] = useState([])
+// console.log('ski: ', ski);
+// useEffect(() => {
+//   getSkills()
+//   .then((data) => {
+//     setSki(data)
+//   })
+// }, [])
+
+// const getEmployers = () => {
+//   return fetch(`${BASE_URL}teams/media/count_employees/`, {
+//     headers,
+//     method: 'GET',
+//   }).then(getResponseData);
+// };
+
+
   return (
     <>
       <Sidebar />

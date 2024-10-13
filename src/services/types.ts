@@ -30,3 +30,35 @@ export interface SelectProps {
   dissable?: string;
   border?: string;
 }
+
+export interface InfoTooltipTableProps {
+  trainingNames: string[];
+}
+
+export interface AmountType {
+  numberOfEmployee: string;
+  numberOfBusFactor: string;
+  numberOfKeyPeople: string;
+}
+
+export interface EmployeeType {
+  id: number;
+  position: string;
+  worker: string;
+  grade: string;
+  key_people: boolean;
+  bus_factor: boolean;
+  education: EducationType[];
+  assesmentOfPotention: AssessmentOfPotentialType;
+  skill: number;
+}
+
+export interface EducationType {
+  id: number;
+  training_name: string;
+}
+
+export interface AssessmentOfPotentialType {
+  assesmentLevel: string;
+  involvmentLevel: string;
+}

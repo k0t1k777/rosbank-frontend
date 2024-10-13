@@ -9,7 +9,7 @@ export default function ChartEngagements() {
         label: 'Вовлеченность',
         data: [3, 2, 3, 3, 4],
         backgroundColor: 'white',
-        borderColor: 'rgba(0, 255, 0, 1)',
+        borderColor: 'rgba(66, 67, 75, .5)',
         borderWidth: 5,
         border: 1,
         fill: false,
