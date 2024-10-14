@@ -35,6 +35,8 @@
     &_list {
       padding: 0;
       max-width: 110px;
+      max-height: 117px;
+      overflow: hidden;
     }
     &_item {
       @include use-font;

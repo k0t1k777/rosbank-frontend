@@ -13,7 +13,6 @@ import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 
 export const Matrix = () => {
   const { employees, tooltip } = useAppSelector(selectEmployees);
-  console.log('employees: ', employees);
   const dispatch = useAppDispatch();
 
   const handleMouseEnter = (index: number) => {

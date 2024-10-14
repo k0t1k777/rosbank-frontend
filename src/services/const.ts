@@ -1,3 +1,5 @@
+import { EmployeeType } from './types';
+
 export const NAV_MENU = [
   { icon: 'dashboard', title: 'Дашборд' },
   { icon: 'calendar', title: 'Календарь' },
@@ -16,11 +18,7 @@ export const EMPLOYERS_DATA = [
   'Эрнест Хемингуэй',
 ];
 
-export const GRAIDE_DATA = [
-  'Junior',
-  'Middle',
-  'Senior',
-];
+export const GRAIDE_DATA = ['Junior', 'Middle', 'Senior'];
 
 export const SPECIALITY_DATA = [
   'Бизнес Аналитик',
@@ -49,4 +47,25 @@ export const MATRIX_DATA = {
   editTask: 'Изменить роли/задачи',
   learning: 'Разработать программу поддержки и обучения',
   engagement: 'Повышение вовлеченности',
+};
+
+export const inintialMember: EmployeeType = {
+  id: 0,
+  position: '',
+  worker: '',
+  grade: '',
+  key_people: false,
+  bus_factor: false,
+  education: [
+    {
+      id: 0,
+      training_name: '',
+    },
+  ],
+  assesmentOfPotention: 
+    {
+      assesmentLevel: 0,
+      involvmentLevel: 0,
+    },
+  skill: 0,
 };

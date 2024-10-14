@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { inintialMember } from 'src/services/const';
 import { AmountType, EmployeeType } from 'src/services/types';
-import { getAmountEmployees, getEmployees } from 'src/store/api';
+import { getAmountEmployees, getEmployees, getEmployeesId } from 'src/store/api';
 import { RootStore } from 'src/store/store';
 
 export interface StateType {
@@ -14,6 +15,8 @@ export interface StateType {
   grade: string;
   worker: string;
   tooltip: number | null;
+  member: EmployeeType;
+  selectedMemberId: number | null;
 }
 
 const initialState: StateType = {
@@ -30,7 +33,9 @@ const initialState: StateType = {
   position: '',
   grade: '',
   worker: '',
-  tooltip: null
+  tooltip: null,
+  member: inintialMember,
+  selectedMemberId: null,
 };
 
 export const fetchGetEmployees = createAsyncThunk(
@@ -57,6 +62,14 @@ export const fetchAmountEmployees = createAsyncThunk(
   }
 );
 
+export const fetchAmountEmployeesId = createAsyncThunk(
+  'fetch/employeesId',
+  async (id: number) => {
+    const response = await getEmployeesId(id);
+    return response;
+  }
+);
+
 const employeesSlice = createSlice({
   name: 'employees',
   initialState,
@@ -78,6 +91,9 @@ const employeesSlice = createSlice({
     },
     setTooltip(state, action) {
       state.tooltip = action.payload;
+    },
+    setSelectedMemberId(state, action) {
+      state.selectedMemberId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -105,7 +121,19 @@ const employeesSlice = createSlice({
       .addCase(fetchAmountEmployees.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
-      });
+      })
+      .addCase(fetchAmountEmployeesId.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAmountEmployeesId.fulfilled, (state, action) => {
+        state.member = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(fetchAmountEmployeesId.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
   },
 });
 
@@ -116,6 +144,7 @@ export const {
   setGrade,
   setWorker,
   setTooltip,
+  setSelectedMemberId,
 } = employeesSlice.actions;
 export const employeesReducer = employeesSlice.reducer;
 export const selectEmployees = (state: RootStore) => state.employees;

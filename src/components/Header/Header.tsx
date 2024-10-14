@@ -35,7 +35,6 @@ export const Header = () => {
     <header className='header'>
       <div className='header__media_container'>
         <p className='header__media'>Медиа</p>
-        <Icon id='arrow'/>
       </div>
       <div className='header__empoyes_container'>
         <div className='header__line_black'>

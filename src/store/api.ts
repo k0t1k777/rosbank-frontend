@@ -55,40 +55,11 @@ export const getAmountEmployees = async () => {
   return await request('teams/media/count_employees/', options);
 };
 
-// export const getMembersData = (
-//   page: number,
-//   search: string,
-//   position: string,
-//   department: string,
-//   city: string
-// ) => {
-//   return fetch(
-//     `${BASE_URL}/api/v1/members/?${buildQueryString({
-//       page,
-//       search,
-//       position,
-//       department,
-//       city,
-//     })}`,
-//     {
-//       method: 'GET',
-//       headers: headers,
-//     }
-//   ).then(checkResponse);
-// };
+export const getEmployeesId = async (id: number) => {
+  const options: RequestOptionsType = {
+    method: 'GET',
+    headers: headers,
+  };
+  return await request(`/teams/media/employees/${id}/`, options);
+};
 
-// export const getTeamsId = async (id: number) => {
-//   const options: RequestOptionsType = {
-//     method: 'GET',
-//     headers: headers,
-//   };
-//   return await request(`/api/v1/teams/${id}/`, options);
-// };
-
-// export const getMemberId = async (id: number) => {
-//   const options: RequestOptionsType = {
-//     method: 'GET',
-//     headers: headers,
-//   };
-//   return await request(`/api/v1/members/${id}/`, options);
-// };
