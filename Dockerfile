@@ -12,7 +12,6 @@ COPY . .
 
 # Собираем проект
 RUN npm run build
-
 # Устанавливаем глобально http-server для раздачи статических файлов
 RUN npm install --global http-server
 
