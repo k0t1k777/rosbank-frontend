@@ -59,6 +59,6 @@ export interface EducationType {
 }
 
 export interface AssessmentOfPotentialType {
-  assesmentLevel: string;
-  involvmentLevel: string;
+  assesmentLevel: number;
+  involvmentLevel: number;
 }

@@ -11,13 +11,13 @@ import {
 } from 'src/store/features/slice/membersSlice';
 
 export const Table = () => {
-  const { employees, tooltipIndex } = useAppSelector(selectEmployees);
-  console.log('employees: ', employees);
+  const { employees, tooltipIndex, position, grade, employer } =
+    useAppSelector(selectEmployees);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchGetEmployees());
-  }, [dispatch]);
+    dispatch(fetchGetEmployees({ position, grade, employer }));
+  }, [dispatch, position, grade, employer]);
 
   const handleMouseEnter = (index: number) => {
     dispatch(setTooltipIndex(index));
@@ -44,10 +44,14 @@ export const Table = () => {
 
             return (
               <tr className='table__row' key={index}>
-                <td className='table__td'>{item.position}</td>
-                <td className='table__td table__td_type_l'>{item.grade}</td>
+                <td className='table__td'>
+                  <p className='table__text'>{item.position}</p>
+                </td>
+                <td className='table__td table__td_type_l'>
+                  <p className='table__text'>{item.grade}</p>
+                </td>
                 <td className='table__td table__td_type_xl'>
-                  {item.worker}
+                  <p className='table__text'>{item.worker}</p>
                   {item.bus_factor && (
                     <Icon id='sircle-red' className='svg__sircle-red' />
                   )}
@@ -58,7 +62,9 @@ export const Table = () => {
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    {item.education.length > 0 && <Icon id='table-book' className='svg__table-book' />}
+                    {item.education.length > 0 && (
+                      <Icon id='table-book' className='svg__table-book' />
+                    )}
                   </div>
                   {tooltipIndex === index && (
                     <InfoTooltipTable
@@ -72,7 +78,7 @@ export const Table = () => {
                   <div
                     className={`table__td_type_border ${backgroundColorClass}`}
                   >
-                    {item.skill}
+                    <p className='table__text'>{item.skill}</p>
                   </div>
                 </td>
               </tr>

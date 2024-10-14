@@ -39,6 +39,7 @@
     &_item {
       @include use-font;
       @include mp-null;
+      @include cut-word;
     }
   }
 

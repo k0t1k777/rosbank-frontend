@@ -10,6 +10,10 @@ export interface StateType {
   amount: AmountType;
   date: string;
   tooltipIndex: number | null;
+  position: string;
+  grade: string;
+  employer: string;
+  tooltip: number | null;
 }
 
 const initialState: StateType = {
@@ -23,12 +27,24 @@ const initialState: StateType = {
   },
   date: '',
   tooltipIndex: null,
+  position: '',
+  grade: '',
+  employer: '',
+  tooltip: null
 };
 
 export const fetchGetEmployees = createAsyncThunk(
   'fetch/employees',
-  async () => {
-    const response = await getEmployees();
+  async ({
+    position,
+    grade,
+    employer,
+  }: {
+    position: string;
+    grade: string;
+    employer: string;
+  }) => {
+    const response = await getEmployees(position, grade, employer);
     return response;
   }
 );
@@ -50,6 +66,18 @@ const employeesSlice = createSlice({
     },
     setTooltipIndex(state, action) {
       state.tooltipIndex = action.payload;
+    },
+    setPosition(state, action) {
+      state.position = action.payload;
+    },
+    setGrade(state, action) {
+      state.grade = action.payload;
+    },
+    setEmployer(state, action) {
+      state.employer = action.payload;
+    },
+    setTooltip(state, action) {
+      state.tooltip = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -81,6 +109,13 @@ const employeesSlice = createSlice({
   },
 });
 
-export const { setDate, setTooltipIndex } = employeesSlice.actions;
+export const {
+  setDate,
+  setTooltipIndex,
+  setPosition,
+  setGrade,
+  setEmployer,
+  setTooltip,
+} = employeesSlice.actions;
 export const employeesReducer = employeesSlice.reducer;
 export const selectEmployees = (state: RootStore) => state.employees;

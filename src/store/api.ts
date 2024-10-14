@@ -24,16 +24,27 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
-// const buildQueryString = (params: Record<string, any>) => {
-//   return new URLSearchParams(params).toString();
-// };
+const buildQueryString = (params: Record<string, string>) => {
+  return new URLSearchParams(params).toString();
+};
 
-export const getEmployees = async () => {
+export const getEmployees = async (
+  position: string,
+  grade: string,
+  employer: string
+) => {
   const options: RequestOptionsType = {
     method: 'GET',
     headers: headers,
   };
-  return await request('teams/media/employees/', options);
+  return await request(
+    `teams/media/employees/?${buildQueryString({
+      position,
+      grade,
+      employer,
+    })}`,
+    options
+  );
 };
 
 export const getAmountEmployees = async () => {
@@ -65,8 +76,6 @@ export const getAmountEmployees = async () => {
 //     }
 //   ).then(checkResponse);
 // };
-
-
 
 // export const getTeamsId = async (id: number) => {
 //   const options: RequestOptionsType = {
