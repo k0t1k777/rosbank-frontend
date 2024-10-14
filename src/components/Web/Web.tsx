@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import 'src/components/Web/Web.scss';
 import { Icon } from 'src/shared/ui/Icon/Icon';
 import { Radar } from 'react-chartjs-2';
@@ -16,6 +16,8 @@ import {
 import { ChartEvent } from 'node_modules/chart.js/dist/core/core.plugins';
 import { ActiveElement } from 'node_modules/chart.js/dist/plugins/plugin.tooltip';
 import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
+import { fetchGetSkills, selectSkills } from 'src/store/features/slice/skillSlice';
 
 ChartJS.register(
   RadialLinearScale,
@@ -27,38 +29,32 @@ ChartJS.register(
 );
 
 export const Web = () => {
+  const { skills } = useAppSelector(selectSkills);
+  console.log('skills: ', skills);
+const dispatch = useAppDispatch();
+
+
+useEffect(() => {
+  dispatch(fetchGetSkills())
+}, [dispatch])
  
   const [isCompetencies, setIsCompetencies] = useState<boolean>(true);
   const [highlightedSkill, setHighlightedSkill] = useState<string | null>(null);
 
+const labels = skills.map(skill => skill.skillName);
+const plannedResults = skills.map(skill => skill.plannedResult);
+const actualResults = skills.map(skill => skill.actualResult);
+
   const handleToggle = () => {
     setIsCompetencies((prev) => !prev);
   };
-
-  const labels = [
-    'Параметр 1',
-    'Параметр 2',
-    'Параметр 3',
-    'Параметр 4',
-    'Параметр 5',
-    'Параметр 6',
-    'Параметр 7',
-    'Параметр 8',
-    'Параметр 9',
-    'Параметр 10',
-    'Параметр 11',
-    'Параметр 12',
-    'Параметр 13',
-    'Параметр 14',
-    'Параметр 15',
-  ];
 
   const data: ChartData<'radar'> = {
     labels,
     datasets: [
       {
         label: 'Факт',
-        data: [2, 2, 4, 1, 1, 2, 4, 1, 3, 2, 4, 1, 3, 2, 1],
+        data: plannedResults,
         borderColor: '#E10D34',
         pointBackgroundColor: (context) => {
           const index = context.dataIndex;
@@ -71,7 +67,7 @@ export const Web = () => {
       },
       {
         label: 'План',
-        data: [2, 3, 4, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1],
+        data: actualResults,
         borderColor: '#EFEFEF',
         backgroundColor: '#EFEFEF',
         borderWidth: 1,
@@ -91,7 +87,7 @@ export const Web = () => {
     scales: {
       r: {
         min: 0,
-        max: 4,
+        max: 5,
         ticks: {
           stepSize: 1,
           z: 1,

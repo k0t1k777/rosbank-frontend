@@ -30,12 +30,12 @@ function App() {
 //   'Content-Type': 'application/json',
 // };
 
-// const getEmployers = () => {
-//   return fetch(`${BASE_URL}teams/media/employees/2/`, {
-//     headers,
-//     method: 'GET',
-//     }).then(getResponseData);
-// };
+// // const getEmployers = () => {
+// //   return fetch(`${BASE_URL}teams/media/employees/2/`, {
+// //     headers,
+// //     method: 'GET',
+// //     }).then(getResponseData);
+// // };
 
 // const getEmployers = () => {
 //   return fetch(`${BASE_URL}teams/media/skills/`, {
@@ -43,7 +43,7 @@ function App() {
 //     method: 'POST',
 //     body: JSON.stringify({
 //       skillDomen: 'hard',
-//       employeeIds: '2'
+//       // employeeIds: '2'
 //     })
 //   }).then(getResponseData);
 // };

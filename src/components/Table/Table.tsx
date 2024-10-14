@@ -25,8 +25,6 @@ export const Table = () => {
     dispatch(setTooltipIndex(null));
   };
 
-  // const [selectedMemberId, setSelectedMemberId] = useState<number | null>(null);
-
   const handleRowClick = (id: number) => {
     dispatch(fetchAmountEmployeesId(id));
     dispatch(setSelectedMemberId(id));

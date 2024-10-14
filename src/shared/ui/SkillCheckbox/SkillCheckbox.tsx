@@ -16,6 +16,7 @@ export default function SkillCheckbox() {
       setHard(false);
     }
   };
+  
   return (
     <div className='skill-checkbox'>
       <div className='skill-checkbox__item'>
