@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 
 export const Matrix = () => {
   const { employees, tooltip } = useAppSelector(selectEmployees);
+  console.log('employees: ', employees);
   const dispatch = useAppDispatch();
 
   const handleMouseEnter = (index: number) => {
@@ -53,8 +54,6 @@ export const Matrix = () => {
             }) ? (
               <p
                 className='matrix__cell_text'
-                onMouseEnter={() => handleMouseEnter(0)}
-                onMouseLeave={handleMouseLeave}
               >
                 {MATRIX_DATA.mentor}
               </p>
@@ -98,8 +97,6 @@ export const Matrix = () => {
             }) ? (
               <p
                 className='matrix__cell_text'
-                onMouseEnter={() => handleMouseEnter(1)}
-                onMouseLeave={handleMouseLeave}
               >
                 {MATRIX_DATA.iniciative}
               </p>
@@ -137,8 +134,6 @@ export const Matrix = () => {
             }) ? (
               <p
                 className='matrix__cell_text'
-                onMouseEnter={() => handleMouseEnter(2)}
-                onMouseLeave={handleMouseLeave}
               >
                 {MATRIX_DATA.careare}
               </p>
@@ -188,8 +183,6 @@ export const Matrix = () => {
             }) ? (
               <p
                 className='matrix__cell_text'
-                onMouseEnter={() => handleMouseEnter(3)}
-                onMouseLeave={handleMouseLeave}
               >
                 {MATRIX_DATA.task}
               </p>
@@ -237,8 +230,6 @@ export const Matrix = () => {
             }) ? (
               <p
                 className='matrix__cell_text'
-                onMouseEnter={() => handleMouseEnter(4)}
-                onMouseLeave={handleMouseLeave}
               >
                 {MATRIX_DATA.education}
               </p>
@@ -286,8 +277,6 @@ export const Matrix = () => {
             }) ? (
               <p
                 className='matrix__cell_text'
-                onMouseEnter={() => handleMouseEnter(5)}
-                onMouseLeave={handleMouseLeave}
               >
                 {MATRIX_DATA.project}
               </p>
@@ -331,8 +320,6 @@ export const Matrix = () => {
             }) ? (
               <p
                 className='matrix__cell_text'
-                onMouseEnter={() => handleMouseEnter(6)}
-                onMouseLeave={handleMouseLeave}
               >
                 {MATRIX_DATA.editTask}
               </p>
@@ -379,8 +366,6 @@ export const Matrix = () => {
             }) ? (
               <p
                 className='matrix__cell_text'
-                onMouseEnter={() => handleMouseEnter(7)}
-                onMouseLeave={handleMouseLeave}
               >
                 {MATRIX_DATA.learning}
               </p>
@@ -419,8 +404,6 @@ export const Matrix = () => {
             }) ? (
               <p
                 className='matrix__cell_text'
-                onMouseEnter={() => handleMouseEnter(8)}
-                onMouseLeave={handleMouseLeave}
               >
                 {MATRIX_DATA.engagement}
               </p>

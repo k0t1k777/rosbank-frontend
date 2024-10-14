@@ -11,13 +11,13 @@ import {
 } from 'src/store/features/slice/membersSlice';
 
 export const Table = () => {
-  const { employees, tooltipIndex, position, grade, employer } =
+  const { employees, tooltipIndex, position, grade, worker } =
     useAppSelector(selectEmployees);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchGetEmployees({ position, grade, employer }));
-  }, [dispatch, position, grade, employer]);
+    dispatch(fetchGetEmployees({ position, grade, worker }));
+  }, [dispatch, position, grade, worker]);
 
   const handleMouseEnter = (index: number) => {
     dispatch(setTooltipIndex(index));

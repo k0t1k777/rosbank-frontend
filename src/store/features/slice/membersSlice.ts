@@ -12,7 +12,7 @@ export interface StateType {
   tooltipIndex: number | null;
   position: string;
   grade: string;
-  employer: string;
+  worker: string;
   tooltip: number | null;
 }
 
@@ -29,7 +29,7 @@ const initialState: StateType = {
   tooltipIndex: null,
   position: '',
   grade: '',
-  employer: '',
+  worker: '',
   tooltip: null
 };
 
@@ -38,13 +38,13 @@ export const fetchGetEmployees = createAsyncThunk(
   async ({
     position,
     grade,
-    employer,
+    worker,
   }: {
     position: string;
     grade: string;
-    employer: string;
+    worker: string;
   }) => {
-    const response = await getEmployees(position, grade, employer);
+    const response = await getEmployees(position, grade, worker);
     return response;
   }
 );
@@ -73,8 +73,8 @@ const employeesSlice = createSlice({
     setGrade(state, action) {
       state.grade = action.payload;
     },
-    setEmployer(state, action) {
-      state.employer = action.payload;
+    setWorker(state, action) {
+      state.worker = action.payload;
     },
     setTooltip(state, action) {
       state.tooltip = action.payload;
@@ -114,7 +114,7 @@ export const {
   setTooltipIndex,
   setPosition,
   setGrade,
-  setEmployer,
+  setWorker,
   setTooltip,
 } = employeesSlice.actions;
 export const employeesReducer = employeesSlice.reducer;

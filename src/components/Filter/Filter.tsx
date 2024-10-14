@@ -8,28 +8,28 @@ import Select from 'src/shared/ui/Select/Select';
 import {
   fetchGetEmployees,
   selectEmployees,
-  setEmployer,
+  setWorker,
   setGrade,
   setPosition,
 } from 'src/store/features/slice/membersSlice';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 
 export const Filter = () => {
-  const { position, grade, employer } = useAppSelector(selectEmployees);
+  const { position, grade, worker } = useAppSelector(selectEmployees);
   const dispatch = useAppDispatch();
 
   const handleSelectChange = async (
     value: string,
-    type: 'position' | 'grade' | 'employer'
+    type: 'position' | 'grade' | 'worker'
   ) => {
     if (type === 'position') {
       dispatch(setPosition(value));
     } else if (type === 'grade') {
       dispatch(setGrade(value));
-    } else if (type === 'employer') {
-      dispatch(setEmployer(value));
+    } else if (type === 'worker') {
+      dispatch(setWorker(value));
     }
-    await dispatch(fetchGetEmployees({ position, grade, employer }));
+    await dispatch(fetchGetEmployees({ position, grade, worker }));
   };
 
   return (
@@ -53,9 +53,9 @@ export const Filter = () => {
       <li className='filter__item' style={{ width: '240px' }}>
         <Select
           label='Сотрудник'
-          value={employer}
+          value={worker}
           options={EMPLOYERS_DATA}
-          setValue={(value) => handleSelectChange(value, 'employer')}
+          setValue={(value) => handleSelectChange(value, 'worker')}
         />
       </li>
       <li className='filter__item' style={{ width: '60px' }}>

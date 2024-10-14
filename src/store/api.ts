@@ -31,7 +31,7 @@ const buildQueryString = (params: Record<string, string>) => {
 export const getEmployees = async (
   position: string,
   grade: string,
-  employer: string
+  worker: string
 ) => {
   const options: RequestOptionsType = {
     method: 'GET',
@@ -41,7 +41,7 @@ export const getEmployees = async (
     `teams/media/employees/?${buildQueryString({
       position,
       grade,
-      employer,
+      worker,
     })}`,
     options
   );
