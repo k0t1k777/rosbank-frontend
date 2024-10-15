@@ -21,11 +21,9 @@ export const fetchGetSkills = createAsyncThunk(
   'fetch/skills',
   async (
     skillDomains: string
-    // { skillDomains, skillId }: { skillDomains: string; skillId: string }
   ) => {
     const response = await getSkills(
       skillDomains
-      // , skillId
     );
     return response;
   }

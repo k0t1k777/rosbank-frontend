@@ -2,7 +2,6 @@ import 'src/components/App/App.scss';
 import Sidebar from 'src/components/Sidebar/Sidebar';
 import { Main } from 'src/components/Main/Main';
 import { Header } from 'src/components/Header/Header';
-// import { useEffect, useState } from 'react';
 
 function App() {
 //   const [employees, setEmployees] = useState([])

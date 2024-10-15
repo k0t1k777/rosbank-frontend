@@ -30,9 +30,7 @@ ChartJS.register(
 
 export const Web = () => {
   const { skills, highlightedSkill } = useAppSelector(selectSkills);
-  console.log('highlightedSkill: ', highlightedSkill);
   const dispatch = useAppDispatch();
-  console.log('skills: ', skills);
 
   const [isCompetencies, setIsCompetencies] = useState<boolean>(true);
 
@@ -40,7 +38,6 @@ export const Web = () => {
   const plannedResults = skills.map((skill) => skill.plannedResult);
   const actualResults = skills.map((skill) => skill.actualResult);
   const skillIds = skills.map((skill) => String(skill.skillId));
-  console.log('skillIds: ', skillIds);
 
   const handleToggle = () => {
     setIsCompetencies((prev) => !prev);
@@ -51,7 +48,7 @@ export const Web = () => {
     datasets: [
       {
         label: 'Факт',
-        data: plannedResults,
+        data: actualResults,
         borderColor: '#E10D34',
         pointBackgroundColor: (context) => {
           const index = context.dataIndex;
@@ -64,7 +61,7 @@ export const Web = () => {
       },
       {
         label: 'План',
-        data: actualResults,
+        data: plannedResults,
         borderColor: '#EFEFEF',
         backgroundColor: '#EFEFEF',
         borderWidth: 1,
@@ -104,7 +101,7 @@ export const Web = () => {
         enabled: false,
       },
     },
-    onClick (_: ChartEvent, elements: ActiveElement[]) {
+    onClick(_: ChartEvent, elements: ActiveElement[]) {
       if (elements.length) {
         const index = elements[0].index;
         const selectedSkillId = String(skillIds[index]);
