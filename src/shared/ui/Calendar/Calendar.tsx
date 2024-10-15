@@ -48,7 +48,6 @@ export const Calendar = ({ setIsOpen }: CalendarProps) => {
 
   const handleSave = (event: React.MouseEvent<HTMLParagraphElement>) => {
     event.stopPropagation();
-    console.log('Сохранено:', selectedYear, selectedMonths);
     setIsOpen(false);
   };
 

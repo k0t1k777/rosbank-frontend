@@ -50,7 +50,7 @@ export default function ChartSkills() {
           display: false,
         },
         min: 0,
-        max: 3.2,
+        max: 4,
       },
       y: {
         title: {

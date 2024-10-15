@@ -53,7 +53,6 @@ export const Table = () => {
                   } else if (item.skill >= 67 && item.skill <= 100) {
                     backgroundColorClass = 'table__bg-green';
                   }
-
                   return (
                     <tr
                       key={index}

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import 'src/components/Web/Web.scss';
 import { Icon } from 'src/shared/ui/Icon/Icon';
 import { Radar } from 'react-chartjs-2';
@@ -17,7 +16,7 @@ import { ChartEvent } from 'node_modules/chart.js/dist/core/core.plugins';
 import { ActiveElement } from 'node_modules/chart.js/dist/plugins/plugin.tooltip';
 import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
-import { selectSkills, setHighlightedSkill } from 'src/store/features/slice/skillSlice';
+import { selectSkills, setHighlightedSkill, setIsCompetencies } from 'src/store/features/slice/skillSlice';
 
 ChartJS.register(
   RadialLinearScale,
@@ -29,10 +28,8 @@ ChartJS.register(
 );
 
 export const Web = () => {
-  const { skills, highlightedSkill } = useAppSelector(selectSkills);
+  const { skills, highlightedSkill, isCompetencies } = useAppSelector(selectSkills);
   const dispatch = useAppDispatch();
-
-  const [isCompetencies, setIsCompetencies] = useState<boolean>(true);
 
   const labels = skills.map((skill) => skill.skillName);
   const plannedResults = skills.map((skill) => skill.plannedResult);
@@ -40,7 +37,7 @@ export const Web = () => {
   const skillIds = skills.map((skill) => String(skill.skillId));
 
   const handleToggle = () => {
-    setIsCompetencies((prev) => !prev);
+    dispatch(setIsCompetencies((prev: boolean) => !prev));
   };
 
   const data: ChartData<'radar'> = {

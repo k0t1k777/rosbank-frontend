@@ -8,6 +8,7 @@ export interface StateType {
   error: string | null | unknown;
   skills: Skills[];
   highlightedSkill: string | null;
+  isCompetencies: boolean;
 }
 
 const initialState: StateType = {
@@ -15,6 +16,7 @@ const initialState: StateType = {
   error: null,
   skills: [],
   highlightedSkill: '',
+  isCompetencies: true,
 };
 
 export const fetchGetSkills = createAsyncThunk(
@@ -36,6 +38,9 @@ const skillsSlice = createSlice({
     setHighlightedSkill(state, action) {
       state.highlightedSkill = action.payload;
     },
+    setIsCompetencies(state, action) {
+      state.isCompetencies = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -54,6 +59,6 @@ const skillsSlice = createSlice({
   },
 });
 
-export const { setHighlightedSkill } = skillsSlice.actions;
+export const { setHighlightedSkill, setIsCompetencies } = skillsSlice.actions;
 export const skillsReducer = skillsSlice.reducer;
 export const selectSkills = (state: RootStore) => state.skills;
