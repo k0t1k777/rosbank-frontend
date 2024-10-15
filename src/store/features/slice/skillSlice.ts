@@ -8,7 +8,10 @@ export interface StateType {
   error: string | null | unknown;
   skills: Skills[];
   highlightedSkill: string | null;
-  isCompetencies: boolean;
+  speciality: string;
+  isOpen: boolean;
+  soft: boolean;
+  hard: boolean;
 }
 
 const initialState: StateType = {
@@ -16,17 +19,16 @@ const initialState: StateType = {
   error: null,
   skills: [],
   highlightedSkill: '',
-  isCompetencies: true,
+  speciality: 'Сотрудники',
+  isOpen: false,
+  soft: false,
+  hard: true,
 };
 
 export const fetchGetSkills = createAsyncThunk(
   'fetch/skills',
-  async (
-    skillDomains: string
-  ) => {
-    const response = await getSkills(
-      skillDomains
-    );
+  async (skillDomains: string) => {
+    const response = await getSkills(skillDomains);
     return response;
   }
 );
@@ -38,8 +40,17 @@ const skillsSlice = createSlice({
     setHighlightedSkill(state, action) {
       state.highlightedSkill = action.payload;
     },
-    setIsCompetencies(state, action) {
-      state.isCompetencies = action.payload;
+    setSpeciality(state, action) {
+      state.speciality = action.payload;
+    },
+    setIsOpen(state, action) {
+      state.isOpen = action.payload;
+    },
+    setHard(state, action) {
+      state.hard = action.payload;
+    },
+    setSoft(state, action) {
+      state.soft = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -59,6 +70,12 @@ const skillsSlice = createSlice({
   },
 });
 
-export const { setHighlightedSkill, setIsCompetencies } = skillsSlice.actions;
+export const {
+  setHighlightedSkill,
+  setSpeciality,
+  setIsOpen,
+  setHard,
+  setSoft,
+} = skillsSlice.actions;
 export const skillsReducer = skillsSlice.reducer;
 export const selectSkills = (state: RootStore) => state.skills;

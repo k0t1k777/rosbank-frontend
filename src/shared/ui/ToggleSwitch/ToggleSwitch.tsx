@@ -2,7 +2,7 @@ import { ToggleSwitchProps } from 'src/services/types';
 import 'src/shared/ui/ToggleSwitch/ToggleSwitch.scss';
 
 export const ToggleSwitch = (props: ToggleSwitchProps) => {
-  const { isChecked, onToggle, labelLeft, labelRight, className } = props;
+  const { isChecked = false, onToggle, labelLeft, labelRight, className } = props;
 
   return (
     <div className={`toggle-switch ${className ? className : ''}`}>

@@ -1,5 +1,4 @@
 const BASE_URL = 'https://rosb-hakaton.ddns.net/api/v1/';
-// const BASE_URL = 'http://127.0.0.1:8000/api/v1/';
 
 type RequestOptionsType = RequestInit & {
   headers: Record<string, string>;
@@ -70,7 +69,6 @@ export const getSkills = async (skillDomains: string) => {
     headers: headers,
     body: JSON.stringify({
       skillDomen: skillDomains,
-      //  employeeIds: '3'
     }),
   };
   return await request('teams/media/skills/', options);

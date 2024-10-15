@@ -1,5 +1,25 @@
 import { EmployeeType } from './types';
 
+export const inintialMember: EmployeeType = {
+  id: 0,
+  position: '',
+  worker: '',
+  grade: '',
+  key_people: false,
+  bus_factor: false,
+  education: [
+    {
+      id: 0,
+      training_name: '',
+    },
+  ],
+  assesmentOfPotention: {
+    assesmentLevel: 0,
+    involvmentLevel: 0,
+  },
+  skill: 0,
+};
+
 export const NAV_MENU = [
   { icon: 'dashboard', title: 'Дашборд' },
   { icon: 'calendar', title: 'Календарь' },
@@ -10,7 +30,6 @@ export const NAV_MENU = [
 
 export const EMPLOYERS_DATA = [
   'Адам Львов',
-  'Вера Комарова',
   'Денис Волков',
   'Ксения Озерова',
   'Максим Журавлев',
@@ -51,22 +70,20 @@ export const MATRIX_DATA = {
   engagement: 'Повышение вовлеченности',
 };
 
-export const inintialMember: EmployeeType = {
-  id: 0,
-  position: '',
-  worker: '',
-  grade: '',
-  key_people: false,
-  bus_factor: false,
-  education: [
-    {
-      id: 0,
-      training_name: '',
-    },
-  ],
-  assesmentOfPotention: {
-    assesmentLevel: 0,
-    involvmentLevel: 0,
-  },
-  skill: 0,
-};
+export const years = [2022, 2023, 2024];
+
+export const months = [
+  'янв',
+  'фев',
+  'мар',
+  'апр',
+  'май',
+  'июн',
+  'июл',
+  'авг',
+  'сен',
+  'окт',
+  'ноя',
+  'дек',
+];
+

@@ -27,7 +27,6 @@ export const Header = () => {
         .replace('г.', 'г.');
       return formattedDate;
     };
-
     dispatch(setDate(formatCurrentDate()));
   }, [dispatch]);
 
@@ -50,7 +49,6 @@ export const Header = () => {
           <p className='header__empoyes'>Bus-factor</p>
         </div>
       </div>
-
       <div className='header__profile'>
         <div className='header__calendar_container'>
           <Icon id='calendar-black' />

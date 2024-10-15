@@ -1,6 +1,5 @@
 import 'src/components/Metric/Metric.scss';
 import Subtitile from 'src/shared/ui/Subtitle/Subtitle';
-import { useState } from 'react';
 import Select from 'src/shared/ui/Select/Select';
 import { METRIC_DATA } from 'src/services/const';
 import { Calendar } from 'src/shared/ui/Calendar/Calendar';
@@ -19,6 +18,8 @@ import ChartEmployers from 'src/shared/ui/Charts/ChartEmployers';
 import ChartIpr from 'src/shared/ui/Charts/ChartIpr';
 import ChartEngagements from 'src/shared/ui/Charts/ChartEngagements';
 import ChartSkills from 'src/shared/ui/Charts/ChartSkills';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
+import { selectSkills, setIsOpen, setSpeciality } from 'src/store/features/slice/skillSlice';
 const cx = cn.bind({});
 
 ChartJS.register(
@@ -31,11 +32,11 @@ ChartJS.register(
 );
 
 export const Metric = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [speciality, setSpeciality] = useState('Сотрудники');
+  const { speciality, isOpen } = useAppSelector(selectSkills);
+  const dispatch = useAppDispatch();
 
   const handleSelectChange = (value: string) => {
-    setSpeciality(value);
+    dispatch(setSpeciality(value));
   };
 
   return (
@@ -45,11 +46,11 @@ export const Metric = () => {
         <div className='metric__container_wrapper'>
           <div
             className={cx('metric__picker', { 'metric__picker--open': isOpen })}
-            onClick={() => setIsOpen(true)}
+            onClick={() => dispatch(setIsOpen(true))}
           >
             <p className='metric__picker_title'>Выбери период</p>
             <Icon id='arrow' />
-            {isOpen && <Calendar setIsOpen={setIsOpen} />}
+            {isOpen && <Calendar />}
           </div>
           <div className='metric__celect_container'>
             <Select

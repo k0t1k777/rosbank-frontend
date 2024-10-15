@@ -1,18 +1,11 @@
 # Проект "Rosbank"
 
-Задача: создание MVP Системы управления организационной структурой. Целью проведения Конкурса является:
-- Поддержка и развитие IT-сообщества,
-- Разработка сервиса Соорганизатора
+[**Ссылка на сайт**](https://hackathon-rosbank.github.io/rosbank-frontend/)
 
-<!-- [**Ссылка на сайт**](https://k0t1k777.github.io/gazprom/) -->
-
-[**Макет Фигма**](https://www.figma.com/design/ccc8iapZ8bQ32EQyYqytgW/%D0%93%D0%B0%D0%B7%D0%BF%D1%80%D0%BE%D0%BC-ID-%D0%A5%D0%B0%D0%BA%D0%B0%D1%82%D0%BE%D0%BD%2B-%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0-1?node-id=42-2&t=M2QMAj7GoCSYpxNe-0)
+[**Макет Фигма**](https://www.figma.com/design/2WsogizTYlKMvT7U9Ijbjk/%D0%A0%D0%BE%D1%81%D0%B1%D0%B0%D0%BD%D0%BA_%D0%B4%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4-%D0%B4%D0%BB%D1%8F-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%BE%D0%B2?node-id=0-1&node-type=canvas&t=vJZS5d5IILDJN8uM-0)
 
 [**Ссылка на билд**]()
 https://github.com/hackathon-Rosbank/rosbank-frontend
-
-[**Ссылка на скриншоты (Яндекс Диск)**]()
-<!-- https://disk.yandex.ru/d/vOj1T5xckxclFQ -->
 
 ## О команде
 
@@ -56,7 +49,6 @@ npm run dev
 
 В приложении использовались следующие библиотеки:
 
-- ant-design/icons
 - simplebar-react
 - framer-motion
 - classnames
@@ -80,12 +72,4 @@ npm run dev
 
 ## Скриншоты
 
-<!-- ![alt text](./src/assets/screenshots/pic1.JPG)
-![alt text](./src/assets/screenshots/pic2.JPG)
-![alt text](./src/assets/screenshots/pic3.JPG)
-![alt text](./src/assets/screenshots/pic4.JPG)
-![alt text](./src/assets/screenshots/pic5.JPG)
-![alt text](./src/assets/screenshots/pic6.JPG)
-![alt text](./src/assets/screenshots/pic7.JPG)
-![alt text](./src/assets/screenshots/pic8.JPG)
-![alt text](./src/assets/screenshots/pic9.JPG) -->
+[alt text](./src/shared/assets/screenshots.JPG)

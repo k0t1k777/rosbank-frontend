@@ -1,29 +1,14 @@
 import { useState } from 'react';
+import { months, years } from 'src/services/const';
 import 'src/shared/ui/Calendar/Calendar.scss';
+import { setIsOpen } from 'src/store/features/slice/skillSlice';
+import { useAppDispatch } from 'src/store/hooks';
 
-interface CalendarProps {
-  setIsOpen: (type: boolean) => void;
-}
-
-export const Calendar = ({ setIsOpen }: CalendarProps) => {
+export const Calendar = () => {
+  const dispatch = useAppDispatch();
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
   const [firstSelectedMonth, setFirstSelectedMonth] = useState<string | null>(null);
-  const years = [2022, 2023, 2024];
-  const months = [
-    'янв',
-    'фев',
-    'мар',
-    'апр',
-    'май',
-    'июн',
-    'июл',
-    'авг',
-    'сен',
-    'окт',
-    'ноя',
-    'дек',
-  ];
 
   const handleYearSelect = (year: number) => {
     setSelectedYear(year);
@@ -48,7 +33,7 @@ export const Calendar = ({ setIsOpen }: CalendarProps) => {
 
   const handleSave = (event: React.MouseEvent<HTMLParagraphElement>) => {
     event.stopPropagation();
-    setIsOpen(false);
+    dispatch(setIsOpen(false));
   };
 
   return (

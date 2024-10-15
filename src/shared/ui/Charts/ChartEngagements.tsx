@@ -69,6 +69,7 @@ export default function ChartEngagements() {
           <div className='charts__percent_container'>
           <div className='charts__percent_line'></div>
             <p className='charts__percent_number'>0</p>
+            <p className='charts__percent_number'>50</p>
             <p className='charts__percent_number'>100</p>
           </div>
           <p className='charts__percent__text'>Выполнение ИПР</p>
