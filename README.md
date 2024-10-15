@@ -71,4 +71,4 @@ npm run dev
 
 ## Скриншоты
 
-[alt text](./src/shared/assets/screenshots.JPG)
+![alt text](./src/shared/assets/screenshots.JPG)
