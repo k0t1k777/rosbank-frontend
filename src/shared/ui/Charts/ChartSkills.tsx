@@ -14,11 +14,11 @@ export default function ChartSkills() {
     labels: skillNames,
     datasets: [
       {
-        label: 'Actual Result',
+        label: 'Hard / Soft',
         data: actualResults,
         backgroundColor: 'white',
         borderColor: 'rgba(66, 67, 75, .5)',
-        borderWidth: 5,
+        borderWidth: 8,
         border: 1,
         fill: false,
         pointRadius: 0,
@@ -56,7 +56,7 @@ export default function ChartSkills() {
       y: {
         title: {
           display: true,
-          text: 'Skills',
+          text: 'Навыки',
         },
       },
     },

@@ -11,6 +11,7 @@ import {
   setTooltipIndex,
   setSelectedMemberId,
 } from 'src/store/features/slice/membersSlice';
+import { roundSkill } from 'src/services/helpers';
 
 export const Table = () => {
   const { employees, selectedMemberId, tooltipIndex, position, grade, worker } =
@@ -98,7 +99,7 @@ export const Table = () => {
                         <div
                           className={`table__td_type_border ${backgroundColorClass}`}
                         >
-                          <p className='table__text'>{item.skill}</p>
+                          <p className='table__text'>{roundSkill(item.skill)}</p>
                         </div>
                       </td>
                     </tr>
@@ -153,7 +154,7 @@ export const Table = () => {
                       <div
                         className={`table__td_type_border ${backgroundColorClass}`}
                       >
-                        <p className='table__text'>{item.skill}</p>
+                        <p className='table__text'>{roundSkill(item.skill)}</p>
                       </div>
                     </td>
                   </tr>
