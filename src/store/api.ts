@@ -61,7 +61,7 @@ export const getEmployeesId = async (id: number) => {
     method: 'GET',
     headers: headers,
   };
-  return await request(`/teams/media/employees/${id}/`, options);
+  return await request(`teams/media/employees/${id}/`, options);
 };
 
 export const getSkills = async (skillDomains: string) => {
@@ -72,7 +72,7 @@ export const getSkills = async (skillDomains: string) => {
         skillDomen: skillDomains,
       }),
     };
-    return await request('/teams/media/skills/', options);
+    return await request('teams/media/skills/', options);
   };
 
 // export const getSkills = async () => {

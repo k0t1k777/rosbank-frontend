@@ -1,10 +1,13 @@
 import 'src/shared/ui/SkillCheckbox/SkillCheckbox.scss';
 import Checkbox from '../Checkbox/Checkbox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAppDispatch } from 'src/store/hooks';
+import { fetchGetSkills } from 'src/store/features/slice/skillSlice';
 
 export default function SkillCheckbox() {
   const [hard, setHard] = useState(true);
   const [soft, setSoft] = useState(false);
+  const dispatch = useAppDispatch();
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = event.target;
@@ -16,6 +19,11 @@ export default function SkillCheckbox() {
       setHard(false);
     }
   };
+
+  useEffect(() => {
+    const skillDomain = hard ? 'hard' : 'soft';
+    dispatch(fetchGetSkills(skillDomain));
+  }, [hard, soft, dispatch]); 
   
   return (
     <div className='skill-checkbox'>
