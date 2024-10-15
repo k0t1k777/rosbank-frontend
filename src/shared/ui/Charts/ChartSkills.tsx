@@ -22,7 +22,7 @@ export default function ChartSkills() {
         border: 1,
         fill: false,
         pointRadius: 0,
-        tension: 0.4,
+        tension: 0,
       },
     ],
   };

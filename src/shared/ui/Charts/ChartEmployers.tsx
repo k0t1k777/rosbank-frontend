@@ -1,14 +1,6 @@
 import { Line } from 'react-chartjs-2';
-// import { selectEmployees } from 'src/store/features/slice/membersSlice';
-// import { useAppSelector } from 'src/store/hooks';
 
-export default function ChartEmployers() {
-  // const { amount } = useAppSelector(selectEmployees);
-
-  // const numberOfEmployee = parseInt(amount.numberOfEmployee, 10);
-  // const numberOfBusFactor = parseInt(amount.numberOfBusFactor, 10);
-  // const numberOfKeyPeople = parseInt(amount.numberOfKeyPeople, 10);
-  
+export default function ChartEmployers() { 
   const employeeData = {
     labels: ['0', '2', '4', '6', '8'],
     datasets: [

@@ -3,17 +3,17 @@ import 'src/shared/ui/Charts/Charts.scss'
 
 export default function ChartIpr() {
   const iprData = {
-    labels: ['0', '2', '4', '6', '8'],
+    labels: ['0', '10', '20', '30'],
     datasets: [
       {
         label: 'IPR',
-        data: [7, 7, 7, 7, 7],
+        data: [20, 20, 22, 18],
         backgroundColor: 'white',
-        borderColor: 'rgba(66, 67, 75, .5)',
+        borderColor: '#FCAB20',
         borderWidth: 5,
         fill: false,
         pointRadius: 0,
-        tension: 0.4,
+        tension: 0.2,
       },
     ],
   };
@@ -65,11 +65,12 @@ export default function ChartIpr() {
         />
         <div className='charts__percent'>
           <div className='charts__percent_container'>
+            <div className='charts__percent_line'></div>
             <p className='charts__percent_number'>0</p>
             <p className='charts__percent_number'>50</p>
             <p className='charts__percent_number'>100</p>
           </div>
-          <p className='charts__percent__text'>Выполнение ИПР на сегодня</p>
+          <p className='charts__percent__text'>Выполнение ИПР</p>
         </div>
       </>
     );

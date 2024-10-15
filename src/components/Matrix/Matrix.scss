@@ -39,7 +39,7 @@
       overflow: hidden;
     }
     &_item {
-      @include use-font;
+      @include use-font(12px, 24px, 500);
       @include mp-null;
       @include cut-word;
     }

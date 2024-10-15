@@ -12,6 +12,7 @@
     background: $light-grey;
     padding: 6px 8px;
     border-radius: 12px;
+    position: relative;
   }
 
   &_number {
@@ -22,5 +23,15 @@
   &__text {
     @include mp-null;
     @include use-font(10px, 16px, 400);
+  }
+
+  &_line {
+    background: #FCAB20;
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    border-radius: 6px;
+    width: 116px;
+    height: 25px;
   }
 }
