@@ -16,8 +16,9 @@ import {
 import { ChartEvent } from 'node_modules/chart.js/dist/core/core.plugins';
 import { ActiveElement } from 'node_modules/chart.js/dist/plugins/plugin.tooltip';
 import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
-import { useAppDispatch, useAppSelector } from 'src/store/hooks';
-import { fetchGetSkills, selectSkills } from 'src/store/features/slice/skillSlice';
+import { Skills } from 'src/services/types';
+// import { useAppDispatch, useAppSelector } from 'src/store/hooks';
+// import { fetchGetSkills, selectSkills } from 'src/store/features/slice/skillSlice';
 
 ChartJS.register(
   RadialLinearScale,
@@ -29,14 +30,57 @@ ChartJS.register(
 );
 
 export const Web = () => {
-  const { skills } = useAppSelector(selectSkills);
+  // const { skills } = useAppSelector(selectSkills);
+  // console.log('skills: ', skills);
+// const dispatch = useAppDispatch();
+
+
+// useEffect(() => {
+//   dispatch(fetchGetSkills())
+// }, [dispatch])
+
+  const [skills, setEmployees] = useState<Skills[]>([])
   console.log('skills: ', skills);
-const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    getEmployers()
+    .then((data) => {
+      setEmployees(data.data)
+    })
+  }, [])
+
+const BASE_URL = 'https://rosb-hakaton.ddns.net/api/v1/';
 
 
-useEffect(() => {
-  dispatch(fetchGetSkills())
-}, [dispatch])
+const getResponseData = (res: Response) => {
+  if (!res.ok) {
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
+  return res.json();
+};
+
+const headers = {
+  Accept: 'application/json',
+  'Content-Type': 'application/json',
+};
+
+// const getEmployers = () => {
+//   return fetch(`${BASE_URL}teams/media/employees/2/`, {
+//     headers,
+//     method: 'GET',
+//     }).then(getResponseData);
+// };
+
+const getEmployers = () => {
+  return fetch(`${BASE_URL}teams/media/skills/`, {
+    headers,
+    method: 'POST',
+    body: JSON.stringify({
+      skillDomen: 'hard',
+      // employeeIds: '2'
+    })
+  }).then(getResponseData);
+};
  
   const [isCompetencies, setIsCompetencies] = useState<boolean>(true);
   const [highlightedSkill, setHighlightedSkill] = useState<string | null>(null);
