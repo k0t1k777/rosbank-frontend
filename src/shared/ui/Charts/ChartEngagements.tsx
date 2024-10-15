@@ -3,11 +3,11 @@ import 'src/shared/ui/Charts/Charts.scss';
 
 export default function ChartEngagements() {
   const engagementData = {
-    labels: ['0', '2', '4', '6', '8'],
+    labels: ['0', '2', '4', '6'],
     datasets: [
       {
         label: 'Вовлеченность',
-        data: [3, 2, 3, 3, 4],
+        data: [3, 2, 3, 3],
         backgroundColor: 'white',
         borderColor: 'rgba(66, 67, 75, .5)',
         borderWidth: 5,
@@ -25,7 +25,7 @@ export default function ChartEngagements() {
         top: 0,
         left: 30,
         right: 0,
-        bottom: 30,
+        bottom: 90,
       },
     },
     responsive: true,
@@ -43,7 +43,7 @@ export default function ChartEngagements() {
           text: 'Языки программирования',
         },
         min: 0,
-        max: 10,
+        max: 6,
       },
       y: {
         title: {
@@ -51,7 +51,7 @@ export default function ChartEngagements() {
           text: 'Вовлеченность',
         },
         min: 0,
-        max: 8,
+        max: 6,
       },
     },
   };
@@ -62,16 +62,16 @@ export default function ChartEngagements() {
         <Line
           data={engagementData}
           options={options}
-          width={492}
+          width={392}
           height={292}
         />
         <div className='charts__percent'>
           <div className='charts__percent_container'>
+          <div className='charts__percent_line'></div>
             <p className='charts__percent_number'>0</p>
-            <p className='charts__percent_number'>50</p>
             <p className='charts__percent_number'>100</p>
           </div>
-          <p className='charts__percent__text'>Выполнение ИПР на сегодня</p>
+          <p className='charts__percent__text'>Выполнение ИПР</p>
         </div>
       </>
     );

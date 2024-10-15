@@ -5,7 +5,6 @@ import { useAppSelector } from 'src/store/hooks';
 
 export default function ChartSkills() {
   const { skills } = useAppSelector(selectSkills);
-  console.log('skills: ', skills);
 
   const skillNames = skills.map(skill => skill.skillName);
   const actualResults = skills.map(skill => skill.actualResult);
@@ -51,12 +50,11 @@ export default function ChartSkills() {
           display: false,
         },
         min: 0,
-        max: Math.max(...actualResults) + 1,
+        max: 3.2,
       },
       y: {
         title: {
-          display: true,
-          text: 'Навыки',
+          display: false,
         },
       },
     },
