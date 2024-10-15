@@ -12,7 +12,7 @@ import {
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 
 export const Matrix = () => {
-  const { employees, tooltip } = useAppSelector(selectEmployees);
+  const { employees, tooltip,  } = useAppSelector(selectEmployees);
   const dispatch = useAppDispatch();
 
   const handleMouseEnter = (index: number) => {
@@ -46,6 +46,8 @@ export const Matrix = () => {
                 return null;
               })}
             </ul>
+
+            
             {employees.every((employee) => {
               const { assesmentLevel, involvmentLevel } =
                 employee.assesmentOfPotention;
@@ -64,6 +66,8 @@ export const Matrix = () => {
                 <Icon id='help' className='svg__help' />
               </div>
             )}
+
+
             {tooltip === 0 && <InfoTooltipMatrix text={MATRIX_DATA.mentor} />}
           </div>
           <div className='matrix__cell'>
@@ -204,7 +208,7 @@ export const Matrix = () => {
                   employee.assesmentOfPotention;
                 if (
                   assesmentLevel > 3.3 &&
-                  involvmentLevel < 6.6 &&
+                  assesmentLevel < 6.6 &&
                   involvmentLevel > 3.3 &&
                   involvmentLevel < 6.6
                 ) {
@@ -222,7 +226,7 @@ export const Matrix = () => {
                 employee.assesmentOfPotention;
               return !(
                 assesmentLevel > 3.3 &&
-                involvmentLevel < 6.6 &&
+                assesmentLevel < 6.6 &&
                 involvmentLevel > 3.3 &&
                 involvmentLevel < 6.6
               );
@@ -342,7 +346,7 @@ export const Matrix = () => {
                   employee.assesmentOfPotention;
                 if (
                   assesmentLevel > 3.3 &&
-                  assesmentLevel > 6.6 &&
+                  assesmentLevel < 6.6 &&
                   involvmentLevel < 3.3
                 ) {
                   return (
@@ -359,7 +363,7 @@ export const Matrix = () => {
                 employee.assesmentOfPotention;
               return !(
                 assesmentLevel > 3.3 &&
-                assesmentLevel > 6.6 &&
+                assesmentLevel < 6.6 &&
                 involvmentLevel < 3.3
               );
             }) ? (
