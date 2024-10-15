@@ -1,5 +1,6 @@
 import 'src/components/Matrix/Matrix.scss';
 import { MATRIX_DATA } from 'src/services/const';
+import { formatEmployeeName } from 'src/services/helpers';
 import { Icon } from 'src/shared/ui/Icon/Icon';
 import InfoTooltipMatrix from 'src/shared/ui/InfoTooltipMatrixHigh/InfoTooltipMatrixHigh';
 import InfoTooltipMatrixLow from 'src/shared/ui/InfoTooltipMatrixLow/InfoTooltipMatrixLow';
@@ -12,7 +13,7 @@ import {
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 
 export const Matrix = () => {
-  const { employees, tooltip,  } = useAppSelector(selectEmployees);
+  const { employees, tooltip } = useAppSelector(selectEmployees);
   const dispatch = useAppDispatch();
 
   const handleMouseEnter = (index: number) => {
@@ -39,25 +40,19 @@ export const Matrix = () => {
                 if (assesmentLevel < 3.3 && involvmentLevel > 6.6) {
                   return (
                     <li key={employee.id} className='matrix__cell_item'>
-                      {employee.worker}
+                       {formatEmployeeName(employee.worker)}
                     </li>
                   );
                 }
                 return null;
               })}
             </ul>
-
-            
             {employees.every((employee) => {
               const { assesmentLevel, involvmentLevel } =
                 employee.assesmentOfPotention;
               return !(assesmentLevel < 3.3 && involvmentLevel > 6.6);
             }) ? (
-              <p
-                className='matrix__cell_text'
-              >
-                {MATRIX_DATA.mentor}
-              </p>
+              <p className='matrix__cell_text'>{MATRIX_DATA.mentor}</p>
             ) : (
               <div
                 onMouseEnter={() => handleMouseEnter(0)}
@@ -66,8 +61,6 @@ export const Matrix = () => {
                 <Icon id='help' className='svg__help' />
               </div>
             )}
-
-
             {tooltip === 0 && <InfoTooltipMatrix text={MATRIX_DATA.mentor} />}
           </div>
           <div className='matrix__cell'>
@@ -82,7 +75,7 @@ export const Matrix = () => {
                 ) {
                   return (
                     <li key={employee.id} className='matrix__cell_item'>
-                      {employee.worker}
+                     {formatEmployeeName(employee.worker)}
                     </li>
                   );
                 }
@@ -98,11 +91,7 @@ export const Matrix = () => {
                 involvmentLevel > 6.6
               );
             }) ? (
-              <p
-                className='matrix__cell_text'
-              >
-                {MATRIX_DATA.iniciative}
-              </p>
+              <p className='matrix__cell_text'>{MATRIX_DATA.iniciative}</p>
             ) : (
               <div
                 onMouseEnter={() => handleMouseEnter(1)}
@@ -123,7 +112,7 @@ export const Matrix = () => {
                 if (assesmentLevel > 6.6 && involvmentLevel > 6.6) {
                   return (
                     <li key={employee.id} className='matrix__cell_item'>
-                      {employee.worker}
+                       {formatEmployeeName(employee.worker)}
                     </li>
                   );
                 }
@@ -135,11 +124,7 @@ export const Matrix = () => {
                 employee.assesmentOfPotention;
               return !(assesmentLevel > 6.6 && involvmentLevel > 6.6);
             }) ? (
-              <p
-                className='matrix__cell_text'
-              >
-                {MATRIX_DATA.careare}
-              </p>
+              <p className='matrix__cell_text'>{MATRIX_DATA.careare}</p>
             ) : (
               <div
                 onMouseEnter={() => handleMouseEnter(2)}
@@ -168,7 +153,7 @@ export const Matrix = () => {
                 ) {
                   return (
                     <li key={employee.id} className='matrix__cell_item'>
-                      {employee.worker}
+                     {formatEmployeeName(employee.worker)}
                     </li>
                   );
                 }
@@ -184,11 +169,7 @@ export const Matrix = () => {
                 involvmentLevel < 6.6
               );
             }) ? (
-              <p
-                className='matrix__cell_text'
-              >
-                {MATRIX_DATA.task}
-              </p>
+              <p className='matrix__cell_text'>{MATRIX_DATA.task}</p>
             ) : (
               <div
                 onMouseEnter={() => handleMouseEnter(3)}
@@ -214,7 +195,7 @@ export const Matrix = () => {
                 ) {
                   return (
                     <li key={employee.id} className='matrix__cell_item'>
-                      {employee.worker}
+                       {formatEmployeeName(employee.worker)}
                     </li>
                   );
                 }
@@ -231,11 +212,7 @@ export const Matrix = () => {
                 involvmentLevel < 6.6
               );
             }) ? (
-              <p
-                className='matrix__cell_text'
-              >
-                {MATRIX_DATA.education}
-              </p>
+              <p className='matrix__cell_text'>{MATRIX_DATA.education}</p>
             ) : (
               <div
                 onMouseEnter={() => handleMouseEnter(4)}
@@ -261,7 +238,7 @@ export const Matrix = () => {
                 ) {
                   return (
                     <li key={employee.id} className='matrix__cell_item'>
-                      {employee.worker}
+                      {formatEmployeeName(employee.worker)}
                     </li>
                   );
                 }
@@ -278,11 +255,7 @@ export const Matrix = () => {
                 involvmentLevel < 6.6
               );
             }) ? (
-              <p
-                className='matrix__cell_text'
-              >
-                {MATRIX_DATA.project}
-              </p>
+              <p className='matrix__cell_text'>{MATRIX_DATA.project}</p>
             ) : (
               <div
                 onMouseEnter={() => handleMouseEnter(5)}
@@ -309,7 +282,7 @@ export const Matrix = () => {
                 if (assesmentLevel < 3.3 && involvmentLevel < 3.3) {
                   return (
                     <li key={employee.id} className='matrix__cell_item'>
-                      {employee.worker}
+                      {formatEmployeeName(employee.worker)}
                     </li>
                   );
                 }
@@ -321,11 +294,7 @@ export const Matrix = () => {
                 employee.assesmentOfPotention;
               return !(assesmentLevel < 3.3 && involvmentLevel < 3.3);
             }) ? (
-              <p
-                className='matrix__cell_text'
-              >
-                {MATRIX_DATA.editTask}
-              </p>
+              <p className='matrix__cell_text'>{MATRIX_DATA.editTask}</p>
             ) : (
               <div
                 onMouseEnter={() => handleMouseEnter(6)}
@@ -351,7 +320,7 @@ export const Matrix = () => {
                 ) {
                   return (
                     <li key={employee.id} className='matrix__cell_item'>
-                      {employee.worker}
+                     {formatEmployeeName(employee.worker)}
                     </li>
                   );
                 }
@@ -367,11 +336,7 @@ export const Matrix = () => {
                 involvmentLevel < 3.3
               );
             }) ? (
-              <p
-                className='matrix__cell_text'
-              >
-                {MATRIX_DATA.learning}
-              </p>
+              <p className='matrix__cell_text'>{MATRIX_DATA.learning}</p>
             ) : (
               <div
                 onMouseEnter={() => handleMouseEnter(7)}
@@ -393,7 +358,7 @@ export const Matrix = () => {
                 if (assesmentLevel > 6.6 && involvmentLevel < 3.3) {
                   return (
                     <li key={employee.id} className='matrix__cell_item'>
-                      {employee.worker}
+                     {formatEmployeeName(employee.worker)}
                     </li>
                   );
                 }
@@ -405,11 +370,7 @@ export const Matrix = () => {
                 employee.assesmentOfPotention;
               return !(assesmentLevel > 6.6 && involvmentLevel < 3.3);
             }) ? (
-              <p
-                className='matrix__cell_text'
-              >
-                {MATRIX_DATA.engagement}
-              </p>
+              <p className='matrix__cell_text'>{MATRIX_DATA.engagement}</p>
             ) : (
               <div
                 onMouseEnter={() => handleMouseEnter(8)}

@@ -16,6 +16,7 @@ export const Table = () => {
   const { employees, selectedMemberId, tooltipIndex, position, grade, worker } =
     useAppSelector(selectEmployees);
   const dispatch = useAppDispatch();
+  console.log('employees: ', employees);
 
   const handleMouseEnter = (index: number) => {
     dispatch(setTooltipIndex(index));

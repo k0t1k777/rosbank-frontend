@@ -9,13 +9,19 @@ export const NAV_MENU = [
 ];
 
 export const EMPLOYERS_DATA = [
-  'Агата Колесникова',
-  'Айдар Гораев',
-  'Александр Смирнов',
-  'Иванов Иван',
-  'Ирина Мирошниченко',
-  'Мария Агалакова',
-  'Эрнест Хемингуэй',
+  'Адам Львов',
+  'Аделина Михайлова',
+  'Василий Матвеев',
+  'Вера Комарова',
+  'Денис Волков',
+  'Ксения Озерова',
+  'Максим Журавлев',
+  'Максим Сорокин',
+  'Милана Смирнова',
+  'Михаил Костин',
+  'Роберт Акимов',
+  'Роман Кузнецов',
+  'Тихон Филатов',
 ];
 
 export const GRAIDE_DATA = ['Junior', 'Middle', 'Senior'];
@@ -62,10 +68,9 @@ export const inintialMember: EmployeeType = {
       training_name: '',
     },
   ],
-  assesmentOfPotention: 
-    {
-      assesmentLevel: 0,
-      involvmentLevel: 0,
-    },
+  assesmentOfPotention: {
+    assesmentLevel: 0,
+    involvmentLevel: 0,
+  },
   skill: 0,
 };
