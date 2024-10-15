@@ -64,29 +64,16 @@ export const getEmployeesId = async (id: number) => {
   return await request(`teams/media/employees/${id}/`, options);
 };
 
-export const getSkills = async (skillDomains: string) => {
+export const getSkills = async (skillDomains: string
+  // , skillId: string
+) => {
     const options: RequestOptionsType = {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({
         skillDomen: skillDomains,
+        // employeeIds: skillId,
       }),
     };
     return await request('teams/media/skills/', options);
   };
-
-// export const getSkills = async () => {
-//   const response = await fetch('/teams/media/skills/', {
-//     headers,
-//     method: 'POST',
-//     body: JSON.stringify({
-//       skillDomen: 'hard',
-//     }),
-//   });
-
-//   if (!response.ok) {
-//     throw new Error('Network response was not ok');
-//   }
-
-//   return await response.json();
-// };

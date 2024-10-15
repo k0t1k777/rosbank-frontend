@@ -7,18 +7,26 @@ export interface StateType {
   isLoading: boolean;
   error: string | null | unknown;
   skills: Skills[];
+  highlightedSkill: string | null;
 }
 
 const initialState: StateType = {
   isLoading: false,
   error: null,
   skills: [],
+  highlightedSkill: '',
 };
 
 export const fetchGetSkills = createAsyncThunk(
   'fetch/skills',
-  async (skillDomains: string) => {
-    const response = await getSkills(skillDomains);
+  async (
+    skillDomains: string
+    // { skillDomains, skillId }: { skillDomains: string; skillId: string }
+  ) => {
+    const response = await getSkills(
+      skillDomains
+      // , skillId
+    );
     return response;
   }
 );
@@ -27,9 +35,9 @@ const skillsSlice = createSlice({
   name: 'skills',
   initialState,
   reducers: {
-    // setDate(state, action) {
-    //   state.date = action.payload;
-    // },
+    setHighlightedSkill(state, action) {
+      state.highlightedSkill = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -44,12 +52,10 @@ const skillsSlice = createSlice({
       .addCase(fetchGetSkills.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
-      })
+      });
   },
 });
 
-// export const {
-//   // setDate,
-// } = skillsSlice.actions;
+export const { setHighlightedSkill } = skillsSlice.actions;
 export const skillsReducer = skillsSlice.reducer;
 export const selectSkills = (state: RootStore) => state.skills;

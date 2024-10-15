@@ -231,8 +231,7 @@ export const Matrix = () => {
                 const { assesmentLevel, involvmentLevel } =
                   employee.assesmentOfPotention;
                 if (
-                  assesmentLevel > 3.3 &&
-                  involvmentLevel < 6.6 &&
+                  assesmentLevel > 6.6 &&
                   involvmentLevel > 3.3 &&
                   involvmentLevel < 6.6
                 ) {
@@ -249,8 +248,7 @@ export const Matrix = () => {
               const { assesmentLevel, involvmentLevel } =
                 employee.assesmentOfPotention;
               return !(
-                assesmentLevel > 3.3 &&
-                involvmentLevel < 6.6 &&
+                assesmentLevel > 6.6 &&
                 involvmentLevel > 3.3 &&
                 involvmentLevel < 6.6
               );

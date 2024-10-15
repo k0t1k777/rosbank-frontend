@@ -16,8 +16,8 @@ import {
 import { ChartEvent } from 'node_modules/chart.js/dist/core/core.plugins';
 import { ActiveElement } from 'node_modules/chart.js/dist/plugins/plugin.tooltip';
 import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
-import { useAppSelector } from 'src/store/hooks';
-import { selectSkills } from 'src/store/features/slice/skillSlice';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
+import { selectSkills, setHighlightedSkill } from 'src/store/features/slice/skillSlice';
 
 ChartJS.register(
   RadialLinearScale,
@@ -29,64 +29,18 @@ ChartJS.register(
 );
 
 export const Web = () => {
-  const { skills } = useAppSelector(selectSkills);
+  const { skills, highlightedSkill } = useAppSelector(selectSkills);
+  console.log('highlightedSkill: ', highlightedSkill);
+  const dispatch = useAppDispatch();
   console.log('skills: ', skills);
-// const dispatch = useAppDispatch();
 
-
-// useEffect(() => {
-//   dispatch(fetchGetSkills())
-// }, [dispatch])
-
-//   const [skills, setEmployees] = useState<Skills[]>([])
-//   console.log('skills: ', skills);
-
-//   useEffect(() => {
-//     getEmployers()
-//     .then((data) => {
-//       setEmployees(data.data)
-//     })
-//   }, [])
-
-// const BASE_URL = 'https://rosb-hakaton.ddns.net/api/v1/';
-
-
-// const getResponseData = (res: Response) => {
-//   if (!res.ok) {
-//     return Promise.reject(`Ошибка: ${res.status}`);
-//   }
-//   return res.json();
-// };
-
-// const headers = {
-//   Accept: 'application/json',
-//   'Content-Type': 'application/json',
-// };
-
-// // const getEmployers = () => {
-// //   return fetch(`${BASE_URL}teams/media/employees/2/`, {
-// //     headers,
-// //     method: 'GET',
-// //     }).then(getResponseData);
-// // };
-
-// const getEmployers = () => {
-//   return fetch(`${BASE_URL}teams/media/skills/`, {
-//     headers,
-//     method: 'POST',
-//     body: JSON.stringify({
-//       skillDomen: 'hard',
-//       // employeeIds: '2'
-//     })
-//   }).then(getResponseData);
-// };
- 
   const [isCompetencies, setIsCompetencies] = useState<boolean>(true);
-  const [highlightedSkill, setHighlightedSkill] = useState<string | null>(null);
 
-const labels = skills.map(skill => skill.skillName);
-const plannedResults = skills.map(skill => skill.plannedResult);
-const actualResults = skills.map(skill => skill.actualResult);
+  const labels = skills.map((skill) => skill.skillName);
+  const plannedResults = skills.map((skill) => skill.plannedResult);
+  const actualResults = skills.map((skill) => skill.actualResult);
+  const skillIds = skills.map((skill) => String(skill.skillId));
+  console.log('skillIds: ', skillIds);
 
   const handleToggle = () => {
     setIsCompetencies((prev) => !prev);
@@ -101,7 +55,7 @@ const actualResults = skills.map(skill => skill.actualResult);
         borderColor: '#E10D34',
         pointBackgroundColor: (context) => {
           const index = context.dataIndex;
-          return highlightedSkill === labels[index] ? '#E10D34' : 'transparent';
+          return highlightedSkill === skillIds[index] ? '#E10D34' : 'transparent'; 
         },
         borderWidth: 1,
         fill: false,
@@ -130,7 +84,7 @@ const actualResults = skills.map(skill => skill.actualResult);
     scales: {
       r: {
         min: 0,
-        max: 5,
+        max: 4,
         ticks: {
           stepSize: 1,
           z: 1,
@@ -150,10 +104,11 @@ const actualResults = skills.map(skill => skill.actualResult);
         enabled: false,
       },
     },
-    onClick(_: ChartEvent, elements: ActiveElement[]) {
+    onClick (_: ChartEvent, elements: ActiveElement[]) {
       if (elements.length) {
         const index = elements[0].index;
-        setHighlightedSkill(labels[index]);
+        const selectedSkillId = String(skillIds[index]);
+        dispatch(setHighlightedSkill(selectedSkillId)); 
       }
     },
   };
