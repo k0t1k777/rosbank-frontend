@@ -14,12 +14,21 @@
   &__row {
     display: flex;
     height: 40px;
-    border-bottom: 0.5px solid rgba(239, 239, 239, 1)
+    border-bottom: 0.5px solid rgba(239, 239, 239, 1);
+    cursor: pointer;
+    &--selected {
+      background: #f9f9f9;
+      border-bottom: 0.50px solid #efefef;
+    }
+  }
+
+  &__text {
+    @include cut-word;
+    @include use-font;
+    @include mp-null;
   }
 
   &__td {
-    @include use-font;
-    @include cut-word;
     @include flex-row-center;
     padding: 4px 8px;
     width: 150px;
@@ -50,14 +59,12 @@
   &__bg-red {
     background: rgba(225, 13, 52, 0.3);
   }
-  
+
   &__bg-yellow {
     background: rgba(252, 171, 32, 0.3);
   }
-  
+
   &__bg-green {
     background: rgba(89, 172, 153, 0.3);
   }
 }
-
-

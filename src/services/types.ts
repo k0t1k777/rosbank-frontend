@@ -59,6 +59,18 @@ export interface EducationType {
 }
 
 export interface AssessmentOfPotentialType {
-  assesmentLevel: string;
-  involvmentLevel: string;
+  assesmentLevel: number;
+  involvmentLevel: number;
+}
+
+export interface Skills {
+  skillDomen: string;
+  skillId: number;
+  skillName: string;
+  plannedResult: number;
+  actualResult: number;
+}
+
+export interface SkillData {
+  data: Skills[];
 }

@@ -30,30 +30,21 @@ function App() {
 //   'Content-Type': 'application/json',
 // };
 
+// // const getEmployers = () => {
+// //   return fetch(`${BASE_URL}teams/media/employees/2/`, {
+// //     headers,
+// //     method: 'GET',
+// //     }).then(getResponseData);
+// // };
+
 // const getEmployers = () => {
 //   return fetch(`${BASE_URL}teams/media/skills/`, {
 //     headers,
 //     method: 'POST',
 //     body: JSON.stringify({
 //       skillDomen: 'hard',
-//       employeeIds: '2'
+//       // employeeIds: '2'
 //     })
-//   }).then(getResponseData);
-// };
-
-// const [ski, setSki] = useState([])
-// console.log('ski: ', ski);
-// useEffect(() => {
-//   getSkills()
-//   .then((data) => {
-//     setSki(data)
-//   })
-// }, [])
-
-// const getEmployers = () => {
-//   return fetch(`${BASE_URL}teams/media/count_employees/`, {
-//     headers,
-//     method: 'GET',
 //   }).then(getResponseData);
 // };
 

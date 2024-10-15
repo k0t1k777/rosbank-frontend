@@ -25,16 +25,27 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
-// const buildQueryString = (params: Record<string, any>) => {
-//   return new URLSearchParams(params).toString();
-// };
+const buildQueryString = (params: Record<string, string>) => {
+  return new URLSearchParams(params).toString();
+};
 
-export const getEmployees = async () => {
+export const getEmployees = async (
+  position: string,
+  grade: string,
+  worker: string
+) => {
   const options: RequestOptionsType = {
     method: 'GET',
     headers: headers,
   };
-  return await request('teams/media/employees/', options);
+  return await request(
+    `teams/media/employees/?${buildQueryString({
+      position,
+      grade,
+      worker,
+    })}`,
+    options
+  );
 };
 
 export const getAmountEmployees = async () => {
@@ -45,42 +56,37 @@ export const getAmountEmployees = async () => {
   return await request('teams/media/count_employees/', options);
 };
 
-// export const getMembersData = (
-//   page: number,
-//   search: string,
-//   position: string,
-//   department: string,
-//   city: string
-// ) => {
-//   return fetch(
-//     `${BASE_URL}/api/v1/members/?${buildQueryString({
-//       page,
-//       search,
-//       position,
-//       department,
-//       city,
-//     })}`,
-//     {
-//       method: 'GET',
-//       headers: headers,
-//     }
-//   ).then(checkResponse);
-// };
+export const getEmployeesId = async (id: number) => {
+  const options: RequestOptionsType = {
+    method: 'GET',
+    headers: headers,
+  };
+  return await request(`/teams/media/employees/${id}/`, options);
+};
 
+export const getSkills = async (skillDomains: string) => {
+    const options: RequestOptionsType = {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({
+        skillDomen: skillDomains,
+      }),
+    };
+    return await request('/teams/media/skills/', options);
+  };
 
+// export const getSkills = async () => {
+//   const response = await fetch('/teams/media/skills/', {
+//     headers,
+//     method: 'POST',
+//     body: JSON.stringify({
+//       skillDomen: 'hard',
+//     }),
+//   });
 
-// export const getTeamsId = async (id: number) => {
-//   const options: RequestOptionsType = {
-//     method: 'GET',
-//     headers: headers,
-//   };
-//   return await request(`/api/v1/teams/${id}/`, options);
-// };
+//   if (!response.ok) {
+//     throw new Error('Network response was not ok');
+//   }
 
-// export const getMemberId = async (id: number) => {
-//   const options: RequestOptionsType = {
-//     method: 'GET',
-//     headers: headers,
-//   };
-//   return await request(`/api/v1/members/${id}/`, options);
+//   return await response.json();
 // };

@@ -1,24 +1,35 @@
-import { useState } from 'react';
 import 'src/components/Filter/Filter.scss';
-import { EMPLOYERS_DATA, GRAIDE_DATA, SPECIALITY_DATA } from 'src/services/const';
+import {
+  EMPLOYERS_DATA,
+  GRAIDE_DATA,
+  SPECIALITY_DATA,
+} from 'src/services/const';
 import Select from 'src/shared/ui/Select/Select';
+import {
+  fetchGetEmployees,
+  selectEmployees,
+  setWorker,
+  setGrade,
+  setPosition,
+} from 'src/store/features/slice/membersSlice';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 
 export const Filter = () => {
-  const [speciality, setSpeciality] = useState('');
-  const [greid, setGreid] = useState('');
-  const [employer, setEmployer] = useState('');
+  const { position, grade, worker } = useAppSelector(selectEmployees);
+  const dispatch = useAppDispatch();
 
-  const handleSelectChange = (
+  const handleSelectChange = async (
     value: string,
-    type: 'speciality' | 'greid' | 'employer' | 'skill'
+    type: 'position' | 'grade' | 'worker'
   ) => {
-    if (type === 'speciality') {
-      setSpeciality(value);
-    } else if (type === 'greid') {
-      setGreid(value);
-    } else if (type === 'employer') {
-      setEmployer(value);
+    if (type === 'position') {
+      dispatch(setPosition(value));
+    } else if (type === 'grade') {
+      dispatch(setGrade(value));
+    } else if (type === 'worker') {
+      dispatch(setWorker(value));
     }
+    await dispatch(fetchGetEmployees({ position, grade, worker }));
   };
 
   return (
@@ -26,25 +37,25 @@ export const Filter = () => {
       <li className='filter__item' style={{ width: '150px' }}>
         <Select
           label='Специальность'
-          value={speciality}
+          value={position}
           options={SPECIALITY_DATA}
-          setValue={(value) => handleSelectChange(value, 'speciality')}
+          setValue={(value) => handleSelectChange(value, 'position')}
         />
       </li>
       <li className='filter__item' style={{ width: '80px' }}>
         <Select
           label='Грейд'
-          value={greid}
+          value={grade}
           options={GRAIDE_DATA}
-          setValue={(value) => handleSelectChange(value, 'greid')}
+          setValue={(value) => handleSelectChange(value, 'grade')}
         />
       </li>
       <li className='filter__item' style={{ width: '240px' }}>
         <Select
           label='Сотрудник'
-          value={employer}
+          value={worker}
           options={EMPLOYERS_DATA}
-          setValue={(value) => handleSelectChange(value, 'employer')}
+          setValue={(value) => handleSelectChange(value, 'worker')}
         />
       </li>
       <li className='filter__item' style={{ width: '60px' }}>

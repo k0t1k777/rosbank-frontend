@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { inintialMember } from 'src/services/const';
 import { AmountType, EmployeeType } from 'src/services/types';
-import { getAmountEmployees, getEmployees } from 'src/store/api';
+import { getAmountEmployees, getEmployees, getEmployeesId } from 'src/store/api';
 import { RootStore } from 'src/store/store';
 
 export interface StateType {
@@ -10,6 +11,12 @@ export interface StateType {
   amount: AmountType;
   date: string;
   tooltipIndex: number | null;
+  position: string;
+  grade: string;
+  worker: string;
+  tooltip: number | null;
+  member: EmployeeType;
+  selectedMemberId: number | null;
 }
 
 const initialState: StateType = {
@@ -23,12 +30,26 @@ const initialState: StateType = {
   },
   date: '',
   tooltipIndex: null,
+  position: '',
+  grade: '',
+  worker: '',
+  tooltip: null,
+  member: inintialMember,
+  selectedMemberId: null,
 };
 
 export const fetchGetEmployees = createAsyncThunk(
   'fetch/employees',
-  async () => {
-    const response = await getEmployees();
+  async ({
+    position,
+    grade,
+    worker,
+  }: {
+    position: string;
+    grade: string;
+    worker: string;
+  }) => {
+    const response = await getEmployees(position, grade, worker);
     return response;
   }
 );
@@ -37,6 +58,14 @@ export const fetchAmountEmployees = createAsyncThunk(
   'fetch/amount',
   async () => {
     const response = await getAmountEmployees();
+    return response;
+  }
+);
+
+export const fetchAmountEmployeesId = createAsyncThunk(
+  'fetch/employeesId',
+  async (id: number) => {
+    const response = await getEmployeesId(id);
     return response;
   }
 );
@@ -50,6 +79,21 @@ const employeesSlice = createSlice({
     },
     setTooltipIndex(state, action) {
       state.tooltipIndex = action.payload;
+    },
+    setPosition(state, action) {
+      state.position = action.payload;
+    },
+    setGrade(state, action) {
+      state.grade = action.payload;
+    },
+    setWorker(state, action) {
+      state.worker = action.payload;
+    },
+    setTooltip(state, action) {
+      state.tooltip = action.payload;
+    },
+    setSelectedMemberId(state, action) {
+      state.selectedMemberId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -77,10 +121,30 @@ const employeesSlice = createSlice({
       .addCase(fetchAmountEmployees.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
-      });
+      })
+      .addCase(fetchAmountEmployeesId.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAmountEmployeesId.fulfilled, (state, action) => {
+        state.member = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(fetchAmountEmployeesId.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
   },
 });
 
-export const { setDate, setTooltipIndex } = employeesSlice.actions;
+export const {
+  setDate,
+  setTooltipIndex,
+  setPosition,
+  setGrade,
+  setWorker,
+  setTooltip,
+  setSelectedMemberId,
+} = employeesSlice.actions;
 export const employeesReducer = employeesSlice.reducer;
 export const selectEmployees = (state: RootStore) => state.employees;
