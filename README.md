@@ -4,8 +4,7 @@
 
 [**Макет Фигма**](https://www.figma.com/design/2WsogizTYlKMvT7U9Ijbjk/%D0%A0%D0%BE%D1%81%D0%B1%D0%B0%D0%BD%D0%BA_%D0%B4%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4-%D0%B4%D0%BB%D1%8F-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%BE%D0%B2?node-id=0-1&node-type=canvas&t=vJZS5d5IILDJN8uM-0)
 
-[**Ссылка на билд**]()
-https://github.com/hackathon-Rosbank/rosbank-frontend
+[**Ссылка на билд**](https://github.com/hackathon-Rosbank/rosbank-frontend)
 
 ## О команде
 
