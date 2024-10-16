@@ -118,7 +118,6 @@ export const Web = () => {
           <ToggleSwitch
             labelLeft='Компетенции'
             labelRight='Навыки'
-            label='dfdf'
             isChecked={isCompetencies}
             onToggle={handleToggle}
           />

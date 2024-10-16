@@ -27,8 +27,8 @@ const initialState: StateType = {
 
 export const fetchGetSkills = createAsyncThunk(
   'fetch/skills',
-  async (skillDomains: string) => {
-    const response = await getSkills(skillDomains);
+  async (  { skillDomains, skillId }: { skillDomains: string; skillId?: string } ) => {
+    const response = await getSkills(skillDomains, skillId);
     return response;
   }
 );

@@ -15,8 +15,6 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.1.2",
-    "@mui/x-date-pickers": "^7.19.0",
     "@reduxjs/toolkit": "^2.2.8",
     "@types/classnames": "^2.3.1",
     "chart.js": "^4.4.4",

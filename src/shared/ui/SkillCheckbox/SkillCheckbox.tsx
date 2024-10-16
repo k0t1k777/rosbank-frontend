@@ -10,6 +10,7 @@ import {
 } from 'src/store/features/slice/skillSlice';
 
 export default function SkillCheckbox() {
+  const { highlightedSkill } = useAppSelector(selectSkills);
   const { hard, soft } = useAppSelector(selectSkills);
   const dispatch = useAppDispatch();
 
@@ -26,8 +27,9 @@ export default function SkillCheckbox() {
 
   useEffect(() => {
     const skillDomain = hard ? 'hard' : 'soft';
-    dispatch(fetchGetSkills(skillDomain));
-  }, [hard, soft, dispatch]);
+    const skillIdString = highlightedSkill !== null ? String(highlightedSkill) : undefined;
+    dispatch(fetchGetSkills({ skillDomains: skillDomain, skillId: skillIdString }));
+  }, [hard, soft, highlightedSkill, dispatch]);
 
   return (
     <div className='skill-checkbox'>

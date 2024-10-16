@@ -63,12 +63,13 @@ export const getEmployeesId = async (id: number) => {
   return await request(`teams/media/employees/${id}/`, options);
 };
 
-export const getSkills = async (skillDomains: string) => {
+export const getSkills = async (skillDomains: string, skillId?: string) => {
   const options: RequestOptionsType = {
     method: 'POST',
     headers: headers,
     body: JSON.stringify({
       skillDomen: skillDomains,
+      ...(skillId && { employeeIds: skillId }),
     }),
   };
   return await request('teams/media/skills/', options);
