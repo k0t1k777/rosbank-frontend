@@ -52,6 +52,8 @@ npm run dev
 - framer-motion
 - classnames
 - react-svg
+- date-fns
+- dayjs
 
 ## SCSS
 
