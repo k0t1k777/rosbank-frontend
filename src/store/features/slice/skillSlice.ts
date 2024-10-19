@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Skills } from 'src/services/types';
-import { getSkills } from 'src/store/api';
+import { inintialCompetencies } from 'src/services/const';
+import { CompetencyType, Skills } from 'src/services/types';
+import { getSkills, getСompetencies } from 'src/store/api';
 import { RootStore } from 'src/store/store';
 
 export interface StateType {
@@ -12,6 +13,7 @@ export interface StateType {
   isOpen: boolean;
   soft: boolean;
   hard: boolean;
+  competencies: CompetencyType;
 }
 
 const initialState: StateType = {
@@ -23,12 +25,33 @@ const initialState: StateType = {
   isOpen: false,
   soft: false,
   hard: true,
+  competencies: inintialCompetencies,
 };
 
 export const fetchGetSkills = createAsyncThunk(
   'fetch/skills',
-  async (  { skillDomains, skillId }: { skillDomains: string; skillId?: string } ) => {
+  async ({
+    skillDomains,
+    skillId,
+  }: {
+    skillDomains: string;
+    skillId?: string;
+  }) => {
     const response = await getSkills(skillDomains, skillId);
+    return response;
+  }
+);
+
+export const fetchGetCompetencies = createAsyncThunk(
+  'fetch/skills/competencies',
+  async ({
+    skillDomains,
+    id,
+  }: {
+    skillDomains: string;
+    id: string;
+  }) => {
+    const response = await getСompetencies(skillDomains, id);
     return response;
   }
 );
@@ -64,6 +87,18 @@ const skillsSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchGetSkills.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchGetCompetencies.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchGetCompetencies.fulfilled, (state, action) => {
+        state.competencies = action.payload.data;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(fetchGetCompetencies.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
       });

@@ -8,3 +8,4 @@ export const formatEmployeeName = (fullName: string) => {
 export const roundSkill = (skill: number) => {
   return Math.round(skill); 
 };
+

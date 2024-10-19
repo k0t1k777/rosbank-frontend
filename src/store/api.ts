@@ -31,7 +31,8 @@ const buildQueryString = (params: Record<string, string>) => {
 export const getEmployees = async (
   position: string,
   grade: string,
-  worker: string
+  worker: string,
+  // competency: string,
 ) => {
   const options: RequestOptionsType = {
     method: 'GET',
@@ -42,6 +43,7 @@ export const getEmployees = async (
       position,
       grade,
       worker,
+      // competency,
     })}`,
     options
   );
@@ -73,4 +75,28 @@ export const getSkills = async (skillDomains: string, skillId?: string) => {
     }),
   };
   return await request('teams/media/skills/', options);
+};
+
+// export const getSkillsId = async (employeeIds: string, skillDomen?: string) => {
+//   const options: RequestOptionsType = {
+//     method: 'POST',
+//     headers: headers,
+//     body: JSON.stringify({
+//       employeeIds: employeeIds,
+//       ...(skillDomen && { employeeIds: skillDomen }),
+//     }),
+//   };
+//   return await request('teams/media/skills/', options);
+// };
+
+export const getСompetencies = async (skillDomains: string, id: string) => {
+  const options: RequestOptionsType = {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify({
+      skillDomen: skillDomains,
+      employeeIds: id,
+    }),
+  };
+  return await request('teams/media/competencies/', options);
 };

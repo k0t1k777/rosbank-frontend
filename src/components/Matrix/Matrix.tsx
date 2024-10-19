@@ -1,6 +1,7 @@
 import 'src/components/Matrix/Matrix.scss';
 import { MATRIX_DATA } from 'src/services/const';
 import { formatEmployeeName } from 'src/services/helpers';
+import { EmployeeType } from 'src/services/types';
 import { Icon } from 'src/shared/ui/Icon/Icon';
 import InfoTooltipMatrix from 'src/shared/ui/InfoTooltipMatrixHigh/InfoTooltipMatrixHigh';
 import InfoTooltipMatrixLow from 'src/shared/ui/InfoTooltipMatrixLow/InfoTooltipMatrixLow';
@@ -13,7 +14,8 @@ import {
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 
 export const Matrix = () => {
-  const { employees, tooltip } = useAppSelector(selectEmployees);
+  const { employees, tooltip, member } = useAppSelector(selectEmployees);
+  const memberArray = member.id ? [member] : [];
   const dispatch = useAppDispatch();
 
   const handleMouseEnter = (index: number) => {
@@ -22,6 +24,54 @@ export const Matrix = () => {
 
   const handleMouseLeave = () => {
     dispatch(setTooltip(null));
+  };
+
+  const renderEmployeeList = (employees: EmployeeType[], flag: number) => {
+    return employees.map((employee) => {
+      const { assesmentLevel, involvmentLevel } = employee.assesmentOfPotention;
+      let renderLi = false;
+      if (flag === 1) {
+        renderLi = assesmentLevel < 3.3 && involvmentLevel > 6.6;
+      } else if (flag === 2) {
+        renderLi =
+          assesmentLevel > 3.3 && assesmentLevel < 6.6 && involvmentLevel > 6.6;
+      } else if (flag === 3) {
+        renderLi = assesmentLevel > 6.6 && involvmentLevel > 6.6;
+      } else if (flag === 4) {
+        renderLi =
+          assesmentLevel < 3.3 &&
+          involvmentLevel > 3.3 &&
+          involvmentLevel < 6.6;
+      } else if (flag === 5) {
+        renderLi =
+          assesmentLevel > 3.3 &&
+          assesmentLevel < 6.6 &&
+          involvmentLevel > 3.3 &&
+          involvmentLevel < 6.6;
+      } else if (flag === 6) {
+        renderLi =
+          assesmentLevel > 6.6 &&
+          involvmentLevel > 3.3 &&
+          involvmentLevel < 6.6;
+      } else if (flag === 7) {
+        renderLi = assesmentLevel < 3.3 && involvmentLevel < 3.3;
+      } else if (flag === 8) {
+        renderLi =
+          assesmentLevel > 3.3 && assesmentLevel < 6.6 && involvmentLevel < 3.3;
+      } else if (flag === 9) {
+        renderLi = assesmentLevel > 6.6 && involvmentLevel < 3.3;
+      }
+      if (renderLi) {
+        return (
+          <li key={employee.id} className='matrix__cell_item'>
+            {member.id
+              ? formatEmployeeName(member.worker)
+              : formatEmployeeName(employee.worker)}
+          </li>
+        );
+      }
+      return null;
+    });
   };
 
   return (
@@ -34,24 +84,30 @@ export const Matrix = () => {
           </div>
           <div className='matrix__cell'>
             <ul className='matrix__cell_list'>
-              {employees.map((employee) => {
+              {member.id
+                ? renderEmployeeList(memberArray, 1)
+                : renderEmployeeList(employees, 1)}
+            </ul>
+            {member.id ? (
+              memberArray.every((employee) => {
                 const { assesmentLevel, involvmentLevel } =
                   employee.assesmentOfPotention;
-                if (assesmentLevel < 3.3 && involvmentLevel > 6.6) {
-                  return (
-                    <li key={employee.id} className='matrix__cell_item'>
-                       {formatEmployeeName(employee.worker)}
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-            {employees.every((employee) => {
-              const { assesmentLevel, involvmentLevel } =
-                employee.assesmentOfPotention;
-              return !(assesmentLevel < 3.3 && involvmentLevel > 6.6);
-            }) ? (
+                return !(assesmentLevel < 3.3 && involvmentLevel > 6.6);
+              }) ? (
+                <p className='matrix__cell_text'>{MATRIX_DATA.mentor}</p>
+              ) : (
+                <div
+                  onMouseEnter={() => handleMouseEnter(0)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Icon id='help' className='svg__help' />
+                </div>
+              )
+            ) : employees.every((employee) => {
+                const { assesmentLevel, involvmentLevel } =
+                  employee.assesmentOfPotention;
+                return !(assesmentLevel < 3.3 && involvmentLevel > 6.6);
+              }) ? (
               <p className='matrix__cell_text'>{MATRIX_DATA.mentor}</p>
             ) : (
               <div
@@ -65,32 +121,38 @@ export const Matrix = () => {
           </div>
           <div className='matrix__cell'>
             <ul className='matrix__cell_list'>
-              {employees.map((employee) => {
+              {member.id
+                ? renderEmployeeList(memberArray, 2)
+                : renderEmployeeList(employees, 2)}
+            </ul>
+            {member.id ? (
+              memberArray.every((employee) => {
                 const { assesmentLevel, involvmentLevel } =
                   employee.assesmentOfPotention;
-                if (
+                return !(
                   assesmentLevel > 3.3 &&
                   assesmentLevel < 6.6 &&
                   involvmentLevel > 6.6
-                ) {
-                  return (
-                    <li key={employee.id} className='matrix__cell_item'>
-                     {formatEmployeeName(employee.worker)}
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-            {employees.every((employee) => {
-              const { assesmentLevel, involvmentLevel } =
-                employee.assesmentOfPotention;
-              return !(
-                assesmentLevel > 3.3 &&
-                assesmentLevel < 6.6 &&
-                involvmentLevel > 6.6
-              );
-            }) ? (
+                );
+              }) ? (
+                <p className='matrix__cell_text'>{MATRIX_DATA.iniciative}</p>
+              ) : (
+                <div
+                  onMouseEnter={() => handleMouseEnter(1)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Icon id='help' className='svg__help' />
+                </div>
+              )
+            ) : employees.every((employee) => {
+                const { assesmentLevel, involvmentLevel } =
+                  employee.assesmentOfPotention;
+                return !(
+                  assesmentLevel > 3.3 &&
+                  assesmentLevel < 6.6 &&
+                  involvmentLevel > 6.6
+                );
+              }) ? (
               <p className='matrix__cell_text'>{MATRIX_DATA.iniciative}</p>
             ) : (
               <div
@@ -106,24 +168,30 @@ export const Matrix = () => {
           </div>
           <div className='matrix__cell'>
             <ul className='matrix__cell_list'>
-              {employees.map((employee) => {
+              {member.id
+                ? renderEmployeeList(memberArray, 3)
+                : renderEmployeeList(employees, 3)}
+            </ul>
+            {member.id ? (
+              memberArray.every((employee) => {
                 const { assesmentLevel, involvmentLevel } =
                   employee.assesmentOfPotention;
-                if (assesmentLevel > 6.6 && involvmentLevel > 6.6) {
-                  return (
-                    <li key={employee.id} className='matrix__cell_item'>
-                       {formatEmployeeName(employee.worker)}
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-            {employees.every((employee) => {
-              const { assesmentLevel, involvmentLevel } =
-                employee.assesmentOfPotention;
-              return !(assesmentLevel > 6.6 && involvmentLevel > 6.6);
-            }) ? (
+                return !(assesmentLevel > 6.6 && involvmentLevel > 6.6);
+              }) ? (
+                <p className='matrix__cell_text'>{MATRIX_DATA.careare}</p>
+              ) : (
+                <div
+                  onMouseEnter={() => handleMouseEnter(2)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Icon id='help' className='svg__help' />
+                </div>
+              )
+            ) : employees.every((employee) => {
+                const { assesmentLevel, involvmentLevel } =
+                  employee.assesmentOfPotention;
+                return !(assesmentLevel > 6.6 && involvmentLevel > 6.6);
+              }) ? (
               <p className='matrix__cell_text'>{MATRIX_DATA.careare}</p>
             ) : (
               <div
@@ -143,32 +211,38 @@ export const Matrix = () => {
           </div>
           <div className='matrix__cell'>
             <ul className='matrix__cell_list'>
-              {employees.map((employee) => {
+              {member.id
+                ? renderEmployeeList(memberArray, 4)
+                : renderEmployeeList(employees, 4)}
+            </ul>
+            {member.id ? (
+              memberArray.every((employee) => {
                 const { assesmentLevel, involvmentLevel } =
                   employee.assesmentOfPotention;
-                if (
+                return !(
                   assesmentLevel < 3.3 &&
                   involvmentLevel > 3.3 &&
                   involvmentLevel < 6.6
-                ) {
-                  return (
-                    <li key={employee.id} className='matrix__cell_item'>
-                     {formatEmployeeName(employee.worker)}
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-            {employees.every((employee) => {
-              const { assesmentLevel, involvmentLevel } =
-                employee.assesmentOfPotention;
-              return !(
-                assesmentLevel < 3.3 &&
-                involvmentLevel > 3.3 &&
-                involvmentLevel < 6.6
-              );
-            }) ? (
+                );
+              }) ? (
+                <p className='matrix__cell_text'>{MATRIX_DATA.task}</p>
+              ) : (
+                <div
+                  onMouseEnter={() => handleMouseEnter(3)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Icon id='help' className='svg__help' />
+                </div>
+              )
+            ) : employees.every((employee) => {
+                const { assesmentLevel, involvmentLevel } =
+                  employee.assesmentOfPotention;
+                return !(
+                  assesmentLevel < 3.3 &&
+                  involvmentLevel > 3.3 &&
+                  involvmentLevel < 6.6
+                );
+              }) ? (
               <p className='matrix__cell_text'>{MATRIX_DATA.task}</p>
             ) : (
               <div
@@ -184,34 +258,40 @@ export const Matrix = () => {
           </div>
           <div className='matrix__cell'>
             <ul className='matrix__cell_list'>
-              {employees.map((employee) => {
+              {member.id
+                ? renderEmployeeList(memberArray, 5)
+                : renderEmployeeList(employees, 5)}
+            </ul>
+            {member.id ? (
+              memberArray.every((employee) => {
                 const { assesmentLevel, involvmentLevel } =
                   employee.assesmentOfPotention;
-                if (
+                return !(
                   assesmentLevel > 3.3 &&
                   assesmentLevel < 6.6 &&
                   involvmentLevel > 3.3 &&
                   involvmentLevel < 6.6
-                ) {
-                  return (
-                    <li key={employee.id} className='matrix__cell_item'>
-                       {formatEmployeeName(employee.worker)}
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-            {employees.every((employee) => {
-              const { assesmentLevel, involvmentLevel } =
-                employee.assesmentOfPotention;
-              return !(
-                assesmentLevel > 3.3 &&
-                assesmentLevel < 6.6 &&
-                involvmentLevel > 3.3 &&
-                involvmentLevel < 6.6
-              );
-            }) ? (
+                );
+              }) ? (
+                <p className='matrix__cell_text'>{MATRIX_DATA.education}</p>
+              ) : (
+                <div
+                  onMouseEnter={() => handleMouseEnter(4)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Icon id='help' className='svg__help' />
+                </div>
+              )
+            ) : employees.every((employee) => {
+                const { assesmentLevel, involvmentLevel } =
+                  employee.assesmentOfPotention;
+                return !(
+                  assesmentLevel > 3.3 &&
+                  assesmentLevel < 6.6 &&
+                  involvmentLevel > 3.3 &&
+                  involvmentLevel < 6.6
+                );
+              }) ? (
               <p className='matrix__cell_text'>{MATRIX_DATA.education}</p>
             ) : (
               <div
@@ -227,32 +307,38 @@ export const Matrix = () => {
           </div>
           <div className='matrix__cell'>
             <ul className='matrix__cell_list'>
-              {employees.map((employee) => {
+              {member.id
+                ? renderEmployeeList(memberArray, 6)
+                : renderEmployeeList(employees, 6)}
+            </ul>
+            {member.id ? (
+              memberArray.every((employee) => {
                 const { assesmentLevel, involvmentLevel } =
                   employee.assesmentOfPotention;
-                if (
+                return !(
                   assesmentLevel > 6.6 &&
                   involvmentLevel > 3.3 &&
                   involvmentLevel < 6.6
-                ) {
-                  return (
-                    <li key={employee.id} className='matrix__cell_item'>
-                      {formatEmployeeName(employee.worker)}
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-            {employees.every((employee) => {
-              const { assesmentLevel, involvmentLevel } =
-                employee.assesmentOfPotention;
-              return !(
-                assesmentLevel > 6.6 &&
-                involvmentLevel > 3.3 &&
-                involvmentLevel < 6.6
-              );
-            }) ? (
+                );
+              }) ? (
+                <p className='matrix__cell_text'>{MATRIX_DATA.project}</p>
+              ) : (
+                <div
+                  onMouseEnter={() => handleMouseEnter(5)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Icon id='help' className='svg__help' />
+                </div>
+              )
+            ) : employees.every((employee) => {
+                const { assesmentLevel, involvmentLevel } =
+                  employee.assesmentOfPotention;
+                return !(
+                  assesmentLevel > 6.6 &&
+                  involvmentLevel > 3.3 &&
+                  involvmentLevel < 6.6
+                );
+              }) ? (
               <p className='matrix__cell_text'>{MATRIX_DATA.project}</p>
             ) : (
               <div
@@ -274,24 +360,30 @@ export const Matrix = () => {
           </div>
           <div className='matrix__cell'>
             <ul className='matrix__cell_list'>
-              {employees.map((employee) => {
+              {member.id
+                ? renderEmployeeList(memberArray, 7)
+                : renderEmployeeList(employees, 7)}
+            </ul>
+            {member.id ? (
+              memberArray.every((employee) => {
                 const { assesmentLevel, involvmentLevel } =
                   employee.assesmentOfPotention;
-                if (assesmentLevel < 3.3 && involvmentLevel < 3.3) {
-                  return (
-                    <li key={employee.id} className='matrix__cell_item'>
-                      {formatEmployeeName(employee.worker)}
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-            {employees.every((employee) => {
-              const { assesmentLevel, involvmentLevel } =
-                employee.assesmentOfPotention;
-              return !(assesmentLevel < 3.3 && involvmentLevel < 3.3);
-            }) ? (
+                return !(assesmentLevel < 3.3 && involvmentLevel < 3.3);
+              }) ? (
+                <p className='matrix__cell_text'>{MATRIX_DATA.editTask}</p>
+              ) : (
+                <div
+                  onMouseEnter={() => handleMouseEnter(6)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Icon id='help' className='svg__help' />
+                </div>
+              )
+            ) : employees.every((employee) => {
+                const { assesmentLevel, involvmentLevel } =
+                  employee.assesmentOfPotention;
+                return !(assesmentLevel < 3.3 && involvmentLevel < 3.3);
+              }) ? (
               <p className='matrix__cell_text'>{MATRIX_DATA.editTask}</p>
             ) : (
               <div
@@ -305,35 +397,40 @@ export const Matrix = () => {
               <InfoTooltipMatrixLow text={MATRIX_DATA.editTask} />
             )}
           </div>
-
           <div className='matrix__cell'>
             <ul className='matrix__cell_list'>
-              {employees.map((employee) => {
+              {member.id
+                ? renderEmployeeList(memberArray, 8)
+                : renderEmployeeList(employees, 8)}
+            </ul>
+            {member.id ? (
+              memberArray.every((employee) => {
                 const { assesmentLevel, involvmentLevel } =
                   employee.assesmentOfPotention;
-                if (
+                return !(
                   assesmentLevel > 3.3 &&
                   assesmentLevel < 6.6 &&
                   involvmentLevel < 3.3
-                ) {
-                  return (
-                    <li key={employee.id} className='matrix__cell_item'>
-                     {formatEmployeeName(employee.worker)}
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-            {employees.every((employee) => {
-              const { assesmentLevel, involvmentLevel } =
-                employee.assesmentOfPotention;
-              return !(
-                assesmentLevel > 3.3 &&
-                assesmentLevel < 6.6 &&
-                involvmentLevel < 3.3
-              );
-            }) ? (
+                );
+              }) ? (
+                <p className='matrix__cell_text'>{MATRIX_DATA.learning}</p>
+              ) : (
+                <div
+                  onMouseEnter={() => handleMouseEnter(7)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Icon id='help' className='svg__help' />
+                </div>
+              )
+            ) : employees.every((employee) => {
+                const { assesmentLevel, involvmentLevel } =
+                  employee.assesmentOfPotention;
+                return !(
+                  assesmentLevel > 3.3 &&
+                  assesmentLevel < 6.6 &&
+                  involvmentLevel < 3.3
+                );
+              }) ? (
               <p className='matrix__cell_text'>{MATRIX_DATA.learning}</p>
             ) : (
               <div
@@ -350,24 +447,30 @@ export const Matrix = () => {
 
           <div className='matrix__cell'>
             <ul className='matrix__cell_list'>
-              {employees.map((employee) => {
+              {member.id
+                ? renderEmployeeList(memberArray, 9)
+                : renderEmployeeList(employees, 9)}
+            </ul>
+            {member.id ? (
+              memberArray.every((employee) => {
                 const { assesmentLevel, involvmentLevel } =
                   employee.assesmentOfPotention;
-                if (assesmentLevel > 6.6 && involvmentLevel < 3.3) {
-                  return (
-                    <li key={employee.id} className='matrix__cell_item'>
-                     {formatEmployeeName(employee.worker)}
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-            {employees.every((employee) => {
-              const { assesmentLevel, involvmentLevel } =
-                employee.assesmentOfPotention;
-              return !(assesmentLevel > 6.6 && involvmentLevel < 3.3);
-            }) ? (
+                return !(assesmentLevel > 6.6 && involvmentLevel < 3.3);
+              }) ? (
+                <p className='matrix__cell_text'>{MATRIX_DATA.engagement}</p>
+              ) : (
+                <div
+                  onMouseEnter={() => handleMouseEnter(8)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Icon id='help' className='svg__help' />
+                </div>
+              )
+            ) : employees.every((employee) => {
+                const { assesmentLevel, involvmentLevel } =
+                  employee.assesmentOfPotention;
+                return !(assesmentLevel > 6.6 && involvmentLevel < 3.3);
+              }) ? (
               <p className='matrix__cell_text'>{MATRIX_DATA.engagement}</p>
             ) : (
               <div

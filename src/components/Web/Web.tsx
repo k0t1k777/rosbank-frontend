@@ -17,7 +17,10 @@ import { ChartEvent } from 'node_modules/chart.js/dist/core/core.plugins';
 import { ActiveElement } from 'node_modules/chart.js/dist/plugins/plugin.tooltip';
 import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
-import { selectSkills, setHighlightedSkill } from 'src/store/features/slice/skillSlice';
+import {
+  selectSkills,
+  setHighlightedSkill,
+} from 'src/store/features/slice/skillSlice';
 
 ChartJS.register(
   RadialLinearScale,
@@ -29,15 +32,18 @@ ChartJS.register(
 );
 
 export const Web = () => {
-  const { skills, highlightedSkill } = useAppSelector(selectSkills);
+  const { skills, highlightedSkill } =
+    useAppSelector(selectSkills);
   const [isCompetencies, setIsCompetencies] = useState<boolean>(true);
+  // console.log('competencies: ', competencies);
   const dispatch = useAppDispatch();
-
+  // console.log('skills: ', skills);
 
   const labels = skills.map((skill) => skill.skillName);
   const plannedResults = skills.map((skill) => skill.plannedResult);
   const actualResults = skills.map((skill) => skill.actualResult);
   const skillIds = skills.map((skill) => String(skill.skillId));
+
 
   const handleToggle = () => {
     setIsCompetencies((prev) => !prev);
@@ -52,7 +58,9 @@ export const Web = () => {
         borderColor: '#E10D34',
         pointBackgroundColor: (context) => {
           const index = context.dataIndex;
-          return highlightedSkill === skillIds[index] ? '#E10D34' : 'transparent'; 
+          return highlightedSkill === skillIds[index]
+            ? '#E10D34'
+            : 'transparent';
         },
         borderWidth: 1,
         fill: false,
@@ -105,7 +113,7 @@ export const Web = () => {
       if (elements.length) {
         const index = elements[0].index;
         const selectedSkillId = String(skillIds[index]);
-        dispatch(setHighlightedSkill(selectedSkillId)); 
+        dispatch(setHighlightedSkill(selectedSkillId));
       }
     },
   };

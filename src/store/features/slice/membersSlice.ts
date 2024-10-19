@@ -14,9 +14,10 @@ export interface StateType {
   position: string;
   grade: string;
   worker: string;
+  // competency: string;
   tooltip: number | null;
   member: EmployeeType;
-  selectedMemberId: number | null;
+  // selectedMemberId: number | null;
 }
 
 const initialState: StateType = {
@@ -33,9 +34,10 @@ const initialState: StateType = {
   position: '',
   grade: '',
   worker: '',
+  // competency: '',
   tooltip: null,
   member: inintialMember,
-  selectedMemberId: null,
+  // selectedMemberId: null,
 };
 
 export const fetchGetEmployees = createAsyncThunk(
@@ -44,12 +46,16 @@ export const fetchGetEmployees = createAsyncThunk(
     position,
     grade,
     worker,
+    // competency,
   }: {
     position: string;
     grade: string;
     worker: string;
+    // competency: string;
   }) => {
-    const response = await getEmployees(position, grade, worker);
+    const response = await getEmployees(position, grade, worker
+      // , competency
+    );
     return response;
   }
 );
@@ -92,9 +98,9 @@ const employeesSlice = createSlice({
     setTooltip(state, action) {
       state.tooltip = action.payload;
     },
-    setSelectedMemberId(state, action) {
-      state.selectedMemberId = action.payload;
-    },
+    // setSelectedMemberId(state, action) {
+    //   state.selectedMemberId = action.payload;
+    // },
   },
   extraReducers: (builder) => {
     builder
@@ -144,7 +150,6 @@ export const {
   setGrade,
   setWorker,
   setTooltip,
-  setSelectedMemberId,
 } = employeesSlice.actions;
 export const employeesReducer = employeesSlice.reducer;
 export const selectEmployees = (state: RootStore) => state.employees;

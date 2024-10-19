@@ -74,3 +74,14 @@ export interface Skills {
 export interface SkillData {
   data: Skills[];
 }
+
+export interface CompetencyType {
+  competencyId: number;
+  competencyName: string;
+  plannedResult: number;
+  actualResult: number;
+}
+
+export interface Competency {
+  competencies: CompetencyType[];
+}

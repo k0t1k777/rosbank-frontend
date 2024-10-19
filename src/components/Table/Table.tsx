@@ -9,13 +9,14 @@ import {
   fetchAmountEmployeesId,
   selectEmployees,
   setTooltipIndex,
-  setSelectedMemberId,
 } from 'src/store/features/slice/membersSlice';
 import { roundSkill } from 'src/services/helpers';
+import { fetchGetCompetencies, selectSkills } from 'src/store/features/slice/skillSlice';
 
 export const Table = () => {
-  const { employees, selectedMemberId, tooltipIndex, position, grade, worker } =
+  const { employees, member, tooltipIndex, position, grade, worker } =
     useAppSelector(selectEmployees);
+    const { hard } = useAppSelector(selectSkills);
   const dispatch = useAppDispatch();
 
   const handleMouseEnter = (index: number) => {
@@ -25,26 +26,40 @@ export const Table = () => {
   const handleMouseLeave = () => {
     dispatch(setTooltipIndex(null));
   };
+  // const hardt = 'hard';
 
   const handleRowClick = (id: number) => {
+    const skillDomain = hard ? 'hard' : 'soft';
     dispatch(fetchAmountEmployeesId(id));
-    dispatch(setSelectedMemberId(id));
+    // dispatch(setSelectedMemberId(id));
+    dispatch(fetchGetCompetencies({ skillDomains: skillDomain, id: String(idf) }));
   };
+// const competency = 'ML'
 
   useEffect(() => {
-    dispatch(fetchGetEmployees({ position, grade, worker }));
-  }, [dispatch, position, grade, worker]);
+    dispatch(fetchGetEmployees({ position, grade, worker
+      // , competency
+     }));
+  }, [dispatch, position, grade, worker
+    // , competency
+  ]);
+
+  const idf = '3';
+
+  // useEffect(() => {
+  //   dispatch(fetchGetCompetencies({ skillDomains: hardt, id: id }));
+  // }, [hardt, id, dispatch]);
 
   return (
     <section className='table'>
       <Filter />
       <table className='table__container'>
         <tbody>
-          {selectedMemberId
+          {member.id
             ? employees
-                .filter((item) => item.id === selectedMemberId)
+                .filter((item) => item.id === member.id)
                 .map((item, index) => {
-                  const isSelected = selectedMemberId === item.id;
+                  const isSelected = member.id === item.id;
                   let backgroundColorClass = '';
                   if (item.skill >= 0 && item.skill <= 33) {
                     backgroundColorClass = 'table__bg-red';
