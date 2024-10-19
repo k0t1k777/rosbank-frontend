@@ -94,3 +94,5 @@ export const months = [
   'дек',
 ];
 
+export const minValue = 3.3;
+export const maxValue = 6.6;
