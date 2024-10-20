@@ -19,17 +19,14 @@ import {
 export const Table = () => {
   const { employees, member, tooltipIndex, position, grade, worker } =
     useAppSelector(selectEmployees);
-    const { hard
-      // , highlightedSkill
-      , skillName, competencyName } = useAppSelector(selectSkills);
+    const { hard, skillName, competencyName } = useAppSelector(selectSkills);
 
   const dispatch = useAppDispatch();
 
   const handleMouseEnter = (index: number) => {
     dispatch(setTooltipIndex(index));
   };
-  console.log('competencyName: ', competencyName);
-  console.log('skillName: ', skillName);
+
   const handleMouseLeave = () => {
     dispatch(setTooltipIndex(null));
   };

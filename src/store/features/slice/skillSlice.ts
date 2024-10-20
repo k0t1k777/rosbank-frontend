@@ -15,6 +15,9 @@ export interface StateType {
   competencies: CompetencyType[];
   competencyName: string | null;
   skillName: string | null;
+  labels: string[];
+  plannedResults: number[];
+  actualResults: number[];
 }
 
 const initialState: StateType = {
@@ -29,6 +32,9 @@ const initialState: StateType = {
   competencies: [],
   competencyName: null,
   skillName: null,
+  labels: [],
+  plannedResults: [],
+  actualResults: [],
 };
 
 export const fetchGetSkills = createAsyncThunk(
@@ -83,6 +89,15 @@ const skillsSlice = createSlice({
     setSkillName(state, action) {
       state.skillName = action.payload;
     },
+    setLabels(state, action) {
+      state.labels = action.payload;
+    },
+    setPlannedResults(state, action) {
+      state.plannedResults = action.payload;
+    },
+    setActualResults(state, action) {
+      state.actualResults = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -120,6 +135,9 @@ export const {
   toggleCheckbox,
   setCompetencyName,
   setSkillName,
+  setLabels,
+  setPlannedResults,
+  setActualResults,
 } = skillsSlice.actions;
 export const skillsReducer = skillsSlice.reducer;
 export const selectSkills = (state: RootStore) => state.skills;

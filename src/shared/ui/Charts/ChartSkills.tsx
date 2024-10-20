@@ -4,13 +4,13 @@ import { selectSkills } from 'src/store/features/slice/skillSlice';
 import { useAppSelector } from 'src/store/hooks';
 
 export default function ChartSkills() {
-  const { skills } = useAppSelector(selectSkills);
-
-  const skillNames = skills.map(skill => skill.skillName);
-  const actualResults = skills.map(skill => skill.actualResult);
+  const {
+    labels,
+    actualResults,
+  } = useAppSelector(selectSkills);
 
   const skillsData = {
-    labels: skillNames,
+    labels: labels,
     datasets: [
       {
         label: 'Hard / Soft',

@@ -21,8 +21,11 @@ import {
   fetchGetCompetencies,
   fetchGetSkills,
   selectSkills,
+  setActualResults,
   setCompetencyName,
   setHighlightedSkill,
+  setLabels,
+  setPlannedResults,
   setSkillName,
 } from 'src/store/features/slice/skillSlice';
 import { selectEmployees } from 'src/store/features/slice/membersSlice';
@@ -35,19 +38,20 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-// competencyName
-// skillName
+
 export const Web = () => {
-  const { highlightedSkill, competencies, hard, skills } =
-    useAppSelector(selectSkills);
+  const {
+    highlightedSkill,
+    competencies,
+    hard,
+    skills,
+    labels,
+    plannedResults,
+    actualResults,
+  } = useAppSelector(selectSkills);
   const { member } = useAppSelector(selectEmployees);
   const dispatch = useAppDispatch();
   const [isChecked, setIsChecked] = useState(true);
-  const [labels, setLabels] = useState<string[]>([]);
-  const [plannedResults, setPlannedResults] = useState<number[]>([]);
-  const [actualResults, setActualResults] = useState<number[]>([]);
-  // const [competencyName, setCompetencyName] = useState<string | null>(null);
-// const [skillName, setSkillName] = useState<string | null>(null);
 
   useEffect(() => {
     const newLabels = isChecked
@@ -62,11 +66,10 @@ export const Web = () => {
       ? competencies.map((skill) => skill.actualResult)
       : skills.map((skill) => skill.actualResult);
 
-    setLabels(newLabels);
-    setPlannedResults(newPlannedResults);
-    setActualResults(newActualResults);
+    dispatch(setLabels(newLabels));
+    dispatch(setPlannedResults(newPlannedResults));
+    dispatch(setActualResults(newActualResults));
   }, [isChecked, competencies, skills]);
-
 
   const handleToggle = () => {
     setIsChecked((prev) => !prev);
@@ -74,31 +77,20 @@ export const Web = () => {
 
   useEffect(() => {
     const skillDomain = hard ? 'hard' : 'soft';
-    // const idString = member.id !== null ? String(member.id) : undefined;
-    // const skillIdString =
-    //   highlightedSkill !== null ? String(highlightedSkill) : undefined;
     if (isChecked) {
       dispatch(
         fetchGetCompetencies({
           skillDomains: skillDomain,
-          // ...(idString && { id: idString }),
         })
       );
     } else {
       dispatch(
         fetchGetSkills({
           skillDomains: skillDomain,
-          // ...(skillIdString && { skillId: skillIdString }),
         })
       );
     }
-  }, [
-    dispatch,
-    hard,
-    member,
-    isChecked,
-    highlightedSkill,
-  ]);
+  }, [dispatch, hard, member, isChecked, highlightedSkill]);
 
   const data: ChartData<'radar'> = {
     labels,
@@ -109,9 +101,7 @@ export const Web = () => {
         borderColor: '#E10D34',
         pointBackgroundColor: (context) => {
           const index = context.dataIndex;
-          return highlightedSkill === labels[index]
-            ? '#E10D34'
-            : 'transparent';
+          return highlightedSkill === labels[index] ? '#E10D34' : 'transparent';
         },
         borderWidth: 1,
         fill: false,

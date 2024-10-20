@@ -1,15 +1,10 @@
 import 'src/shared/ui/SkillCheckbox/SkillCheckbox.scss';
 import Checkbox from '../Checkbox/Checkbox';
-// import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import {
-  // fetchGetSkills,
-  selectSkills,
-  toggleCheckbox
-} from 'src/store/features/slice/skillSlice';
+  selectSkills, toggleCheckbox } from 'src/store/features/slice/skillSlice';
 
 export default function SkillCheckbox() {
-  // const { highlightedSkill } = useAppSelector(selectSkills);
   const { hard, soft } = useAppSelector(selectSkills);
   const dispatch = useAppDispatch();
 
@@ -17,12 +12,6 @@ export default function SkillCheckbox() {
     const { name } = event.target;
     dispatch(toggleCheckbox({ skillType: name }));
   };
-
-  // useEffect(() => {
-  //   const skillDomain = hard ? 'hard' : 'soft';
-  //   const skillIdString = highlightedSkill !== null ? String(highlightedSkill) : undefined;
-  //   dispatch(fetchGetSkills({ skillDomains: skillDomain, skillId: skillIdString }));
-  // }, [hard, soft, highlightedSkill, dispatch]);
 
   return (
     <div className='skill-checkbox'>

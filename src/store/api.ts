@@ -57,7 +57,7 @@ export const getEmployees = async (
 
 export const getAmountEmployees = async () => {
   const options: RequestOptionsType = {
-    method: 'GET',
+    method: 'POST',
     headers: headers,
   };
   return await request('teams/media/count_employees/', options);

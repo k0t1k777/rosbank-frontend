@@ -20,6 +20,7 @@ import ChartEngagements from 'src/shared/ui/Charts/ChartEngagements';
 import ChartSkills from 'src/shared/ui/Charts/ChartSkills';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import { selectSkills, setIsOpen, setSpeciality } from 'src/store/features/slice/skillSlice';
+import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
 const cx = cn.bind({});
 
 ChartJS.register(
@@ -62,6 +63,7 @@ export const Metric = () => {
               border='border'
             />
           </div>
+          {speciality === 'Оценка навыков' && <SkillCheckbox />}
         </div>
       </div>
       <div className='metric__chart'>
