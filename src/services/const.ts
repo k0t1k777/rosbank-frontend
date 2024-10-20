@@ -1,7 +1,7 @@
-import { CompetencyType, EmployeeType } from './types';
+import { EmployeeType } from './types';
 
 export const inintialMember: EmployeeType = {
-  id: 0,
+  id: null,
   position: '',
   worker: '',
   grade: '',
@@ -9,7 +9,7 @@ export const inintialMember: EmployeeType = {
   bus_factor: false,
   education: [
     {
-      id: 0,
+      id: null,
       training_name: '',
     },
   ],
@@ -19,13 +19,6 @@ export const inintialMember: EmployeeType = {
   },
   skill: 0,
 };
-
-export const inintialCompetencies: CompetencyType =  {
-    competencyId: 0,
-    competencyName: "",
-    plannedResult: 0,
-    actualResult: 0,
-}
 
 export const NAV_MENU = [
   { icon: 'dashboard', title: 'Дашборд' },

@@ -42,7 +42,7 @@ export interface AmountType {
 }
 
 export interface EmployeeType {
-  id: number;
+  id: number | null;
   position: string;
   worker: string;
   grade: string;
@@ -54,7 +54,7 @@ export interface EmployeeType {
 }
 
 export interface EducationType {
-  id: number;
+  id: number | null;
   training_name: string;
 }
 

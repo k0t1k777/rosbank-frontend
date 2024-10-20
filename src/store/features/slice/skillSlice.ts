@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { inintialCompetencies } from 'src/services/const';
 import { CompetencyType, Skills } from 'src/services/types';
 import { getSkills, getСompetencies } from 'src/store/api';
 import { RootStore } from 'src/store/store';
@@ -13,7 +12,9 @@ export interface StateType {
   isOpen: boolean;
   soft: boolean;
   hard: boolean;
-  competencies: CompetencyType;
+  competencies: CompetencyType[];
+  competencyName: string | null;
+  skillName: string | null;
 }
 
 const initialState: StateType = {
@@ -25,7 +26,9 @@ const initialState: StateType = {
   isOpen: false,
   soft: false,
   hard: true,
-  competencies: inintialCompetencies,
+  competencies: [],
+  competencyName: null,
+  skillName: null,
 };
 
 export const fetchGetSkills = createAsyncThunk(
@@ -49,7 +52,7 @@ export const fetchGetCompetencies = createAsyncThunk(
     id,
   }: {
     skillDomains: string;
-    id: string;
+    id?: string;
   }) => {
     const response = await getСompetencies(skillDomains, id);
     return response;
@@ -69,11 +72,16 @@ const skillsSlice = createSlice({
     setIsOpen(state, action) {
       state.isOpen = action.payload;
     },
-    setHard(state, action) {
-      state.hard = action.payload;
+    toggleCheckbox(state, action) {
+      const { skillType } = action.payload;
+      state.hard = skillType === 'hard';
+      state.soft = skillType === 'soft';
     },
-    setSoft(state, action) {
-      state.soft = action.payload;
+    setCompetencyName(state, action) {
+      state.competencyName = action.payload;
+    },
+    setSkillName(state, action) {
+      state.skillName = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -101,7 +109,7 @@ const skillsSlice = createSlice({
       .addCase(fetchGetCompetencies.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
-      });
+      })
   },
 });
 
@@ -109,8 +117,9 @@ export const {
   setHighlightedSkill,
   setSpeciality,
   setIsOpen,
-  setHard,
-  setSoft,
+  toggleCheckbox,
+  setCompetencyName,
+  setSkillName,
 } = skillsSlice.actions;
 export const skillsReducer = skillsSlice.reducer;
 export const selectSkills = (state: RootStore) => state.skills;

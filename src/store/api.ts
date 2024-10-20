@@ -32,19 +32,25 @@ export const getEmployees = async (
   position: string,
   grade: string,
   worker: string,
-  // competency: string,
+  competency?: string | null,
+  skill? : string | null,
 ) => {
   const options: RequestOptionsType = {
     method: 'GET',
     headers: headers,
   };
+  const params: Record<string, string> = {
+    position,
+    grade,
+    worker,
+  };
+  if (competency) {
+    params.competency = competency;
+  } else if (skill) {
+    params.skill = skill;
+  }
   return await request(
-    `teams/media/employees/?${buildQueryString({
-      position,
-      grade,
-      worker,
-      // competency,
-    })}`,
+    `teams/media/employees/?${buildQueryString(params)}`,
     options
   );
 };
@@ -86,16 +92,16 @@ export const getSkills = async (skillDomains: string, skillId?: string) => {
 //       ...(skillDomen && { employeeIds: skillDomen }),
 //     }),
 //   };
-//   return await request('teams/media/skills/', options);
+//   return await request('teams/media/skills/level/', options);
 // };
 
-export const getСompetencies = async (skillDomains: string, id: string) => {
+export const getСompetencies = async (skillDomains: string, id?: string) => {
   const options: RequestOptionsType = {
     method: 'POST',
     headers: headers,
     body: JSON.stringify({
       skillDomen: skillDomains,
-      employeeIds: id,
+      ...(id && { employeeIds: id }),
     }),
   };
   return await request('teams/media/competencies/', options);

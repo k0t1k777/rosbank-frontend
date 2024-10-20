@@ -32,7 +32,7 @@ export const Filter = () => {
     } else if (type === 'worker') {
       dispatch(setWorker(value));
     }
-    await dispatch(fetchGetEmployees({ position, grade, worker }));
+    await dispatch(fetchGetEmployees({ position, grade, worker}));
   };
 
   return (

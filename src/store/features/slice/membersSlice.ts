@@ -1,7 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { inintialMember } from 'src/services/const';
 import { AmountType, EmployeeType } from 'src/services/types';
-import { getAmountEmployees, getEmployees, getEmployeesId } from 'src/store/api';
+import {
+  getAmountEmployees,
+  getEmployees,
+  getEmployeesId,
+} from 'src/store/api';
 import { RootStore } from 'src/store/store';
 
 export interface StateType {
@@ -14,10 +18,10 @@ export interface StateType {
   position: string;
   grade: string;
   worker: string;
-  // competency: string;
+  competency?: string | null;
+  skill?: string | null;
   tooltip: number | null;
   member: EmployeeType;
-  // selectedMemberId: number | null;
 }
 
 const initialState: StateType = {
@@ -34,10 +38,10 @@ const initialState: StateType = {
   position: '',
   grade: '',
   worker: '',
-  // competency: '',
+  competency: '',
+  skill: '',
   tooltip: null,
   member: inintialMember,
-  // selectedMemberId: null,
 };
 
 export const fetchGetEmployees = createAsyncThunk(
@@ -46,15 +50,21 @@ export const fetchGetEmployees = createAsyncThunk(
     position,
     grade,
     worker,
-    // competency,
+    competency,
+    skill,
   }: {
     position: string;
     grade: string;
     worker: string;
-    // competency: string;
+    competency?: string | null;
+    skill?: string | null;
   }) => {
-    const response = await getEmployees(position, grade, worker
-      // , competency
+    const response = await getEmployees(
+      position,
+      grade,
+      worker,
+      competency,
+      skill,
     );
     return response;
   }
@@ -98,9 +108,6 @@ const employeesSlice = createSlice({
     setTooltip(state, action) {
       state.tooltip = action.payload;
     },
-    // setSelectedMemberId(state, action) {
-    //   state.selectedMemberId = action.payload;
-    // },
   },
   extraReducers: (builder) => {
     builder
@@ -139,7 +146,7 @@ const employeesSlice = createSlice({
       .addCase(fetchAmountEmployeesId.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
-      })
+      });
   },
 });
 
