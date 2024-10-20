@@ -19,7 +19,9 @@ import {
 export const Table = () => {
   const { employees, member, tooltipIndex, position, grade, worker } =
     useAppSelector(selectEmployees);
-    const { hard, highlightedSkill, skillName, competencyName } = useAppSelector(selectSkills);
+    const { hard
+      // , highlightedSkill
+      , skillName, competencyName } = useAppSelector(selectSkills);
 
   const dispatch = useAppDispatch();
 
