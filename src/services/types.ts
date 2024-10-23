@@ -43,12 +43,13 @@ export interface AmountType {
 
 export interface EmployeeType {
   id: number | null;
-  position: string;
+  position: string | null;
   worker: string;
-  grade: string;
+  grade: string | null;
   key_people: boolean;
   bus_factor: boolean;
   education: EducationType[];
+  competency?: string | null;
   assesmentOfPotention: AssessmentOfPotentialType;
   skill: number;
 }
@@ -60,7 +61,7 @@ export interface EducationType {
 
 export interface AssessmentOfPotentialType {
   assesmentLevel: number;
-  involvmentLevel: number;
+  involvmentLevel: number | null;
 }
 
 export interface Skills {
@@ -84,4 +85,59 @@ export interface CompetencyType {
 
 export interface Competency {
   competencies: CompetencyType[];
+}
+
+export interface Period {
+  month: string;
+  year: string;
+}
+
+export interface InvolvementData {
+  involvement: number;
+}
+
+export interface DevelopmentPlanData {
+  progress: number;
+}
+
+export interface Involvement {
+  period: Period;
+  involvementData: InvolvementData[];
+}
+
+export interface Development {
+  period: Period;
+  developmentPlanData: DevelopmentPlanData[];
+}
+
+export interface Employers_period {
+  startDate: {
+    month: string;
+    year: string;
+  };
+  endDate: {
+    month: string;
+    year: string;
+  };
+}
+
+export interface Period_Employers {
+  numberOfEmployee: string;
+  numberOfBusFactor: string;
+  numberOfKeyPeople: string;
+  startDate: {
+    month: string;
+    year: string;
+  };
+  endDate: {
+    month: string;
+    year: string;
+  };
+}
+
+export interface Employers_plan {
+  period: Period_Employers[];
+  numberOfEmployee: string;
+  numberOfBusFactor: string;
+  numberOfKeyPeople: string;
 }

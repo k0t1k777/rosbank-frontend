@@ -33,7 +33,7 @@ export const getEmployees = async (
   grade: string,
   worker: string,
   competency?: string | null,
-  skill? : string | null,
+  skill?: string | null
 ) => {
   const options: RequestOptionsType = {
     method: 'GET',
@@ -83,18 +83,6 @@ export const getSkills = async (skillDomains: string, skillId?: string) => {
   return await request('teams/media/skills/', options);
 };
 
-// export const getSkillsId = async (employeeIds: string, skillDomen?: string) => {
-//   const options: RequestOptionsType = {
-//     method: 'POST',
-//     headers: headers,
-//     body: JSON.stringify({
-//       employeeIds: employeeIds,
-//       ...(skillDomen && { employeeIds: skillDomen }),
-//     }),
-//   };
-//   return await request('teams/media/skills/level/', options);
-// };
-
 export const getСompetencies = async (skillDomains: string, id?: string) => {
   const options: RequestOptionsType = {
     method: 'POST',
@@ -106,3 +94,75 @@ export const getСompetencies = async (skillDomains: string, id?: string) => {
   };
   return await request('teams/media/competencies/', options);
 };
+
+export const getInvolvement = async (
+  startMonth: string,
+  startYear: string,
+  endMonth: string,
+  endYear: string
+) => {
+  const options: RequestOptionsType = {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify({
+      startPeriod: {
+        month: startMonth,
+        year: startYear,
+      },
+      endPeriod: {
+        month: endMonth,
+        year: endYear,
+      },
+    }),
+  };
+  return await request('teams/media/involvement/', options);
+};
+
+
+export const getDevelopment = async (
+  startMonth: string,
+  startYear: string,
+  endMonth: string,
+  endYear: string
+) => {
+  const options: RequestOptionsType = {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify({
+      startPeriod: {
+        month: startMonth,
+        year: startYear,
+      },
+      endPeriod: {
+        month: endMonth,
+        year: endYear,
+      },
+    }),
+  };
+  return await request('teams/media/development_plan/', options);
+};
+
+export const getEmployers = async (
+  startMonth: string,
+  startYear: string,
+  endMonth: string,
+  endYear: string
+) => {
+  const options: RequestOptionsType = {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify({
+      startPeriod: {
+        month: startMonth,
+        year: startYear,
+      },
+      endPeriod: {
+        month: endMonth,
+        year: endYear,
+      },
+    }),
+  };
+  return await request('teams/media/count_employees/', options);
+};
+
+// На моках:

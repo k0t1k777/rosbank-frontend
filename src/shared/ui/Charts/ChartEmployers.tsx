@@ -1,12 +1,22 @@
 import { Line } from 'react-chartjs-2';
+import { selectCharts } from 'src/store/features/slice/chartsSlice';
+import { useAppSelector } from 'src/store/hooks';
 
-export default function ChartEmployers() { 
+export default function ChartEmployers() {
+  const { employers_plan} = useAppSelector(selectCharts);
+  if (!employers_plan || employers_plan.period.length === 0) {
+    return <h2 className='charts__message'>Выберите период</h2>;
+  }
+  const numberOfEmployee = employers_plan.period.map(plan => Number(plan.numberOfEmployee));
+  const numberOfBusFactor = employers_plan.period.map(plan => Number(plan.numberOfBusFactor));
+  const numberOfKeyPeople = employers_plan.period.map(plan => Number(plan.numberOfKeyPeople));
+  const labels = employers_plan.period.map((_, index) => (index + 1).toString());
   const employeeData = {
-    labels: ['0', '2', '4', '6', '8'],
+    labels: labels,
     datasets: [
       {
         label: 'Сотрудники',
-        data: [4, 6, 7, 5, 7],
+        data: numberOfEmployee,
         backgroundColor: 'white',
         borderColor: 'rgba(66, 67, 75, .5)',
         borderWidth: 5,
@@ -17,7 +27,7 @@ export default function ChartEmployers() {
       },
       {
         label: 'Bus-фактор',
-        data: [3, 4, 5, 4, 4],
+        data: numberOfBusFactor,
         backgroundColor: 'white',
         borderColor: 'rgba(225, 13, 52, .5)',
         borderWidth: 5,
@@ -27,7 +37,7 @@ export default function ChartEmployers() {
       },
       {
         label: 'Ключевые сотрудники',
-        data: [3, 2, 3, 3, 6],
+        data: numberOfKeyPeople,
         backgroundColor: 'white',
         borderColor: 'rgba(89, 172, 153, .5)',
         borderWidth: 5,
@@ -59,10 +69,9 @@ export default function ChartEmployers() {
       x: {
         title: {
           display: false,
-          text: 'Языки программирования',
         },
         min: 0,
-        max: 10,
+        max: 20,
       },
       y: {
         title: {
@@ -70,7 +79,7 @@ export default function ChartEmployers() {
           text: 'Сотрудники',
         },
         min: 0,
-        max: 12,
+        max: Math.max(...numberOfEmployee, ...numberOfBusFactor, ...numberOfKeyPeople) + 1, 
       },
     },
   };

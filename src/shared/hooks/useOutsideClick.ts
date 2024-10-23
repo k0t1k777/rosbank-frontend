@@ -1,6 +1,6 @@
 import React from 'react';
 
-// кастомный хук для закрытия кастомного силекта по оверлею
+// кастомный хук для закрытия по оверлею
 
 const useOutsideClick = (
   ref: React.RefObject<HTMLElement>,

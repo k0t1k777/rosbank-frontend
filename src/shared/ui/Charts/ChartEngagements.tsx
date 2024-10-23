@@ -1,13 +1,27 @@
 import { Line } from 'react-chartjs-2';
 import 'src/shared/ui/Charts/Charts.scss';
+import { selectCharts } from 'src/store/features/slice/chartsSlice';
+import { useAppSelector } from 'src/store/hooks';
 
 export default function ChartEngagements() {
+  const { involvement } = useAppSelector(selectCharts);
+  console.log('involvement: ', involvement);
+  if (!involvement || involvement.length === 0) {
+    return <h2 className='charts__message'>Выберите период</h2>;
+  }
+  const labels = involvement.map(
+    (item) => `${item.period.month} ${item.period.year}`
+  );
+  const data = involvement.flatMap((item) =>
+    item.involvementData.map((plan) => plan.involvement)
+  );
+
   const engagementData = {
-    labels: ['0', '2', '4', '6'],
+    labels: labels,
     datasets: [
       {
         label: 'Вовлеченность',
-        data: [3, 2, 3, 3],
+        data: data,
         backgroundColor: 'white',
         borderColor: 'rgba(66, 67, 75, .5)',
         borderWidth: 5,
@@ -67,7 +81,7 @@ export default function ChartEngagements() {
         />
         <div className='charts__percent'>
           <div className='charts__percent_container'>
-          <div className='charts__percent_line'></div>
+            <div className='charts__percent_line'></div>
             <p className='charts__percent_number'>0</p>
             <p className='charts__percent_number'>50</p>
             <p className='charts__percent_number'>100</p>

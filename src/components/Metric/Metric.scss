@@ -3,6 +3,7 @@
   width: 572px;
   height: 100%;
   background: $white;
+  position: relative;
 
   &__header-container {
     @include flex-column-container;
@@ -21,7 +22,6 @@
     padding: 10px 16px;
     width: 179px;
     display: flex;
-    position: relative;
     justify-content: space-between;
     cursor: pointer;
     &--open {

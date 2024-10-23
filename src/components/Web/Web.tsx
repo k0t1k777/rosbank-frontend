@@ -69,7 +69,7 @@ export const Web = () => {
     dispatch(setLabels(newLabels));
     dispatch(setPlannedResults(newPlannedResults));
     dispatch(setActualResults(newActualResults));
-  }, [isChecked, competencies, skills]);
+  }, [dispatch, isChecked, competencies, skills]);
 
   const handleToggle = () => {
     setIsChecked((prev) => !prev);
@@ -90,7 +90,7 @@ export const Web = () => {
         })
       );
     }
-  }, [dispatch, hard, member, isChecked, highlightedSkill]);
+  }, [dispatch, hard, member, isChecked]);
 
   const data: ChartData<'radar'> = {
     labels,

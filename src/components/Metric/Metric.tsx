@@ -19,7 +19,11 @@ import ChartIpr from 'src/shared/ui/Charts/ChartIpr';
 import ChartEngagements from 'src/shared/ui/Charts/ChartEngagements';
 import ChartSkills from 'src/shared/ui/Charts/ChartSkills';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
-import { selectSkills, setIsOpen, setSpeciality } from 'src/store/features/slice/skillSlice';
+import {
+  selectSkills,
+  setIsOpen,
+  setSpeciality,
+} from 'src/store/features/slice/skillSlice';
 import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
 const cx = cn.bind({});
 
@@ -40,18 +44,22 @@ export const Metric = () => {
     dispatch(setSpeciality(value));
   };
 
+
+  function toggleOpen() {
+    dispatch(setIsOpen(!isOpen))
+  }
+
   return (
-    <section className='metric'>
+    <section className='metric' >
       <div className='metric__header-container'>
         <Subtitile text='Основные метрики команды' />
         <div className='metric__container_wrapper'>
           <div
             className={cx('metric__picker', { 'metric__picker--open': isOpen })}
-            onClick={() => dispatch(setIsOpen(true))}
+            onClick={toggleOpen}
           >
             <p className='metric__picker_title'>Выбери период</p>
             <Icon id='arrow' />
-            {isOpen && <Calendar />}
           </div>
           <div className='metric__celect_container'>
             <Select
@@ -70,8 +78,9 @@ export const Metric = () => {
         {speciality === 'Сотрудники' && <ChartEmployers />}
         {speciality === 'Выполнение ИПР' && <ChartIpr />}
         {speciality === 'Оценка навыков' && <ChartSkills />}
-        {speciality === 'Вовлеченность' && <ChartEngagements />} 
+        {speciality === 'Вовлеченность' && <ChartEngagements />}
       </div>
+      {isOpen && <Calendar />}
     </section>
   );
 };

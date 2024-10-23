@@ -1,13 +1,26 @@
 import { Line } from 'react-chartjs-2';
-import 'src/shared/ui/Charts/Charts.scss'
+import 'src/shared/ui/Charts/Charts.scss';
+import { selectCharts } from 'src/store/features/slice/chartsSlice';
+import { useAppSelector } from 'src/store/hooks';
 
 export default function ChartIpr() {
+  const { development } = useAppSelector(selectCharts);
+  if (!development || development.length === 0) {
+    return <h2 className='charts__message'>Выберите период</h2>;
+  }
+  const labels = development.map(
+    (item) => `${item.period.month} ${item.period.year}`
+  );
+  const data = development.flatMap((item) =>
+    item.developmentPlanData.map((plan) => plan.progress)
+  );
+
   const iprData = {
-    labels: ['0', '10', '20', '30'],
+    labels: labels,
     datasets: [
       {
         label: 'IPR',
-        data: [20, 20, 22, 18],
+        data: data,
         backgroundColor: 'white',
         borderColor: '#FCAB20',
         borderWidth: 5,
@@ -41,7 +54,7 @@ export default function ChartIpr() {
           display: false,
         },
         min: 0,
-        max: 10,
+        max: Math.max(...data, 10),
       },
       y: {
         title: {
@@ -49,7 +62,7 @@ export default function ChartIpr() {
           text: 'Выполнение',
         },
         min: 0,
-        max: 40,
+        max: Math.max(...data, 10),
       },
     },
   };
@@ -57,12 +70,7 @@ export default function ChartIpr() {
   const renderChart = () => {
     return (
       <>
-        <Line
-          data={iprData}
-          options={options}
-          width={492}
-          height={252}
-        />
+        <Line data={iprData} options={options} width={492} height={252} />
         <div className='charts__percent'>
           <div className='charts__percent_container'>
             <div className='charts__percent_line'></div>

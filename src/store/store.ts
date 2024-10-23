@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { employeesReducer } from './features/slice/membersSlice';
 import { skillsReducer } from './features/slice/skillSlice';
+import { chartsReducer } from './features/slice/chartsSlice';
 
 export const store = configureStore({
   reducer: {
     employees: employeesReducer,
-    skills: skillsReducer
+    skills: skillsReducer,
+    charts: chartsReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),

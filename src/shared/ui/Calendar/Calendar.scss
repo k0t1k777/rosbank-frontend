@@ -1,9 +1,9 @@
 .calendar {
   @include flex-row-center;
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: inherit;
+  top: 82px;
+  left: 11px;
+  width: 179px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

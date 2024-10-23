@@ -70,21 +70,57 @@ export const MATRIX_DATA = {
   engagement: 'Повышение вовлеченности',
 };
 
-export const years = [2022, 2023, 2024];
+export const years = ['2022', '2023', '2024'];
 
 export const months = [
-  'янв',
-  'фев',
-  'мар',
-  'апр',
-  'май',
-  'июн',
-  'июл',
-  'авг',
-  'сен',
-  'окт',
-  'ноя',
-  'дек',
+  {
+    label: 'янв',
+    value: 'January'
+  },
+  {
+    label: 'фев',
+    value: 'February '
+  },
+  {
+    label: 'мар',
+    value: 'March'
+  },
+  {
+    label: 'апр',
+    value: 'April'
+  },
+  {
+    label: 'май',
+    value: 'May'
+  },
+  {
+    label: 'июн',
+    value: 'June'
+  },
+  {
+    label: 'июл',
+    value: 'July'
+  },
+  {
+    label: 'авг',
+    value: 'August'
+  },
+  {
+    label: 'сен',
+    value: 'September'
+  },
+  {
+    label: 'окт',
+    value: 'October'
+  },
+  {
+    label: 'ноя',
+    value: 'November'
+  },
+  {
+    label: 'дек',
+    value: 'December'
+  }
 ];
 
 export const minValue = 3.3;

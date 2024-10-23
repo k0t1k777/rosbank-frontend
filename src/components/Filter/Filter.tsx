@@ -18,9 +18,6 @@ export const Filter = () => {
   const { position, grade, worker } = useAppSelector(selectEmployees);
   const dispatch = useAppDispatch();
 
-  // const competency = 'ML'
-
-
   const handleSelectChange = async (
     value: string,
     type: 'position' | 'grade' | 'worker'
