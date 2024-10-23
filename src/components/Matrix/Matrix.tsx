@@ -30,6 +30,11 @@ export const Matrix = () => {
   const renderEmployeeList = (employees: EmployeeType[], flag: number) => {
     return employees.map((employee) => {
       const { assesmentLevel, involvmentLevel } = employee.assesmentOfPotention;
+
+      if (involvmentLevel === null) {
+        return null;
+      }
+      
       let renderLi = false;
       if (flag === 1) {
         renderLi = assesmentLevel < minValue && involvmentLevel > maxValue;
