@@ -1,4 +1,4 @@
-import { EmployeeType } from './types';
+import { EmployeeType, MonthsProps } from './types';
 
 export const inintialMember: EmployeeType = {
   id: null,
@@ -52,9 +52,9 @@ export const SPECIALITY_DATA = [
 ];
 
 export const METRIC_DATA = [
+  'Оценка навыков',
   'Сотрудники',
   'Выполнение ИПР',
-  'Оценка навыков',
   'Вовлеченность',
 ];
 
@@ -72,14 +72,14 @@ export const MATRIX_DATA = {
 
 export const years = ['2022', '2023', '2024'];
 
-export const months = [
+export const months: MonthsProps = [
   {
     label: 'янв',
     value: 'January'
   },
   {
     label: 'фев',
-    value: 'February '
+    value: 'February'
   },
   {
     label: 'мар',
@@ -125,3 +125,8 @@ export const months = [
 
 export const minValue = 3.3;
 export const maxValue = 6.6;
+
+export const monthsChart = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+];

@@ -1,5 +1,22 @@
 <svg style="display: none">
 
+<svg id='orange' width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="15" cy="15" r="15" transform="matrix(1 0 0 -1 0 30)" fill="#FCAB20"/>
+</svg>
+
+<svg id='red' width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="15" cy="15" r="15" transform="matrix(1 0 0 -1 0 30)" fill="#E10D34"/>
+</svg>
+
+
+<svg id='green' width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="15" cy="15" r="15" transform="matrix(1 0 0 -1 0 30)" fill="#59AC99"/>
+</svg>
+
+<svg id='grey' width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="15" cy="15" r="15" transform="matrix(1 0 0 -1 0 30)" fill="#42434B"/>
+</svg>
+
 <svg id='close' width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.375 2.625L2.625 9.375" stroke="#42434B" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M9.375 9.375L2.625 2.625" stroke="#42434B" stroke-linecap="round" stroke-linejoin="round"/>

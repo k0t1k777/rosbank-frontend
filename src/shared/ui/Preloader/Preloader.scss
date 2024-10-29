@@ -1,0 +1,58 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  z-index: 15;
+}
+
+.preloader {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  animation: rotate 0.8s cubic-bezier(0.2, 0.4, 0.2, 1) infinite;
+
+  .icon {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 25;
+    width: 30px;
+    height: 30px;
+    animation-delay: 0.5s;
+    transform-origin: center;
+  }
+
+  .grey {
+    top: 0;
+    left: 30px;
+  }
+
+  .green {
+    right: 0;
+    top: 30px;
+  }
+
+  .red {
+    bottom: 0;
+    left: 30px;
+  }
+
+  .orange {
+    left: 0;
+    top: 30px;
+  }
+}

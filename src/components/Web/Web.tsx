@@ -3,6 +3,10 @@ import 'src/components/Web/Web.scss';
 import { Icon } from 'src/shared/ui/Icon/Icon';
 import { Radar } from 'react-chartjs-2';
 import { ToggleSwitch } from 'src/shared/ui/ToggleSwitch/ToggleSwitch';
+import { ChartEvent } from 'node_modules/chart.js/dist/core/core.plugins';
+import { ActiveElement } from 'node_modules/chart.js/dist/plugins/plugin.tooltip';
+import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -13,10 +17,6 @@ import {
   Legend,
   ChartData,
 } from 'chart.js';
-import { ChartEvent } from 'node_modules/chart.js/dist/core/core.plugins';
-import { ActiveElement } from 'node_modules/chart.js/dist/plugins/plugin.tooltip';
-import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
-import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import {
   fetchGetCompetencies,
   fetchGetSkills,
@@ -28,7 +28,7 @@ import {
   setPlannedResults,
   setSkillName,
 } from 'src/store/features/slice/skillSlice';
-import { selectEmployees } from 'src/store/features/slice/membersSlice';
+import { Preloader } from 'src/shared/ui/Preloader/Preloader';
 
 ChartJS.register(
   RadialLinearScale,
@@ -49,11 +49,13 @@ export const Web = () => {
     plannedResults,
     actualResults,
   } = useAppSelector(selectSkills);
-  const { member } = useAppSelector(selectEmployees);
   const dispatch = useAppDispatch();
   const [isChecked, setIsChecked] = useState(true);
 
   useEffect(() => {
+    if (!Array.isArray(competencies) || !Array.isArray(skills)) {
+      return;
+    }
     const newLabels = isChecked
       ? competencies.map((skill) => skill.competencyName)
       : skills.map((skill) => skill.skillName);
@@ -90,7 +92,7 @@ export const Web = () => {
         })
       );
     }
-  }, [dispatch, hard, member, isChecked]);
+  }, [dispatch, hard, isChecked]);
 
   const data: ChartData<'radar'> = {
     labels,
@@ -167,6 +169,7 @@ export const Web = () => {
 
   return (
     <section className='web'>
+      <Preloader />
       <div className='web__skills_wrapper'>
         <SkillCheckbox />
         <div className='web__skills_container'>

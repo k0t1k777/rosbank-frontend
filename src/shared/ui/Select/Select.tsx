@@ -6,6 +6,8 @@ import styles from 'src/shared/ui/Select/Select.module.scss';
 import useOutsideClick from 'src/shared/hooks/useOutsideClick';
 import { Icon } from '../Icon/Icon';
 import { SelectProps } from 'src/services/types';
+import { useAppDispatch } from 'src/store/hooks';
+import { setIsOpenCalendar } from 'src/store/features/slice/skillSlice';
 
 const cx = cn.bind(styles);
 
@@ -19,10 +21,12 @@ export default function Select({
   border,
 }: SelectProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
   const ref = useRef(null);
 
   function toggleOpen() {
     setIsOpen((prev) => !prev);
+    dispatch(setIsOpenCalendar(false))
   }
 
   useOutsideClick(ref, toggleOpen);

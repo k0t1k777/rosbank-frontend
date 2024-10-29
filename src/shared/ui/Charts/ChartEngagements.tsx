@@ -5,7 +5,6 @@ import { useAppSelector } from 'src/store/hooks';
 
 export default function ChartEngagements() {
   const { involvement } = useAppSelector(selectCharts);
-  console.log('involvement: ', involvement);
   if (!involvement || involvement.length === 0) {
     return <h2 className='charts__message'>Выберите период</h2>;
   }
@@ -56,16 +55,12 @@ export default function ChartEngagements() {
           display: false,
           text: 'Языки программирования',
         },
-        min: 0,
-        max: 6,
       },
       y: {
         title: {
           display: true,
           text: 'Вовлеченность',
         },
-        min: 0,
-        max: 6,
       },
     },
   };

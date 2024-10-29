@@ -19,7 +19,7 @@ import {
 export const Table = () => {
   const { employees, member, tooltipIndex, position, grade, worker } =
     useAppSelector(selectEmployees);
-    const { hard, skillName, competencyName } = useAppSelector(selectSkills);
+  const { hard, skillName, competencyName } = useAppSelector(selectSkills);
 
   const dispatch = useAppDispatch();
 
@@ -33,15 +33,15 @@ export const Table = () => {
 
   const handleRowClick = (id: number) => {
     const skillDomain = hard ? 'hard' : 'soft';
-    dispatch(fetchAmountEmployeesId(id));
     dispatch(
-      fetchGetCompetencies({ skillDomains: skillDomain, id: String(id) })
+      fetchGetCompetencies({ skillDomains: skillDomain})
     );
+    dispatch(fetchAmountEmployeesId(id));
   };
 
   useEffect(() => {
-    const competency = competencyName
-    const skill = skillName
+    const competency = competencyName;
+    const skill = skillName;
     dispatch(
       fetchGetEmployees({
         position,
@@ -51,14 +51,7 @@ export const Table = () => {
         skill,
       })
     );
-  }, [
-    dispatch,
-    position,
-    grade,
-    worker,
-    competencyName,
-    skillName,
-  ]);
+  }, [dispatch, position, grade, worker, competencyName, skillName]);
 
   return (
     <section className='table'>
@@ -71,11 +64,19 @@ export const Table = () => {
                 .map((item, index) => {
                   const isSelected = member.id === item.id;
                   let backgroundColorClass = '';
-                  if (item.skill >= 0 && item.skill <= 33) {
+                  if (item.skill && item.skill >= 0 && item.skill <= 33) {
                     backgroundColorClass = 'table__bg-red';
-                  } else if (item.skill >= 34 && item.skill <= 66) {
+                  } else if (
+                    item.skill &&
+                    item.skill >= 34 &&
+                    item.skill <= 66
+                  ) {
                     backgroundColorClass = 'table__bg-yellow';
-                  } else if (item.skill >= 67 && item.skill <= 100) {
+                  } else if (
+                    item.skill &&
+                    item.skill >= 67 &&
+                    item.skill <= 100
+                  ) {
                     backgroundColorClass = 'table__bg-green';
                   }
                   return (
@@ -128,7 +129,9 @@ export const Table = () => {
                           className={`table__td_type_border ${backgroundColorClass}`}
                         >
                           <p className='table__text'>
-                            {roundSkill(item.skill)}
+                            {item.skill && item.skill !== null
+                              ? roundSkill(item.skill)
+                              : '0'}
                           </p>
                         </div>
                       </td>
@@ -137,11 +140,15 @@ export const Table = () => {
                 })
             : employees.map((item, index) => {
                 let backgroundColorClass = '';
-                if (item.skill >= 0 && item.skill <= 33) {
+                if (item.skill && item.skill >= 0 && item.skill <= 33) {
                   backgroundColorClass = 'table__bg-red';
-                } else if (item.skill >= 34 && item.skill <= 66) {
+                } else if (item.skill && item.skill >= 34 && item.skill <= 66) {
                   backgroundColorClass = 'table__bg-yellow';
-                } else if (item.skill >= 67 && item.skill <= 100) {
+                } else if (
+                  item.skill &&
+                  item.skill >= 67 &&
+                  item.skill <= 100
+                ) {
                   backgroundColorClass = 'table__bg-green';
                 }
                 return (
@@ -188,7 +195,11 @@ export const Table = () => {
                       <div
                         className={`table__td_type_border ${backgroundColorClass}`}
                       >
-                        <p className='table__text'>{roundSkill(item.skill)}</p>
+                        <p className='table__text'>
+                          {item.skill && item.skill !== null
+                            ? roundSkill(item.skill)
+                            : '0'}
+                        </p>
                       </div>
                     </td>
                   </tr>

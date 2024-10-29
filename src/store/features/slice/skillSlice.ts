@@ -9,12 +9,12 @@ export interface StateType {
   skills: Skills[];
   highlightedSkill: string | null;
   speciality: string;
-  isOpen: boolean;
+  isOpenCalendar: boolean;
   soft: boolean;
   hard: boolean;
   competencies: CompetencyType[];
   competencyName: string | null;
-  skillName: string | null;
+  skillName: number | null;
   labels: string[];
   plannedResults: number[];
   actualResults: number[];
@@ -25,8 +25,8 @@ const initialState: StateType = {
   error: null,
   skills: [],
   highlightedSkill: '',
-  speciality: 'Сотрудники',
-  isOpen: false,
+  speciality: 'Оценка навыков',
+  isOpenCalendar: false,
   soft: false,
   hard: true,
   competencies: [],
@@ -41,12 +41,10 @@ export const fetchGetSkills = createAsyncThunk(
   'fetch/skills',
   async ({
     skillDomains,
-    skillId,
   }: {
     skillDomains: string;
-    skillId?: string;
   }) => {
-    const response = await getSkills(skillDomains, skillId);
+    const response = await getSkills(skillDomains);
     return response;
   }
 );
@@ -55,12 +53,10 @@ export const fetchGetCompetencies = createAsyncThunk(
   'fetch/skills/competencies',
   async ({
     skillDomains,
-    id,
   }: {
     skillDomains: string;
-    id?: string;
   }) => {
-    const response = await getСompetencies(skillDomains, id);
+    const response = await getСompetencies(skillDomains);
     return response;
   }
 );
@@ -75,8 +71,8 @@ const skillsSlice = createSlice({
     setSpeciality(state, action) {
       state.speciality = action.payload;
     },
-    setIsOpen(state, action) {
-      state.isOpen = action.payload;
+    setIsOpenCalendar(state, action) {
+      state.isOpenCalendar = action.payload;
     },
     toggleCheckbox(state, action) {
       const { skillType } = action.payload;
@@ -105,7 +101,7 @@ const skillsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchGetSkills.fulfilled, (state, action) => {
-        state.skills = action.payload.data;
+        state.skills = action.payload;
         state.isLoading = false;
         state.error = null;
       })
@@ -117,7 +113,7 @@ const skillsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchGetCompetencies.fulfilled, (state, action) => {
-        state.competencies = action.payload.data;
+        state.competencies = action.payload;
         state.isLoading = false;
         state.error = null;
       })
@@ -131,7 +127,7 @@ const skillsSlice = createSlice({
 export const {
   setHighlightedSkill,
   setSpeciality,
-  setIsOpen,
+  setIsOpenCalendar,
   toggleCheckbox,
   setCompetencyName,
   setSkillName,

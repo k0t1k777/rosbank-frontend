@@ -19,7 +19,7 @@ export interface StateType {
   grade: string;
   worker: string;
   competency?: string | null;
-  skill?: string | null;
+  skill?: number | null;
   tooltip: number | null;
   member: EmployeeType;
 }
@@ -39,7 +39,7 @@ const initialState: StateType = {
   grade: '',
   worker: '',
   competency: '',
-  skill: '',
+  skill: 0,
   tooltip: null,
   member: inintialMember,
 };
@@ -57,7 +57,7 @@ export const fetchGetEmployees = createAsyncThunk(
     grade: string;
     worker: string;
     competency?: string | null;
-    skill?: string | null;
+    skill?: number | null;
   }) => {
     const response = await getEmployees(
       position,

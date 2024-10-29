@@ -53,16 +53,12 @@ export default function ChartIpr() {
         title: {
           display: false,
         },
-        min: 0,
-        max: Math.max(...data, 10),
       },
       y: {
         title: {
           display: true,
           text: 'Выполнение',
         },
-        min: 0,
-        max: Math.max(...data, 10),
       },
     },
   };

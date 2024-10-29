@@ -21,10 +21,11 @@ import ChartSkills from 'src/shared/ui/Charts/ChartSkills';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import {
   selectSkills,
-  setIsOpen,
+  setIsOpenCalendar,
   setSpeciality,
 } from 'src/store/features/slice/skillSlice';
 import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
+import { Preloader } from 'src/shared/ui/Preloader/Preloader';
 const cx = cn.bind({});
 
 ChartJS.register(
@@ -37,30 +38,34 @@ ChartJS.register(
 );
 
 export const Metric = () => {
-  const { speciality, isOpen } = useAppSelector(selectSkills);
+  const { speciality, isOpenCalendar } = useAppSelector(selectSkills);
   const dispatch = useAppDispatch();
 
   const handleSelectChange = (value: string) => {
     dispatch(setSpeciality(value));
   };
 
-
   function toggleOpen() {
-    dispatch(setIsOpen(!isOpen))
+    dispatch(setIsOpenCalendar(!isOpenCalendar));
   }
 
   return (
-    <section className='metric' >
+    <section className='metric'>
+      <Preloader />
       <div className='metric__header-container'>
         <Subtitile text='Основные метрики команды' />
         <div className='metric__container_wrapper'>
-          <div
-            className={cx('metric__picker', { 'metric__picker--open': isOpen })}
-            onClick={toggleOpen}
-          >
-            <p className='metric__picker_title'>Выбери период</p>
-            <Icon id='arrow' />
-          </div>
+          {speciality !== 'Оценка навыков' && (
+            <div
+              className={cx('metric__picker', {
+                'metric__picker--open': isOpenCalendar,
+              })}
+              onClick={toggleOpen}
+            >
+              <p className='metric__picker_title'>Выбери период</p>
+              <Icon id='arrow' />
+            </div>
+          )}
           <div className='metric__celect_container'>
             <Select
               label='Сотрудники'
@@ -75,12 +80,12 @@ export const Metric = () => {
         </div>
       </div>
       <div className='metric__chart'>
+        {speciality === 'Оценка навыков' && <ChartSkills />}
         {speciality === 'Сотрудники' && <ChartEmployers />}
         {speciality === 'Выполнение ИПР' && <ChartIpr />}
-        {speciality === 'Оценка навыков' && <ChartSkills />}
         {speciality === 'Вовлеченность' && <ChartEngagements />}
       </div>
-      {isOpen && <Calendar />}
+      {isOpenCalendar && <Calendar />}
     </section>
   );
 };
