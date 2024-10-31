@@ -25,7 +25,6 @@ import {
   setSpeciality,
 } from 'src/store/features/slice/skillSlice';
 import SkillCheckbox from 'src/shared/ui/SkillCheckbox/SkillCheckbox';
-import { Preloader } from 'src/shared/ui/Preloader/Preloader';
 const cx = cn.bind({});
 
 ChartJS.register(
@@ -51,7 +50,6 @@ export const Metric = () => {
 
   return (
     <section className='metric'>
-      <Preloader />
       <div className='metric__header-container'>
         <Subtitile text='Основные метрики команды' />
         <div className='metric__container_wrapper'>

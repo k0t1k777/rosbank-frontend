@@ -28,7 +28,6 @@ import {
   setPlannedResults,
   setSkillName,
 } from 'src/store/features/slice/skillSlice';
-import { Preloader } from 'src/shared/ui/Preloader/Preloader';
 
 ChartJS.register(
   RadialLinearScale,
@@ -169,7 +168,6 @@ export const Web = () => {
 
   return (
     <section className='web'>
-      <Preloader />
       <div className='web__skills_wrapper'>
         <SkillCheckbox />
         <div className='web__skills_container'>

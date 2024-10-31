@@ -119,7 +119,6 @@ export const getEmployers = async (
         numberOfBusFactor: employers_plan.numberOfBusFactor,
         numberOfKeyPeople: employers_plan.numberOfKeyPeople,
       };
-
       resolve(employersPlan);
     }, 100);
   });
@@ -146,7 +145,6 @@ export const getDevelopment = async (
 
       return isAfterStart && isBeforeEnd;
     });
-
     setTimeout(() => {
       resolve(filteredPeriod);
     }, 100);
